@@ -1,0 +1,22 @@
+#!/usr/bin/env php
+<?php
+
+use Illuminate\Foundation\Application;
+use Symfony\Component\Console\Input\ArgvInput;
+
+define('LARAVEL_START', microtime(true));
+
+// Register the Composer autoloader...
+require __DIR__.'/vendor/autoload.php';
+
+if (PHP_OS_FAMILY === 'Windows' && ($argv[1] ?? null) === 'serve' && ! in_array('--no-reload', $argv, true)) {
+	array_splice($argv, 2, 0, '--no-reload');
+}
+
+// Bootstrap Laravel and handle the command...
+/** @var Application $app */
+$app = require_once __DIR__.'/bootstrap/app.php';
+
+$status = $app->handleCommand(new ArgvInput($argv));
+
+exit($status);

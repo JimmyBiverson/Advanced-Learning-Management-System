@@ -1,0 +1,1089 @@
+[
+    {
+        "id": "q_IVYly0VqHEQtRL2fIdW",
+        "name": "Body",
+        "type": "__body",
+        "styles": [],
+        "className": null,
+        "content": [
+            {
+                "id": "1iJ8sxRP2NZh3FPydTMqC",
+                "name": "Section",
+                "type": "section",
+                "styles": [],
+                "className": "py-20",
+                "content": [
+                    {
+                        "id": "JPaAPp0T8D5orbpWX8mmW",
+                        "name": "Container",
+                        "type": "container",
+                        "styles": [],
+                        "className": "max-w-[1280px] mx-auto w-full px-6 grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-3",
+                        "content": [
+                            {
+                                "id": "OLWkkOhIhoeD8G9uSqgT3",
+                                "name": "Div",
+                                "type": "div",
+                                "styles": [],
+                                "className": "space-y-8 lg:space-y-10",
+                                "content": [
+                                    {
+                                        "id": "hoLxkK9VmgjD6aB9asXHw",
+                                        "name": "Div",
+                                        "type": "div",
+                                        "styles": [],
+                                        "className": null,
+                                        "content": [
+                                            {
+                                                "id": "iN7jwFK7sek39G4dEM8Zb",
+                                                "name": "Paragraph",
+                                                "type": "paragraph",
+                                                "styles": [],
+                                                "className": "mb-2 text-lg font-medium text-secondary-foreground",
+                                                "content": {
+                                                    "innerText": "YOUR JOURNEY BEGINS HERE"
+                                                }
+                                            },
+                                            {
+                                                "id": "qgeO9ufCleoNALbIDC-Xr",
+                                                "name": "Heading",
+                                                "type": "heading",
+                                                "styles": [],
+                                                "className": "text-3xl leading-tight font-bold md:text-4xl lg:text-[42px] lg:leading-14",
+                                                "content": {
+                                                    "innerText": "Unlock 5,500+ Expert-Led Courses Powered by 400+ Trusted Instructors",
+                                                    "level": "h2"
+                                                }
+                                            },
+                                            {
+                                                "id": "eYF0jdfaeg8yvmPgksWXi",
+                                                "name": "Paragraph",
+                                                "type": "paragraph",
+                                                "styles": [],
+                                                "className": "mt-5 text-lg text-muted-foreground",
+                                                "content": {
+                                                    "innerText": "Start learning today with top-rated courses and instructors."
+                                                }
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "id": "ojNDupBTf3KhnBhk4Ndj3",
+                                        "name": "Dynamic Wrapper",
+                                        "type": "dynamicWrapper",
+                                        "styles": [],
+                                        "className": null,
+                                        "content": {
+                                            "componentRef": "course-search-input",
+                                            "api": null,
+                                            "apiMethod": "GET",
+                                            "apiParams": []
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "m7FbML72eLYUI8GHvNQlh",
+                                "name": "Div",
+                                "type": "div",
+                                "styles": [],
+                                "className": "animate-fade-in relative flex items-center justify-center lg:justify-end",
+                                "content": [
+                                    {
+                                        "id": "sYUozgDPe5TKgSUIGYBb0",
+                                        "name": "Image",
+                                        "type": "image",
+                                        "styles": [],
+                                        "className": "relative z-10 h-full max-h-[460px]",
+                                        "content": {
+                                            "src": "/assets/images/intro/home-2/hero-image.png",
+                                            "alt": "Student learning online"
+                                        }
+                                    },
+                                    {
+                                        "id": "8fw1TokxQMlbKwXC4QevS",
+                                        "name": "Div",
+                                        "type": "div",
+                                        "styles": [],
+                                        "className": "pointer-events-none absolute -top-100 -right-100 h-[1200px] w-[1200px] rounded-full bg-[radial-gradient(circle,rgba(97,95,255,0.45)_0%,transparent_70%)] opacity-25 content-['']",
+                                        "content": []
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": "eodXDYNQPgLxPgeWh5lrL",
+                "name": "Section",
+                "type": "section",
+                "styles": [],
+                "className": "relative z-10 py-20",
+                "content": [
+                    {
+                        "id": "Ctlh_QxorMNBvUERLaDUX",
+                        "name": "Container",
+                        "type": "container",
+                        "styles": [],
+                        "className": "max-w-[1280px] mx-auto w-full px-6",
+                        "content": [
+                            {
+                                "id": "3fSJIZff-t-85K2FG9m9p",
+                                "name": "Div",
+                                "type": "div",
+                                "styles": [],
+                                "className": "mx-auto mb-10 text-center md:max-w-2xl",
+                                "content": [
+                                    {
+                                        "id": "Kle1vohcICrv2z2mIFojz",
+                                        "name": "Paragraph",
+                                        "type": "paragraph",
+                                        "styles": [],
+                                        "className": "mb-1 font-medium text-secondary-foreground",
+                                        "content": {
+                                            "innerText": "Top Categories"
+                                        }
+                                    },
+                                    {
+                                        "id": "kkRQYnTVaHKqrQseaUnz3",
+                                        "name": "Heading",
+                                        "type": "heading",
+                                        "styles": [],
+                                        "className": "mb-4 text-3xl font-bold sm:text-4xl",
+                                        "content": {
+                                            "innerText": "Explore by Category",
+                                            "level": "h2"
+                                        }
+                                    },
+                                    {
+                                        "id": "N4nXzDbaf9KjIVBEWbI5c",
+                                        "name": "Paragraph",
+                                        "type": "paragraph",
+                                        "styles": [],
+                                        "className": "text-muted-foreground",
+                                        "content": {
+                                            "innerText": "These are the most popular courses among listen courses learners worldwide"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "9O_dsveyMRimeNAHTNhAV",
+                                "name": "Dynamic Wrapper",
+                                "type": "dynamicWrapper",
+                                "styles": [],
+                                "className": "relative z-10 my-12",
+                                "content": {
+                                    "componentRef": "top-course-categories-2",
+                                    "api": "api/collections/course_categories/top",
+                                    "apiMethod": "GET",
+                                    "apiParams": []
+                                }
+                            },
+                            {
+                                "id": "e-3pexSwyegMoJJzVk-j9",
+                                "name": "Div",
+                                "type": "div",
+                                "styles": [],
+                                "className": "pointer-events-none absolute -right-100 -bottom-100 h-[1200px] w-[1200px] rounded-full bg-[radial-gradient(circle,rgba(255,245,204,0.5)_0%,transparent_70%)] opacity-30 content-['']",
+                                "content": []
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": "HFENJC-LhpOABB6d6U3Dw",
+                "name": "Section",
+                "type": "section",
+                "styles": [],
+                "className": "py-20",
+                "content": [
+                    {
+                        "id": "KvgqfybEp69vJ2oZ8f8Oq",
+                        "name": "Container",
+                        "type": "container",
+                        "styles": [],
+                        "className": "max-w-[1280px] mx-auto w-full px-6 text-center",
+                        "content": [
+                            {
+                                "id": "O7V_zFqo5j7Bz7qgOxEvX",
+                                "name": "Div",
+                                "type": "div",
+                                "styles": [],
+                                "className": "relative z-10 mx-auto mb-10 text-center md:max-w-2xl",
+                                "content": [
+                                    {
+                                        "id": "K3gEXigpPd7kkBS5uQWmS",
+                                        "name": "Paragraph",
+                                        "type": "paragraph",
+                                        "styles": [],
+                                        "className": "mb-1 font-medium text-secondary-foreground",
+                                        "content": {
+                                            "innerText": "We Provide"
+                                        }
+                                    },
+                                    {
+                                        "id": "txaggDnY-B18R5IluRsjg",
+                                        "name": "Heading",
+                                        "type": "heading",
+                                        "styles": [],
+                                        "className": "mb-4 text-3xl font-bold sm:text-4xl",
+                                        "content": {
+                                            "innerText": "Take Your Skills to the Next Level",
+                                            "level": "h2"
+                                        }
+                                    },
+                                    {
+                                        "id": "6SwfrHOZvSzhnXjsR4cmg",
+                                        "name": "Paragraph",
+                                        "type": "paragraph",
+                                        "styles": [],
+                                        "className": "text-muted-foreground",
+                                        "content": {
+                                            "innerText": "These are the most popular courses among listen courses learners worldwide."
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "kSBnw3dQWz2zirgVNah3N",
+                                "name": "Div",
+                                "type": "div",
+                                "styles": [],
+                                "className": "relative mx-auto grid max-w-5xl grid-cols-1 gap-7 md:grid-cols-3",
+                                "content": [
+                                    {
+                                        "id": "T50F34Yeh-t3EJvh5mWDd",
+                                        "name": "Div",
+                                        "type": "div",
+                                        "styles": [],
+                                        "className": "relative z-10 rounded-3xl border-2 border-white bg-background/50 px-6 py-16 md:py-20",
+                                        "content": [
+                                            {
+                                                "id": "SYjByupKdm39HJYb1yNaV",
+                                                "name": "Div",
+                                                "type": "div",
+                                                "styles": [],
+                                                "className": "mx-auto flex h-[60px] w-[60px] items-center justify-center rounded-2xl bg-white/5 shadow-card-md",
+                                                "content": [
+                                                    {
+                                                        "id": "ppv_A-XGLL5KAWXxdqsKt",
+                                                        "name": "Div",
+                                                        "type": "div",
+                                                        "styles": [],
+                                                        "className": "flex h-10 w-10 items-center justify-center rounded-full bg-secondary-foreground",
+                                                        "content": [
+                                                            {
+                                                                "id": "9V4GRkD0NgXeC-1Wp_8V5",
+                                                                "name": "EditorIcon",
+                                                                "type": "icon",
+                                                                "styles": {
+                                                                    "width": "24px",
+                                                                    "height": "24px"
+                                                                },
+                                                                "className": "h-6 w-6 text-white",
+                                                                "content": {
+                                                                    "icon": "clock"
+                                                                }
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "id": "CcUqIO4iJXBn3K3pm2gU7",
+                                                "name": "Div",
+                                                "type": "div",
+                                                "styles": [],
+                                                "className": "mt-5 space-y-2",
+                                                "content": [
+                                                    {
+                                                        "id": "6txYktvoNyFXYAEpmgrdF",
+                                                        "name": "Heading",
+                                                        "type": "heading",
+                                                        "styles": [],
+                                                        "className": "text-4xl font-semibold md:text-[44px]",
+                                                        "content": {
+                                                            "innerText": "212+",
+                                                            "level": "h2"
+                                                        }
+                                                    },
+                                                    {
+                                                        "id": "B0GpstU84DqKnYzgBU2te",
+                                                        "name": "Paragraph",
+                                                        "type": "paragraph",
+                                                        "styles": [],
+                                                        "className": "mt-2",
+                                                        "content": {
+                                                            "innerText": "Hours Course Time"
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "id": "kX55moo9yJHNEWmC-yvef",
+                                        "name": "Div",
+                                        "type": "div",
+                                        "styles": [],
+                                        "className": "relative z-10 rounded-3xl border-2 border-white bg-background/50 px-6 py-16 md:py-20",
+                                        "content": [
+                                            {
+                                                "id": "dgSDnNHGVpDCg4eYDSbG8",
+                                                "name": "Div",
+                                                "type": "div",
+                                                "styles": [],
+                                                "className": "mx-auto flex h-[60px] w-[60px] items-center justify-center rounded-2xl bg-white/5 shadow-card-md",
+                                                "content": [
+                                                    {
+                                                        "id": "d8A_dqwUFmAeOFjkP-MLA",
+                                                        "name": "Div",
+                                                        "type": "div",
+                                                        "styles": [],
+                                                        "className": "flex h-10 w-10 items-center justify-center rounded-full bg-secondary-foreground",
+                                                        "content": [
+                                                            {
+                                                                "id": "LxwNTKvga3znJHt7GIaDb",
+                                                                "name": "EditorIcon",
+                                                                "type": "icon",
+                                                                "styles": {
+                                                                    "width": "24px",
+                                                                    "height": "24px"
+                                                                },
+                                                                "className": "h-6 w-6 text-white",
+                                                                "content": {
+                                                                    "icon": "monitor"
+                                                                }
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "id": "1FALxLc08HiSX-rnvNp_0",
+                                                "name": "Div",
+                                                "type": "div",
+                                                "styles": [],
+                                                "className": "mt-5 space-y-2",
+                                                "content": [
+                                                    {
+                                                        "id": "uDaqr_wxMDBdQxn8bKuGd",
+                                                        "name": "Heading",
+                                                        "type": "heading",
+                                                        "styles": [],
+                                                        "className": "text-4xl font-semibold md:text-[44px]",
+                                                        "content": {
+                                                            "innerText": "15+",
+                                                            "level": "h2"
+                                                        }
+                                                    },
+                                                    {
+                                                        "id": "Ke1usHlES-RaR-lmayDgk",
+                                                        "name": "Paragraph",
+                                                        "type": "paragraph",
+                                                        "styles": [],
+                                                        "className": "mt-2",
+                                                        "content": {
+                                                            "innerText": "Creative Courses"
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "id": "JwcTmnBYvK2tgobh_NoDT",
+                                        "name": "Div",
+                                        "type": "div",
+                                        "styles": [],
+                                        "className": "relative z-10 rounded-3xl border-2 border-white bg-background/50 px-6 py-16 md:py-20",
+                                        "content": [
+                                            {
+                                                "id": "xfZMLadjMxqVC0uOJ1cJD",
+                                                "name": "Div",
+                                                "type": "div",
+                                                "styles": [],
+                                                "className": "mx-auto flex h-[60px] w-[60px] items-center justify-center rounded-2xl bg-white/5 shadow-card-md",
+                                                "content": [
+                                                    {
+                                                        "id": "KUviV96eDwwS8AjhmhbqN",
+                                                        "name": "Div",
+                                                        "type": "div",
+                                                        "styles": [],
+                                                        "className": "flex h-10 w-10 items-center justify-center rounded-full bg-secondary-foreground",
+                                                        "content": [
+                                                            {
+                                                                "id": "OxLsdc1aTVwU_Rae7Hxj1",
+                                                                "name": "EditorIcon",
+                                                                "type": "icon",
+                                                                "styles": {
+                                                                    "width": "24px",
+                                                                    "height": "24px"
+                                                                },
+                                                                "className": "h-6 w-6 text-white",
+                                                                "content": {
+                                                                    "icon": "users"
+                                                                }
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "id": "SYGmvzsbv0l0l-JZ8AwGf",
+                                                "name": "Div",
+                                                "type": "div",
+                                                "styles": [],
+                                                "className": "mt-5 space-y-2",
+                                                "content": [
+                                                    {
+                                                        "id": "KNhkSctRSqE01QgVoP9sl",
+                                                        "name": "Heading",
+                                                        "type": "heading",
+                                                        "styles": [],
+                                                        "className": "text-4xl font-semibold md:text-[44px]",
+                                                        "content": {
+                                                            "innerText": "6+",
+                                                            "level": "h2"
+                                                        }
+                                                    },
+                                                    {
+                                                        "id": "3seml3Ki2dt4d17UVxzp5",
+                                                        "name": "Paragraph",
+                                                        "type": "paragraph",
+                                                        "styles": [],
+                                                        "className": "mt-2",
+                                                        "content": {
+                                                            "innerText": "Number of Students"
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "id": "7mH8mawGZUPNqCbVwRQAZ",
+                                        "name": "Div",
+                                        "type": "div",
+                                        "styles": [],
+                                        "className": "pointer-events-none absolute -top-120 left-1/2 h-[1200px] w-[1800px] -translate-x-1/2 bg-[radial-gradient(ellipse,rgba(97,95,255,0.4)_0%,transparent_70%)] opacity-30 content-['']",
+                                        "content": []
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": "mc8aazbjcqAiWq0m6duNC",
+                "name": "Section",
+                "type": "section",
+                "styles": [],
+                "className": "py-20",
+                "content": [
+                    {
+                        "id": "gnt26K7E2OWij7BxCApCX",
+                        "name": "Container",
+                        "type": "container",
+                        "styles": [],
+                        "className": "max-w-[1280px] mx-auto w-full px-6",
+                        "content": [
+                            {
+                                "id": "Yxx1EobZsJjuyxqOnrHTi",
+                                "name": "Div",
+                                "type": "div",
+                                "styles": [],
+                                "className": "mx-auto text-center md:max-w-2xl",
+                                "content": [
+                                    {
+                                        "id": "ewNI1-y-Klsk_Ux2YAoFa",
+                                        "name": "Paragraph",
+                                        "type": "paragraph",
+                                        "styles": [],
+                                        "className": "mb-1 font-medium text-secondary-foreground",
+                                        "content": {
+                                            "innerText": "Courses"
+                                        }
+                                    },
+                                    {
+                                        "id": "FvXkEUu0RxaypzepJ1iY7",
+                                        "name": "Heading",
+                                        "type": "heading",
+                                        "styles": [],
+                                        "className": "mb-4 text-3xl font-bold sm:text-4xl",
+                                        "content": {
+                                            "innerText": "Popular Courses",
+                                            "level": "h2"
+                                        }
+                                    },
+                                    {
+                                        "id": "De2IOinihTFFipIj92bmT",
+                                        "name": "Paragraph",
+                                        "type": "paragraph",
+                                        "styles": [],
+                                        "className": "text-muted-foreground",
+                                        "content": {
+                                            "innerText": "Your professional development is supported by Mentor covering everything from technical subjects to essential abilities"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "DpyBf0fsA5pFNTfidhl-i",
+                                "name": "Dynamic Wrapper",
+                                "type": "dynamicWrapper",
+                                "styles": [],
+                                "className": null,
+                                "content": {
+                                    "componentRef": "top-courses-carousel-1",
+                                    "api": "api/collections/courses/top",
+                                    "apiMethod": "GET",
+                                    "apiParams": []
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": "cfz3a-AtqbOE9qv9snhsR",
+                "name": "Section",
+                "type": "section",
+                "styles": [],
+                "className": "py-20",
+                "content": [
+                    {
+                        "id": "NhTx-lWLIbCRpNs_EjoPV",
+                        "name": "Container",
+                        "type": "container",
+                        "styles": [],
+                        "className": "max-w-[1280px] mx-auto w-full px-6 relative z-10",
+                        "content": [
+                            {
+                                "id": "b3bVuKOdCsHbO3qDToooO",
+                                "name": "Div",
+                                "type": "div",
+                                "styles": [],
+                                "className": "mx-auto text-center md:max-w-2xl",
+                                "content": [
+                                    {
+                                        "id": "BrLnyhZk4VoBqWC8GwiYR",
+                                        "name": "Paragraph",
+                                        "type": "paragraph",
+                                        "styles": [],
+                                        "className": "mb-1 font-medium text-secondary-foreground",
+                                        "content": {
+                                            "innerText": "Courses"
+                                        }
+                                    },
+                                    {
+                                        "id": "u1RylWlADBAqsp6TmTBr5",
+                                        "name": "Heading",
+                                        "type": "heading",
+                                        "styles": [],
+                                        "className": "mb-4 text-3xl font-bold sm:text-4xl",
+                                        "content": {
+                                            "innerText": "Latest Courses",
+                                            "level": "h2"
+                                        }
+                                    },
+                                    {
+                                        "id": "VAIddh6m34vWtRgoFamna",
+                                        "name": "Paragraph",
+                                        "type": "paragraph",
+                                        "styles": [],
+                                        "className": "text-muted-foreground",
+                                        "content": {
+                                            "innerText": "Your professional development is supported by Mentor covering everything from technical subjects to essential abilities"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "IboWHKy_1KaL5JFa_56Nx",
+                                "name": "Dynamic Wrapper",
+                                "type": "dynamicWrapper",
+                                "styles": [],
+                                "className": null,
+                                "content": {
+                                    "componentRef": "new-courses-carousel-1",
+                                    "api": "api/collections/courses/new",
+                                    "apiMethod": "GET",
+                                    "apiParams": []
+                                }
+                            },
+                            {
+                                "id": "8Y7sNgC6TIN4z03rDuftk",
+                                "name": "Div",
+                                "type": "div",
+                                "styles": [],
+                                "className": "pointer-events-none absolute -top-80 -left-80 h-[1000px] w-[1000px] rounded-full bg-[radial-gradient(circle,rgba(97,95,255,0.45)_0%,transparent_70%)] opacity-25 content-['']",
+                                "content": []
+                            },
+                            {
+                                "id": "iqPziA1APKEfo3leEyyHr",
+                                "name": "Div",
+                                "type": "div",
+                                "styles": [],
+                                "className": "pointer-events-none absolute -right-80 -bottom-80 h-[1000px] w-[1000px] rounded-full bg-[radial-gradient(circle,rgba(0,167,111,0.45)_0%,transparent_70%)] opacity-25 content-['']",
+                                "content": []
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": "w-iH63ndIDMrU3vip5HCG",
+                "name": "Section",
+                "type": "section",
+                "styles": [],
+                "className": "py-20",
+                "content": [
+                    {
+                        "id": "5cNR3fRaxiaQzeduAXmSr",
+                        "name": "Container",
+                        "type": "container",
+                        "styles": [],
+                        "className": "max-w-[1280px] mx-auto w-full px-6",
+                        "content": [
+                            {
+                                "id": "7nzEHSfOX8poM-mobT_Au",
+                                "name": "Div",
+                                "type": "div",
+                                "styles": [],
+                                "className": "mx-auto mb-10 text-center md:max-w-[480px]",
+                                "content": [
+                                    {
+                                        "id": "l3DDFsyhJw0eTDzoyX59I",
+                                        "name": "Paragraph",
+                                        "type": "paragraph",
+                                        "styles": [],
+                                        "className": "mb-1 font-medium text-secondary-foreground",
+                                        "content": {
+                                            "innerText": "Top Instructors"
+                                        }
+                                    },
+                                    {
+                                        "id": "xLLAl07bUdqRKAO21WkS2",
+                                        "name": "Heading",
+                                        "type": "heading",
+                                        "styles": [],
+                                        "className": "mb-4 text-3xl font-bold sm:text-4xl",
+                                        "content": {
+                                            "innerText": "Meet Our Experts",
+                                            "level": "h2"
+                                        }
+                                    },
+                                    {
+                                        "id": "19kvfjy_QehgkP5n17x-G",
+                                        "name": "Paragraph",
+                                        "type": "paragraph",
+                                        "styles": [],
+                                        "className": "text-muted-foreground",
+                                        "content": {
+                                            "innerText": "They efficiently serve large number of students on our platform"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "3LBzdHAaHWX6DkUeZhgPw",
+                                "name": "Dynamic Wrapper",
+                                "type": "dynamicWrapper",
+                                "styles": [],
+                                "className": null,
+                                "content": {
+                                    "componentRef": "top-instructors-carousel-2",
+                                    "api": "api/collections/instructors/top",
+                                    "apiMethod": "GET",
+                                    "apiParams": []
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": "YTpLOrrBWiSs-Uj6Z7JQd",
+                "name": "Section",
+                "type": "section",
+                "styles": [],
+                "className": "py-20",
+                "content": [
+                    {
+                        "id": "DTteEbDv6zTy9CovWymHb",
+                        "name": "Container",
+                        "type": "container",
+                        "styles": [],
+                        "className": "max-w-[1280px] mx-auto w-full px-6 relative z-10",
+                        "content": [
+                            {
+                                "id": "fyuySvOgxuLo3k8ZhoG6m",
+                                "name": "Div",
+                                "type": "div",
+                                "styles": [],
+                                "className": "mx-auto text-center md:max-w-[480px]",
+                                "content": [
+                                    {
+                                        "id": "QZ-F7kHBpATDhF2lwOCBU",
+                                        "name": "Paragraph",
+                                        "type": "paragraph",
+                                        "styles": [],
+                                        "className": "mb-1 font-medium text-secondary-foreground",
+                                        "content": {
+                                            "innerText": "Testimonials"
+                                        }
+                                    },
+                                    {
+                                        "id": "-93N4pzIaf-NefIKITgqE",
+                                        "name": "Heading",
+                                        "type": "heading",
+                                        "styles": [],
+                                        "className": "mb-4 text-3xl font-bold sm:text-4xl",
+                                        "content": {
+                                            "innerText": "What Our Students Say",
+                                            "level": "h2"
+                                        }
+                                    },
+                                    {
+                                        "id": "cn8U3_uI94jAz29WwzPzx",
+                                        "name": "Paragraph",
+                                        "type": "paragraph",
+                                        "styles": [],
+                                        "className": "text-muted-foreground",
+                                        "content": {
+                                            "innerText": "They efficiently serve large number of students on our platform"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "ryLBdMwb0JpmiY39NOySz",
+                                "name": "Dynamic Wrapper",
+                                "type": "dynamicWrapper",
+                                "styles": [],
+                                "className": null,
+                                "content": {
+                                    "componentRef": "top-testimonials-carousel-1",
+                                    "api": "api/collections/testimonials/top",
+                                    "apiMethod": "GET",
+                                    "apiParams": []
+                                }
+                            },
+                            {
+                                "id": "9__8oRf_pkCxkwiZ30gie",
+                                "name": "Div",
+                                "type": "div",
+                                "styles": [],
+                                "className": "pointer-events-none absolute -bottom-80 -left-80 h-[1000px] w-[1000px] rounded-full bg-[radial-gradient(circle,rgba(0,167,111,0.45)_0%,transparent_70%)] opacity-25 content-['']",
+                                "content": []
+                            },
+                            {
+                                "id": "tF88swI-3LcCNFj-eAHYC",
+                                "name": "Div",
+                                "type": "div",
+                                "styles": [],
+                                "className": "pointer-events-none absolute -top-80 -right-80 h-[1000px] w-[1000px] rounded-full bg-[radial-gradient(circle,rgba(97,95,255,0.45)_0%,transparent_70%)] opacity-25 content-['']",
+                                "content": []
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": "E43kt2M0HUe90MGJ7ejJT",
+                "name": "Section",
+                "type": "section",
+                "styles": [],
+                "className": "py-20",
+                "content": [
+                    {
+                        "id": "TgsL1glT3u6ZY12WuYpW7",
+                        "name": "Container",
+                        "type": "container",
+                        "styles": [],
+                        "className": "max-w-[1280px] mx-auto w-full px-6",
+                        "content": [
+                            {
+                                "id": "zEAu_OX1_a1c54yup_txH",
+                                "name": "Div",
+                                "type": "div",
+                                "styles": [],
+                                "className": "mx-auto mb-10 text-center md:max-w-xl",
+                                "content": [
+                                    {
+                                        "id": "6XVxJ6HOIVJi3aVhoXQgg",
+                                        "name": "Paragraph",
+                                        "type": "paragraph",
+                                        "styles": [],
+                                        "className": "mb-1 font-medium text-secondary-foreground",
+                                        "content": {
+                                            "innerText": "Partners"
+                                        }
+                                    },
+                                    {
+                                        "id": "ZQTj0SIMA6BvUxtmOiUVn",
+                                        "name": "Heading",
+                                        "type": "heading",
+                                        "styles": [],
+                                        "className": "mb-4 text-3xl font-bold sm:text-4xl",
+                                        "content": {
+                                            "innerText": "Trusted by Leading Companies",
+                                            "level": "h2"
+                                        }
+                                    },
+                                    {
+                                        "id": "rZ7l_71WhpcwdsKVqsZo6",
+                                        "name": "Paragraph",
+                                        "type": "paragraph",
+                                        "styles": [],
+                                        "className": "text-muted-foreground",
+                                        "content": {
+                                            "innerText": "We collaborate with industry leaders to provide world-class education"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "tsMsWSaFfoW8KfTSFdj8f",
+                                "name": "Div",
+                                "type": "div",
+                                "styles": [],
+                                "className": "p-y-12 md:p-y-16 grid grid-cols-2 justify-center gap-12 md:grid-cols-3 lg:grid-cols-6",
+                                "content": [
+                                    {
+                                        "id": "jZea3ywYS3ja4sZNIu7IO",
+                                        "name": "Image",
+                                        "type": "image",
+                                        "styles": [],
+                                        "className": "w-full",
+                                        "content": {
+                                            "src": "/assets/logos/logo-1.png",
+                                            "alt": "Image"
+                                        }
+                                    },
+                                    {
+                                        "id": "ICF6MFo9ROeulami_P3-s",
+                                        "name": "Image",
+                                        "type": "image",
+                                        "styles": [],
+                                        "className": "w-full",
+                                        "content": {
+                                            "src": "/assets/logos/logo-2.png",
+                                            "alt": "Image"
+                                        }
+                                    },
+                                    {
+                                        "id": "L774-DdUTxVVbOg8EPhSN",
+                                        "name": "Image",
+                                        "type": "image",
+                                        "styles": [],
+                                        "className": "w-full",
+                                        "content": {
+                                            "src": "/assets/logos/logo-3.png",
+                                            "alt": "Image"
+                                        }
+                                    },
+                                    {
+                                        "id": "EzyXQeRGlM2-5XcnkGM7H",
+                                        "name": "Image",
+                                        "type": "image",
+                                        "styles": [],
+                                        "className": "w-full",
+                                        "content": {
+                                            "src": "/assets/logos/logo-4.png",
+                                            "alt": "Image"
+                                        }
+                                    },
+                                    {
+                                        "id": "p6YWE5SEDZtrUyQK2Kl7T",
+                                        "name": "Image",
+                                        "type": "image",
+                                        "styles": [],
+                                        "className": "w-full",
+                                        "content": {
+                                            "src": "/assets/logos/logo-5.png",
+                                            "alt": "Image"
+                                        }
+                                    },
+                                    {
+                                        "id": "WgouHnoGRAoeHC4n1kCZ-",
+                                        "name": "Image",
+                                        "type": "image",
+                                        "styles": [],
+                                        "className": "w-full",
+                                        "content": {
+                                            "src": "/assets/logos/logo-6.png",
+                                            "alt": "Image"
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": "Xi7u2PUac1KzWpAL08SLS",
+                "name": "Section",
+                "type": "section",
+                "styles": [],
+                "className": "py-20",
+                "content": [
+                    {
+                        "id": "G1XyBjyl7QYx-Y6P8VonO",
+                        "name": "Container",
+                        "type": "container",
+                        "styles": [],
+                        "className": "max-w-[1280px] mx-auto w-full px-6 relative z-10",
+                        "content": [
+                            {
+                                "id": "w5JAs06HgZecE_2pKQ5eJ",
+                                "name": "Div",
+                                "type": "div",
+                                "styles": [],
+                                "className": "mx-auto w-full max-w-[820px] rounded-2xl bg-[#007867] px-6 py-20 md:rounded-3xl md:px-10",
+                                "content": [
+                                    {
+                                        "id": "vQrzE37fbN9f1yuOsF8CI",
+                                        "name": "Div",
+                                        "type": "div",
+                                        "styles": [],
+                                        "className": "mx-auto w-full max-w-[420px] text-center text-white",
+                                        "content": [
+                                            {
+                                                "id": "hYQ9-Mj5Ts2Twerfxdo6w",
+                                                "name": "Heading",
+                                                "type": "heading",
+                                                "styles": [],
+                                                "className": "text-2xl leading-tight font-bold text-white md:text-3xl md:leading-9",
+                                                "content": {
+                                                    "innerText": "Subscribe Our Newsletter",
+                                                    "level": "h2"
+                                                }
+                                            },
+                                            {
+                                                "id": "2zNsgsMfUMDlNRyiSapFw",
+                                                "name": "Paragraph",
+                                                "type": "paragraph",
+                                                "styles": [],
+                                                "className": "mt-3 mb-6",
+                                                "content": {
+                                                    "innerText": "Subscribe to our newsletter to get the latest news and updates. We will not spam you."
+                                                }
+                                            },
+                                            {
+                                                "id": "54pShL67xjZ_kwhV9ouhl",
+                                                "name": "Dynamic Wrapper",
+                                                "type": "dynamicWrapper",
+                                                "styles": [],
+                                                "className": null,
+                                                "content": {
+                                                    "componentRef": "email-subscribe-input",
+                                                    "api": null,
+                                                    "apiMethod": "GET",
+                                                    "apiParams": []
+                                                }
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "UZ14HNoqgYvOeoPsj9wI_",
+                                "name": "Div",
+                                "type": "div",
+                                "styles": [],
+                                "className": "pointer-events-none absolute -top-80 -left-60 h-[1000px] w-[1000px] rounded-full bg-[radial-gradient(circle,rgba(97,95,255,0.45)_0%,transparent_70%)] opacity-25 content-['']",
+                                "content": []
+                            },
+                            {
+                                "id": "TfchLMDu9JDFYC9kuwfde",
+                                "name": "Div",
+                                "type": "div",
+                                "styles": [],
+                                "className": "pointer-events-none absolute -right-60 -bottom-80 h-[1000px] w-[1000px] rounded-full bg-[radial-gradient(circle,rgba(0,167,111,0.45)_0%,transparent_70%)] opacity-25 content-['']",
+                                "content": []
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": "tPiktA7hMqWYyFDSZx7hu",
+                "name": "Section",
+                "type": "section",
+                "styles": [],
+                "className": "z-10 py-20",
+                "content": [
+                    {
+                        "id": "ZDoTO7wOnyeAGJ5HDkB94",
+                        "name": "Container",
+                        "type": "container",
+                        "styles": [],
+                        "className": "max-w-[1280px] mx-auto w-full px-6",
+                        "content": [
+                            {
+                                "id": "vh_YMfv12e8h-xgvxfgkv",
+                                "name": "Div",
+                                "type": "div",
+                                "styles": [],
+                                "className": "mx-auto text-center md:max-w-2xl",
+                                "content": [
+                                    {
+                                        "id": "_K2typcBDkvw1KV9LQ600",
+                                        "name": "Paragraph",
+                                        "type": "paragraph",
+                                        "styles": [],
+                                        "className": "mb-1 font-medium text-secondary-foreground",
+                                        "content": {
+                                            "innerText": "Blogs"
+                                        }
+                                    },
+                                    {
+                                        "id": "b2KqpyWSQgC_pYd3cZ2o_",
+                                        "name": "Heading",
+                                        "type": "heading",
+                                        "styles": [],
+                                        "className": "mb-4 text-3xl font-bold sm:text-4xl",
+                                        "content": {
+                                            "innerText": "Our Latest Post",
+                                            "level": "h2"
+                                        }
+                                    },
+                                    {
+                                        "id": "ex-Mo3gLWbgSy8OcK5vdk",
+                                        "name": "Paragraph",
+                                        "type": "paragraph",
+                                        "styles": [],
+                                        "className": "text-muted-foreground",
+                                        "content": {
+                                            "innerText": "These are the most popular courses among listen courses learners worldwide"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "JxG9jxI8QloUSNDl0wtSg",
+                                "name": "Dynamic Wrapper",
+                                "type": "dynamicWrapper",
+                                "styles": [],
+                                "className": null,
+                                "content": {
+                                    "componentRef": "new-blogs-carousel",
+                                    "api": "api/collections/blogs/new",
+                                    "apiMethod": "GET",
+                                    "apiParams": []
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+]

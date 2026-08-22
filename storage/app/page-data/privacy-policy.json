@@ -1,0 +1,799 @@
+[
+    {
+        "id": "3TrwzP_ox0XZaKsA9sX9L",
+        "name": "Body",
+        "type": "__body",
+        "styles": [],
+        "className": null,
+        "content": [
+            {
+                "id": "9T_u2LUZhmqeoXhVT501z",
+                "name": "Div",
+                "type": "div",
+                "styles": [],
+                "className": "relative bg-[rgba(255,222,99,0.06)] pt-[212px] pb-[100px]",
+                "content": [
+                    {
+                        "id": "KjXjsxaF_bEYANd2H_s59",
+                        "name": "Container",
+                        "type": "container",
+                        "styles": [],
+                        "className": "max-w-[1280px] mx-auto w-full px-6",
+                        "content": [
+                            {
+                                "id": "UsUgxmhmrDFywlCHO3NFE",
+                                "name": "Div",
+                                "type": "div",
+                                "styles": [],
+                                "className": "relative z-10 flex flex-col items-center justify-center space-y-2",
+                                "content": [
+                                    {
+                                        "id": "_Qy4nd5z6qJH2y0xcPWBI",
+                                        "name": "Heading",
+                                        "type": "heading",
+                                        "styles": [],
+                                        "className": "text-center text-4xl font-bold md:text-[44px]",
+                                        "content": {
+                                            "innerText": "Privacy Policy",
+                                            "level": "h2"
+                                        }
+                                    },
+                                    {
+                                        "id": "IKRRvYf1ZxRlcCJzBNWzU",
+                                        "name": "Div",
+                                        "type": "div",
+                                        "styles": [],
+                                        "className": "flex items-center gap-1 text-muted-foreground",
+                                        "content": [
+                                            {
+                                                "id": "09_KGw_miNldhZIvD893H",
+                                                "name": "Link",
+                                                "type": "link",
+                                                "styles": [],
+                                                "className": "flex items-center justify-center",
+                                                "content": [
+                                                    {
+                                                        "id": "S_94RtwqksdPrI8P2-S5h",
+                                                        "name": "EditorIcon",
+                                                        "type": "icon",
+                                                        "styles": {
+                                                            "width": "24px",
+                                                            "height": "24px"
+                                                        },
+                                                        "className": "text-foreground h-[18px] w-[18px]",
+                                                        "content": {
+                                                            "icon": "home"
+                                                        }
+                                                    }
+                                                ],
+                                                "htmlAttributes": {
+                                                    "href": "/",
+                                                    "type": "inertia"
+                                                }
+                                            },
+                                            {
+                                                "id": "mQ0QK4CXF4ST6DraaGAEc",
+                                                "name": "EditorIcon",
+                                                "type": "icon",
+                                                "styles": {
+                                                    "width": "24px",
+                                                    "height": "24px"
+                                                },
+                                                "className": "text-foreground h-[14px] w-[14px]",
+                                                "content": {
+                                                    "icon": "chevrons-right"
+                                                }
+                                            },
+                                            {
+                                                "id": "jDb_vDSj-Al3zzyaVMti4",
+                                                "name": "Paragraph",
+                                                "type": "paragraph",
+                                                "styles": [],
+                                                "className": "text-sm",
+                                                "content": {
+                                                    "innerText": "privacy-policy"
+                                                }
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "KnYs83Y4dbRGw5tJN000u",
+                        "name": "Div",
+                        "type": "div",
+                        "styles": [],
+                        "className": "pointer-events-none absolute top-1/2 right-0 h-[450px] w-[450px] -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(0,167,111,0.45)_0%,transparent_70%)] opacity-40 content-['']",
+                        "content": []
+                    }
+                ]
+            },
+            {
+                "id": "5scmSq3wAZF4O54H1mQF3",
+                "name": "Section",
+                "type": "section",
+                "styles": [],
+                "className": "py-20",
+                "content": [
+                    {
+                        "id": "nyL9WjQ78YQWc6AE8RR_a",
+                        "name": "Container",
+                        "type": "container",
+                        "styles": [],
+                        "className": "max-w-[1280px] mx-auto w-full px-6",
+                        "content": [
+                            {
+                                "id": "9NFL1fYpJ_KxUdlJdol27",
+                                "name": "Div",
+                                "type": "div",
+                                "styles": [],
+                                "className": "mx-auto max-w-3xl rounded-2xl bg-gray-50 p-8 md:p-12 dark:bg-gray-900",
+                                "content": [
+                                    {
+                                        "id": "b4nzVFnMoE1VrT0j1R82k",
+                                        "name": "Heading",
+                                        "type": "heading",
+                                        "styles": [],
+                                        "className": "mb-8 text-center text-3xl font-bold",
+                                        "content": {
+                                            "innerText": "Privacy Policy",
+                                            "level": "h2"
+                                        }
+                                    },
+                                    {
+                                        "id": "WSoLen7pc9r79wuatde42",
+                                        "name": "Div",
+                                        "type": "div",
+                                        "styles": [],
+                                        "className": "space-y-6",
+                                        "content": [
+                                            {
+                                                "id": "WFGieYdrHLo3ARBZv0wT-",
+                                                "name": "Paragraph",
+                                                "type": "paragraph",
+                                                "styles": [],
+                                                "className": null,
+                                                "content": {
+                                                    "innerText": "Welcome to Mentor. We are committed to protecting your privacy and ensuring that your personal information is handled in a safe and responsible manner. This Privacy Policy outlines how we collect, use, and protect your information when you use our platform."
+                                                }
+                                            },
+                                            {
+                                                "id": "rkYzvNCf9riQt01h4O2dv",
+                                                "name": "Div",
+                                                "type": "div",
+                                                "styles": [],
+                                                "className": null,
+                                                "content": [
+                                                    {
+                                                        "id": "Xr1VdnTGoWGW_8vqWc1aT",
+                                                        "name": "Heading",
+                                                        "type": "heading",
+                                                        "styles": [],
+                                                        "className": "mb-3 text-lg font-bold",
+                                                        "content": {
+                                                            "innerText": "1. Information We Collect",
+                                                            "level": "h2"
+                                                        }
+                                                    },
+                                                    {
+                                                        "id": "vUaVfKoGl9SWXQGZ4Hnsv",
+                                                        "name": "Paragraph",
+                                                        "type": "paragraph",
+                                                        "styles": [],
+                                                        "className": "mb-3",
+                                                        "content": {
+                                                            "innerText": "We collect various types of information in connection with the services we provide, including:"
+                                                        }
+                                                    },
+                                                    {
+                                                        "id": "AHHhaOTCwyfCVO29vUCvL",
+                                                        "name": "List",
+                                                        "type": "ul",
+                                                        "styles": [],
+                                                        "className": "ml-4 space-y-2",
+                                                        "content": [
+                                                            {
+                                                                "id": "ELKGwuuV7Yq85HNLdV4Oa",
+                                                                "name": "Div",
+                                                                "type": "div",
+                                                                "styles": [],
+                                                                "className": "flex items-start gap-2",
+                                                                "content": [
+                                                                    {
+                                                                        "id": "SPTzo9YhEQWkMOKLahRAL",
+                                                                        "name": "Span",
+                                                                        "type": "span",
+                                                                        "styles": [],
+                                                                        "className": "font-bold",
+                                                                        "content": {
+                                                                            "innerText": "\u2022"
+                                                                        }
+                                                                    },
+                                                                    {
+                                                                        "id": "0tn6fgvLMDZSn-Cvs3DWP",
+                                                                        "name": "ListItem",
+                                                                        "type": "li",
+                                                                        "styles": [],
+                                                                        "className": null,
+                                                                        "content": [
+                                                                            {
+                                                                                "id": "89FJyx16Tmn5ATFeuso1s",
+                                                                                "name": "Span",
+                                                                                "type": "span",
+                                                                                "styles": [],
+                                                                                "className": "mx-2 font-bold",
+                                                                                "content": {
+                                                                                    "innerText": "Personal Information:"
+                                                                                }
+                                                                            },
+                                                                            {
+                                                                                "id": "GkvE8IB2M7-MkailyEChF",
+                                                                                "name": "Span",
+                                                                                "type": "span",
+                                                                                "styles": [],
+                                                                                "className": null,
+                                                                                "content": {
+                                                                                    "innerText": "When you register for an account, we may collect personal details such as your name, email address, phone number, and payment information."
+                                                                                }
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                ]
+                                                            },
+                                                            {
+                                                                "id": "eQUDossgytACQwBw2egsr",
+                                                                "name": "Div",
+                                                                "type": "div",
+                                                                "styles": [],
+                                                                "className": "flex items-start gap-2",
+                                                                "content": [
+                                                                    {
+                                                                        "id": "n8I-rzDcIotq4GMkL3BSd",
+                                                                        "name": "Span",
+                                                                        "type": "span",
+                                                                        "styles": [],
+                                                                        "className": "font-bold",
+                                                                        "content": {
+                                                                            "innerText": "\u2022"
+                                                                        }
+                                                                    },
+                                                                    {
+                                                                        "id": "Wx493iw1B5NrMYjdKTtXc",
+                                                                        "name": "ListItem",
+                                                                        "type": "li",
+                                                                        "styles": [],
+                                                                        "className": null,
+                                                                        "content": [
+                                                                            {
+                                                                                "id": "trkR07oQLAvOeV3R6b8jg",
+                                                                                "name": "Span",
+                                                                                "type": "span",
+                                                                                "styles": [],
+                                                                                "className": "mx-2 font-bold",
+                                                                                "content": {
+                                                                                    "innerText": "Usage Data:"
+                                                                                }
+                                                                            },
+                                                                            {
+                                                                                "id": "poqTiMjMp3uGQ7PTpFo9m",
+                                                                                "name": "Span",
+                                                                                "type": "span",
+                                                                                "styles": [],
+                                                                                "className": null,
+                                                                                "content": {
+                                                                                    "innerText": "We collect information about your interactions with our platform, such as the pages you visit, the courses you access, and other actions you take."
+                                                                                }
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                ]
+                                                            },
+                                                            {
+                                                                "id": "fpukQIUwUzsmszNKcjDtU",
+                                                                "name": "Div",
+                                                                "type": "div",
+                                                                "styles": [],
+                                                                "className": "flex items-start gap-2",
+                                                                "content": [
+                                                                    {
+                                                                        "id": "GrWTXiTs7g-2MHxGDxjE3",
+                                                                        "name": "Span",
+                                                                        "type": "span",
+                                                                        "styles": [],
+                                                                        "className": "font-bold",
+                                                                        "content": {
+                                                                            "innerText": "\u2022"
+                                                                        }
+                                                                    },
+                                                                    {
+                                                                        "id": "cV8O1RR7eUSwJ8_eLiz6h",
+                                                                        "name": "ListItem",
+                                                                        "type": "li",
+                                                                        "styles": [],
+                                                                        "className": null,
+                                                                        "content": [
+                                                                            {
+                                                                                "id": "F2IzoS6Brk8bO3ApRDeit",
+                                                                                "name": "Span",
+                                                                                "type": "span",
+                                                                                "styles": [],
+                                                                                "className": "mx-2 font-bold",
+                                                                                "content": {
+                                                                                    "innerText": "Cookies and Tracking Technologies:"
+                                                                                }
+                                                                            },
+                                                                            {
+                                                                                "id": "WtJHCaPhK-hPrOEf5j8A-",
+                                                                                "name": "Span",
+                                                                                "type": "span",
+                                                                                "styles": [],
+                                                                                "className": null,
+                                                                                "content": {
+                                                                                    "innerText": "We use cookies and similar technologies to track your activity on our platform and hold certain information."
+                                                                                }
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                ]
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "id": "hKBYJBZUXcaQZRwl7MjQI",
+                                                "name": "Div",
+                                                "type": "div",
+                                                "styles": [],
+                                                "className": null,
+                                                "content": [
+                                                    {
+                                                        "id": "8dN2fkLMsfE8uZ2CALybk",
+                                                        "name": "Heading",
+                                                        "type": "heading",
+                                                        "styles": [],
+                                                        "className": "mb-3 text-lg font-bold",
+                                                        "content": {
+                                                            "innerText": "2. How We Use Your Information",
+                                                            "level": "h2"
+                                                        }
+                                                    },
+                                                    {
+                                                        "id": "dO4krcqS3VYL0TOvfLtG8",
+                                                        "name": "Paragraph",
+                                                        "type": "paragraph",
+                                                        "styles": [],
+                                                        "className": "mb-3",
+                                                        "content": {
+                                                            "innerText": "We use the information we collect for various purposes, including:"
+                                                        }
+                                                    },
+                                                    {
+                                                        "id": "7NqVKX-qsWGhNrD9IxjxW",
+                                                        "name": "List",
+                                                        "type": "ul",
+                                                        "styles": [],
+                                                        "className": "ml-6 space-y-2",
+                                                        "content": [
+                                                            {
+                                                                "id": "YCiEcwQqmC5Iep6aKx2B9",
+                                                                "name": "Div",
+                                                                "type": "div",
+                                                                "styles": [],
+                                                                "className": "flex items-start gap-2",
+                                                                "content": [
+                                                                    {
+                                                                        "id": "_3XtaUBHJgVeUPzYRaipG",
+                                                                        "name": "Span",
+                                                                        "type": "span",
+                                                                        "styles": [],
+                                                                        "className": "font-bold",
+                                                                        "content": {
+                                                                            "innerText": "\u2022"
+                                                                        }
+                                                                    },
+                                                                    {
+                                                                        "id": "k3sczNxesTAXkKkehb8Hi",
+                                                                        "name": "ListItem",
+                                                                        "type": "li",
+                                                                        "styles": [],
+                                                                        "className": null,
+                                                                        "content": [
+                                                                            {
+                                                                                "id": "GeTfVZRGT-mgFaZ-JtCDy",
+                                                                                "name": "Span",
+                                                                                "type": "span",
+                                                                                "styles": [],
+                                                                                "className": "mx-2 font-bold",
+                                                                                "content": {
+                                                                                    "innerText": "Providing Services:"
+                                                                                }
+                                                                            },
+                                                                            {
+                                                                                "id": "JCGdqeRzVLy-3cXdqnITq",
+                                                                                "name": "Span",
+                                                                                "type": "span",
+                                                                                "styles": [],
+                                                                                "className": null,
+                                                                                "content": {
+                                                                                    "innerText": "To create and manage your account, process transactions, and provide the courses and services you request."
+                                                                                }
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                ]
+                                                            },
+                                                            {
+                                                                "id": "KIostVZ612WXp87dqjLdW",
+                                                                "name": "Div",
+                                                                "type": "div",
+                                                                "styles": [],
+                                                                "className": "flex items-start gap-2",
+                                                                "content": [
+                                                                    {
+                                                                        "id": "EVGvtvH8P8hdaHR6qHvs9",
+                                                                        "name": "Span",
+                                                                        "type": "span",
+                                                                        "styles": [],
+                                                                        "className": "font-bold",
+                                                                        "content": {
+                                                                            "innerText": "\u2022"
+                                                                        }
+                                                                    },
+                                                                    {
+                                                                        "id": "quZzq5r6QWbLUg83U1lKW",
+                                                                        "name": "ListItem",
+                                                                        "type": "li",
+                                                                        "styles": [],
+                                                                        "className": null,
+                                                                        "content": [
+                                                                            {
+                                                                                "id": "6Gy7K9XaQgPpumaDiOahv",
+                                                                                "name": "Span",
+                                                                                "type": "span",
+                                                                                "styles": [],
+                                                                                "className": "mx-2 font-bold",
+                                                                                "content": {
+                                                                                    "innerText": "Improving Our Platform:"
+                                                                                }
+                                                                            },
+                                                                            {
+                                                                                "id": "NeRpcE8uMf5J3P0bIqnZb",
+                                                                                "name": "Span",
+                                                                                "type": "span",
+                                                                                "styles": [],
+                                                                                "className": null,
+                                                                                "content": {
+                                                                                    "innerText": "To analyze usage patterns and improve the functionality and user experience of our platform."
+                                                                                }
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                ]
+                                                            },
+                                                            {
+                                                                "id": "qFxWPMSH_hMWFPsKeLzXQ",
+                                                                "name": "Div",
+                                                                "type": "div",
+                                                                "styles": [],
+                                                                "className": "flex items-start gap-2",
+                                                                "content": [
+                                                                    {
+                                                                        "id": "oyj68-wCDK28LAXhxIeOr",
+                                                                        "name": "Span",
+                                                                        "type": "span",
+                                                                        "styles": [],
+                                                                        "className": "font-bold",
+                                                                        "content": {
+                                                                            "innerText": "\u2022"
+                                                                        }
+                                                                    },
+                                                                    {
+                                                                        "id": "0WYY_FNxWNVQY1oM3QpMP",
+                                                                        "name": "ListItem",
+                                                                        "type": "li",
+                                                                        "styles": [],
+                                                                        "className": null,
+                                                                        "content": [
+                                                                            {
+                                                                                "id": "N1X_dMo3RTN7ai7q5dJFF",
+                                                                                "name": "Span",
+                                                                                "type": "span",
+                                                                                "styles": [],
+                                                                                "className": "mx-2 font-bold",
+                                                                                "content": {
+                                                                                    "innerText": "Communication:"
+                                                                                }
+                                                                            },
+                                                                            {
+                                                                                "id": "FITbLMZdLs5kgJrpi0Cer",
+                                                                                "name": "Span",
+                                                                                "type": "span",
+                                                                                "styles": [],
+                                                                                "className": null,
+                                                                                "content": {
+                                                                                    "innerText": "To send you updates, newsletters, and other information that may be of interest to you. You can opt-out of receiving these communications at any time."
+                                                                                }
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                ]
+                                                            },
+                                                            {
+                                                                "id": "nh6AU6dyzu8Z-BDP8SkHq",
+                                                                "name": "Div",
+                                                                "type": "div",
+                                                                "styles": [],
+                                                                "className": "flex items-start gap-2",
+                                                                "content": [
+                                                                    {
+                                                                        "id": "aSXi22ytPkbj188FK0LcB",
+                                                                        "name": "Span",
+                                                                        "type": "span",
+                                                                        "styles": [],
+                                                                        "className": "font-bold",
+                                                                        "content": {
+                                                                            "innerText": "\u2022"
+                                                                        }
+                                                                    },
+                                                                    {
+                                                                        "id": "A0oI9XDPuACwB1X-6FvvU",
+                                                                        "name": "ListItem",
+                                                                        "type": "li",
+                                                                        "styles": [],
+                                                                        "className": null,
+                                                                        "content": [
+                                                                            {
+                                                                                "id": "nhOUzHi8hKLuW4JjKVIHz",
+                                                                                "name": "Span",
+                                                                                "type": "span",
+                                                                                "styles": [],
+                                                                                "className": "mx-2 font-bold",
+                                                                                "content": {
+                                                                                    "innerText": "Security:"
+                                                                                }
+                                                                            },
+                                                                            {
+                                                                                "id": "jVQ5CJmI-x1zy0QFgZcSL",
+                                                                                "name": "Span",
+                                                                                "type": "span",
+                                                                                "styles": [],
+                                                                                "className": null,
+                                                                                "content": {
+                                                                                    "innerText": "To monitor and protect the security of our platform and its users."
+                                                                                }
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                ]
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "id": "wqjGiJf-ovWwnjaZc18ui",
+                                                "name": "Div",
+                                                "type": "div",
+                                                "styles": [],
+                                                "className": null,
+                                                "content": [
+                                                    {
+                                                        "id": "3h1T_FGhXGmy9l_nHGY-K",
+                                                        "name": "Heading",
+                                                        "type": "heading",
+                                                        "styles": [],
+                                                        "className": "mb-3 text-lg font-bold",
+                                                        "content": {
+                                                            "innerText": "3. Sharing Your Information",
+                                                            "level": "h2"
+                                                        }
+                                                    },
+                                                    {
+                                                        "id": "E48AQqMVsT0GwrFYR3Km-",
+                                                        "name": "Paragraph",
+                                                        "type": "paragraph",
+                                                        "styles": [],
+                                                        "className": "mb-3",
+                                                        "content": {
+                                                            "innerText": "We may share your information with third parties in the following circumstances:"
+                                                        }
+                                                    },
+                                                    {
+                                                        "id": "mTpUnXIvUMJYaK3l3U6D5",
+                                                        "name": "List",
+                                                        "type": "ul",
+                                                        "styles": [],
+                                                        "className": "ml-6 space-y-2",
+                                                        "content": [
+                                                            {
+                                                                "id": "-Rr9oUnWGEwvH8CmPRJb1",
+                                                                "name": "Div",
+                                                                "type": "div",
+                                                                "styles": [],
+                                                                "className": "flex items-start gap-2",
+                                                                "content": [
+                                                                    {
+                                                                        "id": "69AIlQOzqQYUEcRjw52eX",
+                                                                        "name": "Span",
+                                                                        "type": "span",
+                                                                        "styles": [],
+                                                                        "className": "font-bold",
+                                                                        "content": {
+                                                                            "innerText": "\u2022"
+                                                                        }
+                                                                    },
+                                                                    {
+                                                                        "id": "A9bDgkw5MaFqS0AHTXpAl",
+                                                                        "name": "ListItem",
+                                                                        "type": "li",
+                                                                        "styles": [],
+                                                                        "className": null,
+                                                                        "content": [
+                                                                            {
+                                                                                "id": "0h6L8ZuKy6QftOkw342Ab",
+                                                                                "name": "Span",
+                                                                                "type": "span",
+                                                                                "styles": [],
+                                                                                "className": "mx-2 font-bold",
+                                                                                "content": {
+                                                                                    "innerText": "Service Providers:"
+                                                                                }
+                                                                            },
+                                                                            {
+                                                                                "id": "Vm0ln-1BD2ifLZFSHR9oi",
+                                                                                "name": "Span",
+                                                                                "type": "span",
+                                                                                "styles": [],
+                                                                                "className": null,
+                                                                                "content": {
+                                                                                    "innerText": "We may share your information with third-party service providers who perform services on our behalf, such as payment processing, data analysis, and email delivery."
+                                                                                }
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                ]
+                                                            },
+                                                            {
+                                                                "id": "UrQQR9u0uuMUDEc8WbwJr",
+                                                                "name": "Div",
+                                                                "type": "div",
+                                                                "styles": [],
+                                                                "className": "flex items-start gap-2",
+                                                                "content": [
+                                                                    {
+                                                                        "id": "R8nBoZAcXYphE1wcr2GvC",
+                                                                        "name": "Span",
+                                                                        "type": "span",
+                                                                        "styles": [],
+                                                                        "className": "font-bold",
+                                                                        "content": {
+                                                                            "innerText": "\u2022"
+                                                                        }
+                                                                    },
+                                                                    {
+                                                                        "id": "FJmyM7urtFUKb9O03QCR7",
+                                                                        "name": "ListItem",
+                                                                        "type": "li",
+                                                                        "styles": [],
+                                                                        "className": null,
+                                                                        "content": [
+                                                                            {
+                                                                                "id": "U3tZ4cSzRjUIybJ2YmKcb",
+                                                                                "name": "Span",
+                                                                                "type": "span",
+                                                                                "styles": [],
+                                                                                "className": "mx-2 font-bold",
+                                                                                "content": {
+                                                                                    "innerText": "Legal Requirements:"
+                                                                                }
+                                                                            },
+                                                                            {
+                                                                                "id": "udc1EppNke8AUFLCS1HBO",
+                                                                                "name": "Span",
+                                                                                "type": "span",
+                                                                                "styles": [],
+                                                                                "className": null,
+                                                                                "content": {
+                                                                                    "innerText": "We may disclose your information if required to do so by law or in response to valid requests by public authorities."
+                                                                                }
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                ]
+                                                            },
+                                                            {
+                                                                "id": "l4OUdFaFGGG6-vy3NMWoE",
+                                                                "name": "Div",
+                                                                "type": "div",
+                                                                "styles": [],
+                                                                "className": "flex items-start gap-2",
+                                                                "content": [
+                                                                    {
+                                                                        "id": "ml65SdXq1tqspbOo19xWo",
+                                                                        "name": "Span",
+                                                                        "type": "span",
+                                                                        "styles": [],
+                                                                        "className": "font-bold",
+                                                                        "content": {
+                                                                            "innerText": "\u2022"
+                                                                        }
+                                                                    },
+                                                                    {
+                                                                        "id": "o2VJzCsQIkNNZH_iuvryD",
+                                                                        "name": "ListItem",
+                                                                        "type": "li",
+                                                                        "styles": [],
+                                                                        "className": null,
+                                                                        "content": [
+                                                                            {
+                                                                                "id": "O4zEPsDvWxuwsRSUw19Uy",
+                                                                                "name": "Span",
+                                                                                "type": "span",
+                                                                                "styles": [],
+                                                                                "className": "mx-2 font-bold",
+                                                                                "content": {
+                                                                                    "innerText": "Business Transfers:"
+                                                                                }
+                                                                            },
+                                                                            {
+                                                                                "id": "DPXXC0Yk-poA1jLJBNcnj",
+                                                                                "name": "Span",
+                                                                                "type": "span",
+                                                                                "styles": [],
+                                                                                "className": null,
+                                                                                "content": {
+                                                                                    "innerText": "In the event of a merger, acquisition, or sale of all or a portion of our assets, your information may be transferred as part of that transaction."
+                                                                                }
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                ]
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "id": "nvjMDatfAjDHuinI82vxd",
+                                                "name": "Div",
+                                                "type": "div",
+                                                "styles": [],
+                                                "className": null,
+                                                "content": [
+                                                    {
+                                                        "id": "4so11Pet9CCtlQ-JgoUpB",
+                                                        "name": "Heading",
+                                                        "type": "heading",
+                                                        "styles": [],
+                                                        "className": "mb-3 text-lg font-bold",
+                                                        "content": {
+                                                            "innerText": "4. Data Security",
+                                                            "level": "h2"
+                                                        }
+                                                    },
+                                                    {
+                                                        "id": "yMBmpE1U4ehmvdu9PpSw4",
+                                                        "name": "Paragraph",
+                                                        "type": "paragraph",
+                                                        "styles": [],
+                                                        "className": null,
+                                                        "content": {
+                                                            "innerText": "We implement appropriate security measures to protect your information from unauthorized access, alteration, disclosure, or destruction. However, no method of transmission over the internet or electronic storage is 100% secure, and we cannot guarantee its absolute security."
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+]
