@@ -24,6 +24,8 @@ Homestead.yaml
 npm-debug.log
 yarn-error.log
 /auth.json
+/getDriverName())
+/toArray())
 /.fleet
 /.idea
 /.nova
