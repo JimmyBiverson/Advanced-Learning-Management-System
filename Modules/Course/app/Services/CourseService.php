@@ -4,6 +4,7 @@ namespace Modules\Course\Services;
 
 use App\Models\Instructor;
 use App\Models\User;
+use App\Notifications\AdminAttentionNotification;
 use App\Services\MediaService;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Pagination\LengthAwarePaginator;
@@ -78,6 +79,16 @@ class CourseService extends MediaService
 
             case 'status':
                 $course->update($data);
+
+                if ($data['status'] === 'pending' && Auth::user()?->role !== 'admin') {
+                    User::admins()->each(function (User $admin) use ($course): void {
+                        $admin->notify(new AdminAttentionNotification(
+                            'Course submitted for review',
+                            $course->title.' is waiting for approval.',
+                            route('courses.edit', $course->id),
+                        ));
+                    });
+                }
 
                 if (array_key_exists('feedback', $data) && $data['feedback']) {
                     $instructor = Instructor::findOrFail($course->instructor_id);

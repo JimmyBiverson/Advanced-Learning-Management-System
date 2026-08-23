@@ -70,4 +70,22 @@ class ExamEnrollmentController extends Controller
 
         return back()->with('success', 'Enrollment is successfully deleted');
     }
+
+    public function governance(Request $request, string $id)
+    {
+        $enrollment = $this->examEnrollments->getEnrollmentById((int) $id);
+
+        abort_unless($enrollment, 404);
+
+        $validated = $request->validate([
+            'access_granted' => ['required', 'boolean'],
+            'payment_status' => ['required', 'string', 'in:pending,partial,paid,blocked'],
+            'amount_paid' => ['required', 'numeric', 'min:0'],
+            'results_locked' => ['required', 'boolean'],
+        ]);
+
+        $enrollment->update($validated);
+
+        return back()->with('success', 'Exam access and payment controls updated.');
+    }
 }

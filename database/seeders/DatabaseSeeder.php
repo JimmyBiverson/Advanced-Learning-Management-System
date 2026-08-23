@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         $this->call([
+            DemoAccountsSeeder::class,
             SettingsSeeder::class,
             NavbarSeeder::class,
             FooterSeeder::class,

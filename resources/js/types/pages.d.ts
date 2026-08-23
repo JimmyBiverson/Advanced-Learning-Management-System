@@ -79,6 +79,7 @@ interface StudentExamProps extends SharedData {
    attempt: ExamAttempt;
    attempts: ExamAttempt[];
    bestAttempt: ExamAttempt | null;
+   resultsLocked: boolean;
 }
 
 // pages/settings/pages

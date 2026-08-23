@@ -137,6 +137,10 @@ interface ExamEnrollment extends TableCommon {
    enrollment_type: 'lifetime' | 'limited';
    entry_date: string;
    expiry_date?: string;
+   access_granted: boolean;
+   payment_status: 'pending' | 'partial' | 'paid' | 'blocked';
+   amount_paid: number;
+   results_locked: boolean;
    is_active: boolean;
    user: User;
    exam: Exam;

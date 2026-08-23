@@ -97,6 +97,10 @@ class ExamEnrollmentService extends MediaService
                 'enrollment_type' => $enrollmentType,
                 'entry_date' => Carbon::now(),
                 'expiry_date' => $expiryDate,
+                'access_granted' => true,
+                'payment_status' => 'paid',
+                'amount_paid' => 0,
+                'results_locked' => false,
             ]);
         }, 5);
     }

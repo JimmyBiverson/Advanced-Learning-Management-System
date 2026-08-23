@@ -12,6 +12,7 @@ use Modules\Course\Services\CoursePlayerService;
 use Modules\Course\Services\ZoomLiveService;
 use Modules\Exam\Services\ExamAttemptService;
 use Modules\Exam\Services\ExamEnrollmentService;
+use Modules\Exam\Models\ExamEnrollment;
 
 class StudentController extends Controller
 {
@@ -67,6 +68,9 @@ class StudentController extends Controller
     {
         $user = Auth::user();
         $exam = $this->examEnrollment->getEnrolledExam($id, $user);
+        $examEnrollment = ExamEnrollment::where('exam_id', $id)
+            ->where('user_id', $user->id)
+            ->firstOrFail();
         $attempts = $this->examAttempt->getExamAttempts(['exam_id' => $id, 'user_id' => $user->id]);
         $bestAttempt = $this->examAttempt->getBestExamAttempt($id, $user->id);
         $props = $this->studentService->getEnrolledExamTabProps($id, $tab, $user);
@@ -89,6 +93,7 @@ class StudentController extends Controller
             'exam' => $exam,
             'attempts' => $attempts,
             'bestAttempt' => $bestAttempt,
+            'resultsLocked' => $examEnrollment->results_locked,
         ]);
     }
 

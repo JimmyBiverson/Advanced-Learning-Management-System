@@ -31,10 +31,10 @@ class CheckExamEnrollMiddleware
             ->where('exam_id', $exam->id)
             ->first();
 
-        if ($enrollment) {
+        if ($enrollment && $enrollment->access_granted && $enrollment->payment_status !== 'blocked') {
             return $next($request);
         }
 
-        return back()->with('error', 'You are not enrolled in this exam');
+        return back()->with('error', 'Exam access is currently restricted by the administrator.');
     }
 }

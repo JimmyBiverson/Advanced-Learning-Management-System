@@ -13,7 +13,7 @@ import ExamResources from '../tabs-content/exam-resources';
 import ExamResult from '../tabs-content/exam-result';
 
 const Exam = (props: StudentExamProps) => {
-   const { tab, exam, attempt, attempts, bestAttempt } = props;
+   const { tab, exam, attempt, attempts, bestAttempt, resultsLocked } = props;
 
    const tabs = [
       // {
@@ -45,7 +45,11 @@ const Exam = (props: StudentExamProps) => {
          // case 'questions':
          //    return <ExamQuestions />;
          case 'attempts':
-            return attempt ? <ExamResult /> : <ExamAttempts />;
+            return attempt && !resultsLocked ? (
+               <ExamResult />
+            ) : (
+               <ExamAttempts />
+            );
          case 'resources':
             return <ExamResources />;
          case 'certificate':

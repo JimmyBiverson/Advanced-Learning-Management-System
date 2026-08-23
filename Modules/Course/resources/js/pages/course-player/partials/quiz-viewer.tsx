@@ -125,6 +125,10 @@ const QuizViewer = ({ quiz }: QuizViewerProps) => {
    };
 
    const startQuiz = () => {
+      if (quiz.quiz_questions.length === 0) {
+         return;
+      }
+
       setData('answers', []);
       setFinished(false);
       setCurrentTab(quiz.quiz_questions[0].id.toString());
@@ -241,7 +245,12 @@ const QuizViewer = ({ quiz }: QuizViewerProps) => {
                               {frontend.quiz_submitted}
                            </Button>
                         ) : (
-                           <Button size="lg" type="button" onClick={startQuiz}>
+                           <Button
+                              size="lg"
+                              type="button"
+                              onClick={startQuiz}
+                              disabled={quiz.quiz_questions.length === 0}
+                           >
                               {submissions[0]
                                  ? frontend.retake_quiz
                                  : frontend.start_quiz}

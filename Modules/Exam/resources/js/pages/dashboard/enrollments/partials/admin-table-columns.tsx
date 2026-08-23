@@ -3,8 +3,47 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { destroy as destroyExamEnrollment } from '@/routes/exam-enrollments';
 import { destroy as destroyCourseEnrollment } from '@/routes/exam-enrollments';
+import { router } from '@inertiajs/react';
 import type { ColumnDef } from '@tanstack/react-table';
-import { Trash2 } from 'lucide-react';
+import { Lock, ShieldCheck, Trash2, Unlock } from 'lucide-react';
+
+const GovernanceActions = ({ enrollment }: { enrollment: ExamEnrollment }) => {
+   const updateGovernance = (changes: Partial<ExamEnrollment>) => {
+      router.patch(
+         `/dashboard/exams/exam/enrollments/${enrollment.id}/governance`,
+         {
+            access_granted: changes.access_granted ?? enrollment.access_granted,
+            payment_status: changes.payment_status ?? enrollment.payment_status,
+            amount_paid: changes.amount_paid ?? enrollment.amount_paid,
+            results_locked: changes.results_locked ?? enrollment.results_locked,
+         },
+         { preserveScroll: true },
+      );
+   };
+
+   return (
+      <div className="flex items-center gap-1">
+         <Button
+            type="button"
+            size="sm"
+            variant="outline"
+            title={enrollment.access_granted ? 'Revoke exam access' : 'Grant exam access'}
+            onClick={() => updateGovernance({ access_granted: !enrollment.access_granted })}
+         >
+            {enrollment.access_granted ? <ShieldCheck /> : <Unlock />}
+         </Button>
+         <Button
+            type="button"
+            size="sm"
+            variant="outline"
+            title={enrollment.results_locked ? 'Unlock results' : 'Lock results'}
+            onClick={() => updateGovernance({ results_locked: !enrollment.results_locked })}
+         >
+            {enrollment.results_locked ? <Lock /> : <Unlock />}
+         </Button>
+      </div>
+   );
+};
 
 const AdminTableColumn = (
    enrollmentType: 'course' | 'exam',
@@ -113,6 +152,14 @@ const AdminTableColumn = (
 
             return <div>{formattedDate}</div>;
          },
+      },
+      {
+         id: 'governance',
+         header: 'Controls',
+         cell: ({ row }) =>
+            enrollmentType === 'exam' ? (
+               <GovernanceActions enrollment={row.original as ExamEnrollment} />
+            ) : null,
       },
       {
          id: 'actions',
