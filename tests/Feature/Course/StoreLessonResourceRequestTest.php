@@ -1,11 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Validator;
-use Modules\Course\Http\Requests\StoreLessonResourceRequest;
+use Modules\Course\Http\Requests\CourseSectionLessonResourceRequest;
 
 function storeLessonResourceRulesForTest(): array
 {
-    $rules = (new StoreLessonResourceRequest)->rules();
+    $request = CourseSectionLessonResourceRequest::create('/', 'POST');
+    $rules = $request->rules();
     $rules['section_lesson_id'] = 'required|integer';
 
     return $rules;

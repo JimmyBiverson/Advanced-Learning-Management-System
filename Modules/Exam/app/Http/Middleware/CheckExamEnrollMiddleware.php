@@ -6,6 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Modules\Exam\Models\Exam;
+use Modules\Exam\Models\ExamAttempt;
 use Modules\Exam\Models\ExamEnrollment;
 
 class CheckExamEnrollMiddleware
@@ -21,7 +22,16 @@ class CheckExamEnrollMiddleware
             return $next($request);
         }
 
-        $exam = Exam::findOrFail($request->exam_id);
+        $exam = $request->route('exam');
+
+        if (! $exam instanceof Exam) {
+            $attempt = $request->route('attempt');
+            $exam = $attempt instanceof ExamAttempt ? $attempt->exam : null;
+        }
+
+        if (! $exam instanceof Exam) {
+            $exam = Exam::findOrFail($request->route('exam') ?? $request->route('exam_id'));
+        }
 
         if ($user->role == 'instructor' && $user->instructor_id == $exam->instructor_id) {
             return $next($request);

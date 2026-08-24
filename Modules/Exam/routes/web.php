@@ -89,9 +89,9 @@ Route::middleware(['auth', 'role:instructor,admin'])->prefix('dashboard')->group
 Route::middleware(['auth', 'role:student,instructor,admin'])->prefix('student')->group(function () {
     // Exam Attempts
     Route::post('exams/{exam}/attempts/start', [ExamAttemptController::class, 'start'])->name('exam-attempts.start')->middleware(CheckExamEnrollMiddleware::class);
-    Route::get('exam-attempts/{attempt}/take', [ExamAttemptController::class, 'take'])->name('exam-attempts.take');
-    Route::post('exam-attempts/{attempt}/submit', [ExamAttemptController::class, 'submit'])->name('exam-attempts.submit');
-    Route::post('exam-attempts/{attempt}/abandon', [ExamAttemptController::class, 'abandon'])->name('exam-attempts.abandon');
+    Route::get('exam-attempts/{attempt}/take', [ExamAttemptController::class, 'take'])->name('exam-attempts.take')->middleware(CheckExamEnrollMiddleware::class);
+    Route::post('exam-attempts/{attempt}/submit', [ExamAttemptController::class, 'submit'])->name('exam-attempts.submit')->middleware(CheckExamEnrollMiddleware::class);
+    Route::post('exam-attempts/{attempt}/abandon', [ExamAttemptController::class, 'abandon'])->name('exam-attempts.abandon')->middleware(CheckExamEnrollMiddleware::class);
 
     // Reviews
     Route::get('exams/{exam}/reviews', [ExamReviewController::class, 'index'])->name('exam-reviews.index');
