@@ -1,5 +1,6 @@
 import {
    Award,
+   BarChart3,
    Book,
    Bot,
    Briefcase,
@@ -47,6 +48,7 @@ import paymentReportsOnline from '@/routes/payment-reports/online';
 import payouts from '@/routes/payouts';
 import plugins from '@/routes/plugins';
 import smtp from '@/routes/smtp';
+import studentReports from '@/routes/student-reports';
 import storage from '@/routes/storage';
 import system from '@/routes/system';
 import users from '@/routes/users';
@@ -434,6 +436,15 @@ const getDashboardRoutes = (page: SharedData): DashboardRoute[] => {
                slug: routeLastSegment(users.index.url()),
                active: true,
                access: ['admin', 'collaborative', 'administrative'],
+               children: [],
+            },
+            {
+               Icon: BarChart3,
+               name: 'Student Reports',
+               path: studentReports.index.url(),
+               slug: routeLastSegment(studentReports.index.url()),
+               active: true,
+               access: ['admin'],
                children: [],
             },
             {

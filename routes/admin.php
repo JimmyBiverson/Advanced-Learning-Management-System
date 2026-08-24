@@ -6,6 +6,7 @@ use App\Http\Controllers\JobCircularController;
 use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\PluginController;
 use App\Http\Controllers\SettingController;
+use App\Http\Controllers\StudentReportController;
 use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,6 +22,10 @@ use Illuminate\Support\Facades\Route;
  */
 
 Route::prefix('dashboard')->group(function () {
+    Route::get('student-reports', [StudentReportController::class, 'index'])
+        ->middleware(['auth', 'role:admin'])
+        ->name('student-reports.index');
+
     // users
     Route::resource('users', UsersController::class)->only(['index', 'update']);
 

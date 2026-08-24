@@ -18,6 +18,7 @@ import jobCirculars from '@/routes/job-circulars';
 import newsletters from '@/routes/newsletters';
 import notifications from '@/routes/notifications';
 import paymentReports from '@/routes/payment-reports';
+import studentReports from '@/routes/student-reports';
 import payouts from '@/routes/payouts';
 import users from '@/routes/users';
 import type { RouteQueryOptions } from '@/wayfinder';
@@ -202,6 +203,9 @@ export function namedRouteUrl(
 
       case 'payment-reports.online.index':
          return paymentReports.online.index.url(q([]));
+
+      case 'student-reports.index':
+         return studentReports.index.url(q([]));
 
       case 'frontend.api':
          return frontend.api.url(q([]));

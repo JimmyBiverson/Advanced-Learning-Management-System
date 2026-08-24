@@ -14,6 +14,7 @@ use Illuminate\Notifications\DatabaseNotificationCollection;
 use Illuminate\Notifications\Notifiable;
 use Modules\Course\Models\Course;
 use Modules\Course\Models\CourseEnrollment;
+use Modules\Exam\Models\ExamAttempt;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 
@@ -79,6 +80,11 @@ class User extends Authenticatable implements HasMedia, MustVerifyEmail
     public function enrollments(): HasMany
     {
         return $this->hasMany(CourseEnrollment::class);
+    }
+
+    public function examAttempts(): HasMany
+    {
+        return $this->hasMany(ExamAttempt::class);
     }
 
     public function sendEmailVerificationNotification()
