@@ -62,13 +62,6 @@ COPY docker/config/php.prod.ini /usr/local/etc/php/conf.d/99-custom.ini
 # Copy supervisor configuration
 COPY docker/config/supervisor.prod.conf /etc/supervisor/conf.d/supervisor.conf
 
-# Optimize Laravel for production
-RUN php artisan config:cache \
-   && php artisan route:cache \
-   && php artisan view:cache \
-   && php artisan event:cache \
-   && php artisan optimize
-
 # Health check
 HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
    CMD php-fpm -t || exit 1
