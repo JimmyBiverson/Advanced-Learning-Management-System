@@ -4,7 +4,6 @@ namespace Modules\Installer\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
 
 class InstallerRoutes
@@ -14,9 +13,7 @@ class InstallerRoutes
      */
     public function handle(Request $request, Closure $next)
     {
-        $installed = Storage::disk('public')->exists('installed') || env('MENTOR_INSTALLED');
-
-        if ($installed && isDBConnected()) {
+        if (applicationInstalled()) {
             return redirect('/');
         } else {
             Inertia::share('flash', [

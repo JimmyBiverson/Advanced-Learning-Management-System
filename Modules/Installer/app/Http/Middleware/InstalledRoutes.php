@@ -4,7 +4,6 @@ namespace Modules\Installer\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 
 class InstalledRoutes
 {
@@ -17,9 +16,7 @@ class InstalledRoutes
             config(['session.driver' => 'file']);
         }
 
-        $installed = Storage::disk('public')->exists('installed') || env('MENTOR_INSTALLED');
-
-        if ($installed) {
+        if (applicationInstalled()) {
             return $next($request);
         }
 

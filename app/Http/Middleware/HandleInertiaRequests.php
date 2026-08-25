@@ -13,7 +13,6 @@ use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Schema;
-use Illuminate\Support\Facades\Storage;
 use Inertia\Middleware;
 use Modules\AIAssistant\Services\AIAssistantProviderService;
 use Modules\Frontend\Models\Project;
@@ -63,7 +62,7 @@ class HandleInertiaRequests extends Middleware
      */
     public function share(Request $request): array
     {
-        if (! Storage::disk('public')->exists('installed')) {
+        if (! applicationInstalled()) {
             return [];
         }
 

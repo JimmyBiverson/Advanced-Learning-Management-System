@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Storage;
 
 function isDBConnected(): bool
@@ -18,7 +19,19 @@ function isDBConnected(): bool
 
 function applicationInstalled(): bool
 {
-    return Storage::disk('public')->exists('installed') || env('MENTOR_INSTALLED');
+    if (! Storage::disk('public')->exists('installed') && ! env('MENTOR_INSTALLED')) {
+        return false;
+    }
+
+    if (! isDBConnected()) {
+        return false;
+    }
+
+    try {
+        return Schema::hasTable('settings');
+    } catch (Exception $e) {
+        return false;
+    }
 }
 
 function isInstallerRequest(Request $request): bool
