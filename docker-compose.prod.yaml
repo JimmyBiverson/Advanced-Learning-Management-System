@@ -4,14 +4,12 @@ services:
   php:
     build:
       context: .
-      dockerfile: docker/dockerfiles/php.dockerfile
-      target: production
+      dockerfile: docker/dockerfiles/php.prod.dockerfile
     env_file:
       - ./.env.production
     expose:
       - '9000'
     volumes:
-      - ./:/var/www/html:delegated
       - logs:/var/log/php
       - storage:/var/www/html/storage
       - bootstrap_cache:/var/www/html/bootstrap/cache
@@ -27,13 +25,12 @@ services:
   nginx:
     build:
       context: .
-      dockerfile: docker/dockerfiles/nginx.dockerfile
-      target: production
+      dockerfile: docker/dockerfiles/nginx.prod.dockerfile
     ports:
       - '80:80'
       - '443:443'
     volumes:
-      - ./:/var/www/html:ro
+      - storage:/var/www/html/storage:ro
       - logs:/var/log/nginx
       - ssl_certs:/etc/nginx/ssl
     depends_on:

@@ -1,288 +1,93 @@
-# MentorLMS Production Deployment Guide
+# MentorLMS Production Deployment
 
-## Overview
-This guide covers deploying MentorLMS in production using Docker Compose with optimized configurations for security, performance, and scalability.
+This procedure deploys MentorLMS with Docker Compose, PHP-FPM, Nginx, MySQL 8, and Redis. MySQL data and uploaded files use named Docker volumes so they survive application image updates.
 
-## Prerequisites
-- Docker & Docker Compose installed
-- SSL certificates (or use Let's Encrypt)
-- Domain name configured
-- At least 4GB RAM, 2 CPU cores
-- 20GB+ storage space
+## Server requirements
 
-## Quick Deployment
+- Linux server with Docker Engine and the Docker Compose plugin
+- DNS A/AAAA record pointing your domain to the server
+- 2 CPU cores, 4 GB RAM, and at least 20 GB free disk space
+- Firewall ports 80 and 443 open; do not expose MySQL or Redis publicly
 
-### 1. Prepare Environment Files
+## First deployment
+
+Run these commands from the repository root on the server:
+
 ```bash
-# Copy production environment templates
-cp docker/env/mysql.prod.env.example docker/env/mysql.prod.env
+git clone <repository-url> mentor_lms
+cd mentor_lms
 cp .env.production.example .env.production
-
-# Edit production configurations
-nano docker/env/mysql.prod.env
-nano .env.production
+cp docker/env/mysql.prod.env.example docker/env/mysql.prod.env
 ```
 
-### 2. Configure Domain & SSL
+Edit both copied files. Use the same database name, username, and password in both files. Set `APP_URL` to the real HTTPS URL and create unique strong passwords. Obtain a certificate for the domain before starting Nginx. Start the data and PHP services first, create the Nginx container, install the certificate, and then start Nginx:
+
 ```bash
-# Update .env.production with your domain
-APP_URL=https://your-domain.com
-SESSION_DOMAIN=.your-domain.com
-SANCTUM_STATEFUL_DOMAINS=your-domain.com,www.your-domain.com
-
-# Place SSL certificates in docker/ssl/
-cp cert.pem docker/ssl/cert.pem
-cp key.pem docker/ssl/key.pem
+docker compose -f docker-compose.prod.yaml up -d --build mysql redis php
+docker compose -f docker-compose.prod.yaml create nginx
+docker compose -f docker-compose.prod.yaml cp ./cert.pem nginx:/etc/nginx/ssl/cert.pem
+docker compose -f docker-compose.prod.yaml cp ./key.pem nginx:/etc/nginx/ssl/key.pem
+docker compose -f docker-compose.prod.yaml start nginx
+docker compose -f docker-compose.prod.yaml exec php php artisan key:generate --force
+docker compose -f docker-compose.prod.yaml exec php php artisan migrate --force
+docker compose -f docker-compose.prod.yaml exec php php artisan storage:link
+docker compose -f docker-compose.prod.yaml exec php php artisan optimize
 ```
 
-### 3. Deploy Application
+The bundled Nginx configuration redirects port 80 to HTTPS and expects certificates at `cert.pem` and `key.pem` in the `ssl_certs` volume.
+
+For Let's Encrypt, obtain the certificate on the host with Certbot or use a TLS reverse proxy in front of this stack. Renew the certificate before expiry, copy the renewed files into the volume, and restart Nginx. Do not commit certificates or environment files.
+
+## Database
+
+MySQL is the `mysql` Compose service, so Laravel must use `DB_HOST=mysql`, not `127.0.0.1`. MySQL data is stored in the `mysql_data` volume. The initial database and application user are created from `docker/env/mysql.prod.env` on the first startup.
+
+Check the database and migrations:
+
 ```bash
-# Build and start production containers
-sudo docker compose -f docker-compose.prod.yaml up -d --build
-
-# Run database migrations
-sudo docker compose -f docker-compose.prod.yaml exec php php artisan migrate --force
-
-# Seed database (if needed)
-sudo docker compose -f docker-compose.prod.yaml exec php php artisan db:seed --force
+docker compose -f docker-compose.prod.yaml ps
+docker compose -f docker-compose.prod.yaml exec php php artisan about
+docker compose -f docker-compose.prod.yaml exec php php artisan migrate:status
 ```
 
-### 4. Optimize Application
+Create a backup before upgrades or destructive maintenance:
+
 ```bash
-# Clear and cache configurations
-sudo docker compose -f docker-compose.prod.yaml exec php php artisan optimize:clear
-sudo docker compose -f docker-compose.prod.yaml exec php php artisan optimize
+mkdir -p backups
+docker compose -f docker-compose.prod.yaml exec -T mysql \
+  mysqldump -u root -p"$(grep '^MYSQL_ROOT_PASSWORD=' docker/env/mysql.prod.env | cut -d= -f2-)" \
+  --single-transaction --routines --triggers mentor_lms_prod > "backups/mentor_lms_$(date +%Y%m%d_%H%M%S).sql"
 ```
 
-## Environment Configuration
+Restore a backup during a maintenance window:
 
-### Production Environment Variables (.env.production)
-**Critical Settings:**
-- `APP_ENV=production`
-- `APP_DEBUG=false`
-- `APP_URL=https://your-domain.com`
-- `DB_PASSWORD` - Strong database password
-- `REDIS_PASSWORD` - Redis authentication
-- `MAIL_PASSWORD` - Email service password
-
-### Database Security
 ```bash
-# Generate strong passwords
-openssl rand -base64 32  # For database
-openssl rand -base64 32  # For Redis
+docker compose -f docker-compose.prod.yaml exec -T mysql \
+  mysql -u root -p"<root-password>" mentor_lms_prod < backups/backup.sql
 ```
 
-### SSL Configuration
+Keep backups outside the server as well. A Docker volume is persistence, not a backup.
+
+## Updates and operations
+
 ```bash
-# Option 1: Use existing certificates
-cp your-cert.pem docker/ssl/cert.pem
-cp your-key.pem docker/ssl/key.pem
-
-# Option 2: Use Let's Encrypt (recommended)
-sudo docker compose -f docker-compose.prod.yaml --profile ssl up certbot
+git pull
+docker compose -f docker-compose.prod.yaml up -d --build
+docker compose -f docker-compose.prod.yaml exec php php artisan migrate --force
+docker compose -f docker-compose.prod.yaml exec php php artisan optimize
+docker compose -f docker-compose.prod.yaml logs -f --tail=100 php nginx
 ```
 
-## Services Overview
+The PHP container runs PHP-FPM and the Laravel queue worker under Supervisor. Confirm queued jobs are being processed with `docker compose -f docker-compose.prod.yaml logs php`. If scheduled tasks are added later, run Laravel's scheduler from host cron every minute:
 
-### Core Services
-- **Nginx**: Web server with SSL termination
-- **PHP-FPM**: Application server with OPcache
-- **MySQL**: Database with performance tuning
-- **Redis**: Caching and sessions
-
-### Optional Services
-- **Backup**: Automated database backups
-- **Monitoring**: Prometheus + Grafana
-- **SSL**: Let's Encrypt certificate management
-
-## Performance Optimization
-
-### Nginx Configuration
-- HTTP/2 support
-- Gzip compression
-- Static file caching
-- FastCGI caching
-- Security headers
-
-### PHP Configuration
-- OPcache enabled
-- Memory limits optimized
-- Error handling for production
-- Session storage in Redis
-
-### Database Configuration
-- InnoDB buffer pool: 256MB
-- Query cache enabled
-- Connection limit: 200
-- Binary logging for backups
-
-## Security Configuration
-
-### Network Security
-- Isolated Docker network
-- Only necessary ports exposed
-- SSL/TLS encryption enforced
-- Security headers configured
-
-### Application Security
-- Environment variables for secrets
-- File permissions restricted
-- Error display disabled
-- Session security enabled
-
-## Monitoring & Maintenance
-
-### Health Checks
-All services include health checks:
-```bash
-# Check service status
-sudo docker compose -f docker-compose.prod.yaml ps
+```cron
+* * * * * cd /srv/mentor_lms && docker compose -f docker-compose.prod.yaml exec -T php php artisan schedule:run >> /dev/null 2>&1
 ```
 
-### Logs Management
-```bash
-# View application logs
-sudo docker compose -f docker-compose.prod.yaml logs -f php
+## Security checklist
 
-# View Nginx logs
-sudo docker compose -f docker-compose.prod.yaml logs -f nginx
-```
-
-### Automated Backups
-```bash
-# Enable backup service
-sudo docker compose -f docker-compose.prod.yaml --profile backup up -d
-
-# Manual backup
-sudo docker compose -f docker-compose.prod.yaml exec mysql mysqldump -u root -p mentor_lms_prod > backup.sql
-```
-
-### Monitoring Setup
-```bash
-# Enable monitoring stack
-sudo docker compose -f docker-compose.prod.yaml --profile monitoring up -d
-
-# Access Grafana: http://your-server:3000
-# Access Prometheus: http://your-server:9090
-```
-
-## Scaling Options
-
-### Horizontal Scaling
-```yaml
-# Scale PHP workers
-php:
-  deploy:
-    replicas: 3
-```
-
-### Load Balancing
-- Use Nginx upstream blocks
-- Configure multiple PHP instances
-- Implement session affinity
-
-## Troubleshooting
-
-### Common Issues
-
-#### SSL Certificate Errors
-```bash
-# Check certificate paths
-sudo docker compose -f docker-compose.prod.yaml exec nginx ls -la /etc/nginx/ssl/
-
-# Test SSL configuration
-sudo docker compose -f docker-compose.prod.yaml exec nginx nginx -t
-```
-
-#### Database Connection Issues
-```bash
-# Test database connection
-sudo docker compose -f docker-compose.prod.yaml exec php php artisan tinker
->>> DB::connection()->getPdo()
-```
-
-#### Performance Issues
-```bash
-# Check resource usage
-sudo docker stats
-
-# Monitor PHP OPcache
-sudo docker compose -f docker-compose.prod.yaml exec php php -i | grep opcache
-```
-
-### Recovery Procedures
-
-#### Database Recovery
-```bash
-# Restore from backup
-sudo docker compose -f docker-compose.prod.yaml exec -T mysql mysql -u root -p mentor_lms_prod < backup.sql
-```
-
-#### Application Rollback
-```bash
-# Rollback to previous deployment
-git checkout <previous-commit>
-sudo docker compose -f docker-compose.prod.yaml up -d --build
-```
-
-## Maintenance Tasks
-
-### Regular Updates
-```bash
-# Update containers
-sudo docker compose -f docker-compose.prod.yaml pull
-sudo docker compose -f docker-compose.prod.yaml up -d
-
-# Clear Laravel cache
-sudo docker compose -f docker-compose.prod.yaml exec php php artisan optimize:clear
-```
-
-### Log Rotation
-```bash
-# Configure logrotate for production
-sudo nano /etc/logrotate.d/mentor-lms
-```
-
-### Security Updates
-```bash
-# Update base images
-sudo docker compose -f docker-compose.prod.yaml pull
-sudo docker compose -f docker-compose.prod.yaml up -d --build
-```
-
-## Production Checklist
-
-### Pre-Deployment
-- [ ] Environment variables configured
-- [ ] SSL certificates installed
-- [ ] Database credentials set
-- [ ] Domain DNS configured
-- [ ] Firewall rules configured
-- [ ] Backup strategy planned
-
-### Post-Deployment
-- [ ] Application accessible via HTTPS
-- [ ] Database migrations completed
-- [ ] Cache optimization performed
-- [ ] Monitoring enabled
-- [ ] Backup service running
-- [ ] Error logs checked
-- [ ] Performance tested
-
-## Support
-
-### Emergency Contacts
-- System Administrator: [contact-info]
-- Database Administrator: [contact-info]
-- DevOps Team: [contact-info]
-
-### Documentation
-- Application Logs: `/var/log/nginx/`, `/var/log/php/`
-- Docker Logs: `sudo docker compose logs`
-- Configuration Files: `docker/config/`
-
----
-
-**Last Updated**: December 2025
-**Version**: 1.0
-**Environment**: Production
+- Keep `.env.production`, MySQL credentials, and TLS private keys out of Git.
+- Set `APP_DEBUG=false` and use HTTPS before accepting users.
+- Restrict the server firewall to ports 80 and 443.
+- Back up the `mysql_data` and `storage` volumes regularly.
+- Review `docker compose -f docker-compose.prod.yaml ps` and logs after every deployment.
