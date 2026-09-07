@@ -5,6 +5,7 @@
 /public/hot
 /public/sitemap.xml
 /public/storage
+/storage/app/public/installed
 /storage/*.key
 /storage/pail
 /resources/js/actions
