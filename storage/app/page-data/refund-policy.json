@@ -1,0 +1,655 @@
+[
+    {
+        "id": "9e6mICwpud2v9F4HQKNI0",
+        "name": "Body",
+        "type": "__body",
+        "styles": [],
+        "className": null,
+        "content": [
+            {
+                "id": "oG9LDhlFvyamjLMH5by3K",
+                "name": "Div",
+                "type": "div",
+                "styles": [],
+                "className": "relative bg-[rgba(255,222,99,0.06)] pt-[212px] pb-[100px]",
+                "content": [
+                    {
+                        "id": "d2D91brSivYdHKFxt-bJ3",
+                        "name": "Container",
+                        "type": "container",
+                        "styles": [],
+                        "className": "max-w-[1280px] mx-auto w-full px-6",
+                        "content": [
+                            {
+                                "id": "aTICJgn-Z-yVUgpS4Kjv6",
+                                "name": "Div",
+                                "type": "div",
+                                "styles": [],
+                                "className": "relative z-10 flex flex-col items-center justify-center space-y-2",
+                                "content": [
+                                    {
+                                        "id": "bElg2CdwkThjWHRjw6cmR",
+                                        "name": "Heading",
+                                        "type": "heading",
+                                        "styles": [],
+                                        "className": "text-center text-4xl font-bold md:text-[44px]",
+                                        "content": {
+                                            "innerText": "Refund Policy",
+                                            "level": "h2"
+                                        }
+                                    },
+                                    {
+                                        "id": "qZfMtn-LruzIESUxDo8zm",
+                                        "name": "Div",
+                                        "type": "div",
+                                        "styles": [],
+                                        "className": "flex items-center gap-1 text-muted-foreground",
+                                        "content": [
+                                            {
+                                                "id": "5Fj3rFJf6mpEkaMwDlSOa",
+                                                "name": "Link",
+                                                "type": "link",
+                                                "styles": [],
+                                                "className": "flex items-center justify-center",
+                                                "content": [
+                                                    {
+                                                        "id": "i6Lm3aWZxwbzYtTnGGi79",
+                                                        "name": "EditorIcon",
+                                                        "type": "icon",
+                                                        "styles": {
+                                                            "width": "24px",
+                                                            "height": "24px"
+                                                        },
+                                                        "className": "text-foreground h-[18px] w-[18px]",
+                                                        "content": {
+                                                            "icon": "home"
+                                                        }
+                                                    }
+                                                ],
+                                                "htmlAttributes": {
+                                                    "href": "/",
+                                                    "type": "inertia"
+                                                }
+                                            },
+                                            {
+                                                "id": "cRPcg6UraXFfmj_j59mou",
+                                                "name": "EditorIcon",
+                                                "type": "icon",
+                                                "styles": {
+                                                    "width": "24px",
+                                                    "height": "24px"
+                                                },
+                                                "className": "text-foreground h-[14px] w-[14px]",
+                                                "content": {
+                                                    "icon": "chevrons-right"
+                                                }
+                                            },
+                                            {
+                                                "id": "0UA3OE0HNaxb4jrGQ4yZ0",
+                                                "name": "Paragraph",
+                                                "type": "paragraph",
+                                                "styles": [],
+                                                "className": "text-sm",
+                                                "content": {
+                                                    "innerText": "refund-policy"
+                                                }
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "Yyt-dhOL0u7qRUxerAD9Y",
+                        "name": "Div",
+                        "type": "div",
+                        "styles": [],
+                        "className": "pointer-events-none absolute top-1/2 right-0 h-[450px] w-[450px] -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(0,167,111,0.45)_0%,transparent_70%)] opacity-40 content-['']",
+                        "content": []
+                    }
+                ]
+            },
+            {
+                "id": "zof47Ns2dVsWQZTtsCGl8",
+                "name": "Section",
+                "type": "section",
+                "styles": [],
+                "className": "py-20",
+                "content": [
+                    {
+                        "id": "WCVdE7oAXoZW1LUSNYdf9",
+                        "name": "Container",
+                        "type": "container",
+                        "styles": [],
+                        "className": "max-w-[1280px] mx-auto w-full px-6",
+                        "content": [
+                            {
+                                "id": "Ig_9ti7Uh2v4bvQ3Sjq1A",
+                                "name": "Div",
+                                "type": "div",
+                                "styles": [],
+                                "className": "mx-auto max-w-3xl rounded-2xl bg-gray-50 p-8 md:p-12 dark:bg-gray-900",
+                                "content": [
+                                    {
+                                        "id": "Hb_0bnn260I6wyM-IHpNi",
+                                        "name": "Heading",
+                                        "type": "heading",
+                                        "styles": [],
+                                        "className": "mb-8 text-center text-3xl font-bold",
+                                        "content": {
+                                            "innerText": "Refund Policy",
+                                            "level": "h2"
+                                        }
+                                    },
+                                    {
+                                        "id": "8c318i3nE9AZEmr7Qwsoy",
+                                        "name": "Div",
+                                        "type": "div",
+                                        "styles": [],
+                                        "className": "space-y-6",
+                                        "content": [
+                                            {
+                                                "id": "Ah7K7INU344aMPTYGpp4_",
+                                                "name": "Paragraph",
+                                                "type": "paragraph",
+                                                "styles": [],
+                                                "className": null,
+                                                "content": {
+                                                    "innerText": "At Mentor, we strive to provide the best learning experience for our users. We understand that there may be situations where you may need to request a refund. This Refund Policy outlines the conditions and procedures for obtaining a refund for purchases made on our platform."
+                                                }
+                                            },
+                                            {
+                                                "id": "snSQuB-ur7XZx16eM6JwZ",
+                                                "name": "Div",
+                                                "type": "div",
+                                                "styles": [],
+                                                "className": null,
+                                                "content": [
+                                                    {
+                                                        "id": "2fnDjywOdIZ7AzSUfDRZR",
+                                                        "name": "Heading",
+                                                        "type": "heading",
+                                                        "styles": [],
+                                                        "className": "mb-3 text-lg font-bold",
+                                                        "content": {
+                                                            "innerText": "1. General Refund Policy",
+                                                            "level": "h2"
+                                                        }
+                                                    },
+                                                    {
+                                                        "id": "zL1Q3eue4VULD3kBAEqSU",
+                                                        "name": "Paragraph",
+                                                        "type": "paragraph",
+                                                        "styles": [],
+                                                        "className": "mb-3",
+                                                        "content": {
+                                                            "innerText": "Our general refund policy applies to all courses and services offered on Mentor. Refunds will be granted under the following conditions:"
+                                                        }
+                                                    },
+                                                    {
+                                                        "id": "iPH_GebVwlasd7tgREFnO",
+                                                        "name": "List",
+                                                        "type": "ul",
+                                                        "styles": [],
+                                                        "className": "ml-4 space-y-2",
+                                                        "content": [
+                                                            {
+                                                                "id": "kqKX8F1-IpRhyhTERP7Yx",
+                                                                "name": "Div",
+                                                                "type": "div",
+                                                                "styles": [],
+                                                                "className": "flex items-start gap-2",
+                                                                "content": [
+                                                                    {
+                                                                        "id": "08VMuVau-JX0phrCk1dox",
+                                                                        "name": "Span",
+                                                                        "type": "span",
+                                                                        "styles": [],
+                                                                        "className": "font-bold",
+                                                                        "content": {
+                                                                            "innerText": "\u2022"
+                                                                        }
+                                                                    },
+                                                                    {
+                                                                        "id": "m-pJX3bEyh3b99Z5eCYLP",
+                                                                        "name": "ListItem",
+                                                                        "type": "li",
+                                                                        "styles": [],
+                                                                        "className": null,
+                                                                        "content": [
+                                                                            {
+                                                                                "id": "SfCqQWDHF-FaLm8IH4s3o",
+                                                                                "name": "Span",
+                                                                                "type": "span",
+                                                                                "styles": [],
+                                                                                "className": "mx-2 font-bold",
+                                                                                "content": {
+                                                                                    "innerText": "Course Not Accessed:"
+                                                                                }
+                                                                            },
+                                                                            {
+                                                                                "id": "8uRDQvgvztZBQMec14Dog",
+                                                                                "name": "Span",
+                                                                                "type": "span",
+                                                                                "styles": [],
+                                                                                "className": null,
+                                                                                "content": {
+                                                                                    "innerText": "If you have purchased a course and have not accessed any of its content, you may request a full refund within 14 days of the purchase date."
+                                                                                }
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                ]
+                                                            },
+                                                            {
+                                                                "id": "zZ-HyhhCQXfF_WXsPvh4j",
+                                                                "name": "Div",
+                                                                "type": "div",
+                                                                "styles": [],
+                                                                "className": "flex items-start gap-2",
+                                                                "content": [
+                                                                    {
+                                                                        "id": "C8ONzXAeW_KH5dzE1u1-q",
+                                                                        "name": "Span",
+                                                                        "type": "span",
+                                                                        "styles": [],
+                                                                        "className": "font-bold",
+                                                                        "content": {
+                                                                            "innerText": "\u2022"
+                                                                        }
+                                                                    },
+                                                                    {
+                                                                        "id": "GZGxmIkjR2iM-euAZzwJy",
+                                                                        "name": "ListItem",
+                                                                        "type": "li",
+                                                                        "styles": [],
+                                                                        "className": null,
+                                                                        "content": [
+                                                                            {
+                                                                                "id": "JY2f9VgChby9Pc_Qp32lo",
+                                                                                "name": "Span",
+                                                                                "type": "span",
+                                                                                "styles": [],
+                                                                                "className": "mx-2 font-bold",
+                                                                                "content": {
+                                                                                    "innerText": "Technical Issues:"
+                                                                                }
+                                                                            },
+                                                                            {
+                                                                                "id": "cacg3A6xtu47y1TxK0NJE",
+                                                                                "name": "Span",
+                                                                                "type": "span",
+                                                                                "styles": [],
+                                                                                "className": null,
+                                                                                "content": {
+                                                                                    "innerText": "If you experience technical issues that prevent you from accessing the course content and we are unable to resolve the issue, you may request a refund within 14 days of the purchase date."
+                                                                                }
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                ]
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "id": "rQoIqTZ9tE37qbvHkzREi",
+                                                "name": "Div",
+                                                "type": "div",
+                                                "styles": [],
+                                                "className": null,
+                                                "content": [
+                                                    {
+                                                        "id": "KhxdzEv4UieXY3Oh_UmDT",
+                                                        "name": "Heading",
+                                                        "type": "heading",
+                                                        "styles": [],
+                                                        "className": "mb-3 text-lg font-bold",
+                                                        "content": {
+                                                            "innerText": "2. Non-Refundable Items",
+                                                            "level": "h2"
+                                                        }
+                                                    },
+                                                    {
+                                                        "id": "_AoXPOnQxH036foInC_Ws",
+                                                        "name": "Paragraph",
+                                                        "type": "paragraph",
+                                                        "styles": [],
+                                                        "className": "mb-3",
+                                                        "content": {
+                                                            "innerText": "Certain items and services are not refundable. These include:"
+                                                        }
+                                                    },
+                                                    {
+                                                        "id": "wCA-etwV47IRdWSO5TW-G",
+                                                        "name": "List",
+                                                        "type": "ul",
+                                                        "styles": [],
+                                                        "className": "ml-6 space-y-2",
+                                                        "content": [
+                                                            {
+                                                                "id": "TBTxN5m6ODvEkT4pdnkuo",
+                                                                "name": "Div",
+                                                                "type": "div",
+                                                                "styles": [],
+                                                                "className": "flex items-start gap-2",
+                                                                "content": [
+                                                                    {
+                                                                        "id": "Y6c9LI5YGc3R-Z-RUwsuI",
+                                                                        "name": "Span",
+                                                                        "type": "span",
+                                                                        "styles": [],
+                                                                        "className": "font-bold",
+                                                                        "content": {
+                                                                            "innerText": "\u2022"
+                                                                        }
+                                                                    },
+                                                                    {
+                                                                        "id": "METCfM5TMNMdZxS3dZ20y",
+                                                                        "name": "ListItem",
+                                                                        "type": "li",
+                                                                        "styles": [],
+                                                                        "className": null,
+                                                                        "content": [
+                                                                            {
+                                                                                "id": "fJiDRUJe15FbgZxOFjfSl",
+                                                                                "name": "Span",
+                                                                                "type": "span",
+                                                                                "styles": [],
+                                                                                "className": "mx-2 font-bold",
+                                                                                "content": {
+                                                                                    "innerText": "Downloaded Content:"
+                                                                                }
+                                                                            },
+                                                                            {
+                                                                                "id": "PsUdkzFpKFYgqKspGa4Xg",
+                                                                                "name": "Span",
+                                                                                "type": "span",
+                                                                                "styles": [],
+                                                                                "className": null,
+                                                                                "content": {
+                                                                                    "innerText": "Any content that has been downloaded to your device is non-refundable."
+                                                                                }
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                ]
+                                                            },
+                                                            {
+                                                                "id": "VnP9f9pLfyPKGA3259C6P",
+                                                                "name": "Div",
+                                                                "type": "div",
+                                                                "styles": [],
+                                                                "className": "flex items-start gap-2",
+                                                                "content": [
+                                                                    {
+                                                                        "id": "HfzXAHLhv7GxgKpIMWj7D",
+                                                                        "name": "Span",
+                                                                        "type": "span",
+                                                                        "styles": [],
+                                                                        "className": "font-bold",
+                                                                        "content": {
+                                                                            "innerText": "\u2022"
+                                                                        }
+                                                                    },
+                                                                    {
+                                                                        "id": "e-tVdyp3HrdVqdiBnoN_u",
+                                                                        "name": "ListItem",
+                                                                        "type": "li",
+                                                                        "styles": [],
+                                                                        "className": null,
+                                                                        "content": [
+                                                                            {
+                                                                                "id": "UeYCwMwXhPzzhAlTjRQWI",
+                                                                                "name": "Span",
+                                                                                "type": "span",
+                                                                                "styles": [],
+                                                                                "className": "mx-2 font-bold",
+                                                                                "content": {
+                                                                                    "innerText": "Completed Courses:"
+                                                                                }
+                                                                            },
+                                                                            {
+                                                                                "id": "KHch95ferKLZxbu2nfgBh",
+                                                                                "name": "Span",
+                                                                                "type": "span",
+                                                                                "styles": [],
+                                                                                "className": null,
+                                                                                "content": {
+                                                                                    "innerText": "If you have completed a course, it is not eligible for a refund."
+                                                                                }
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                ]
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "id": "QAWBHciE-hdNDnpbG8Saw",
+                                                "name": "Div",
+                                                "type": "div",
+                                                "styles": [],
+                                                "className": null,
+                                                "content": [
+                                                    {
+                                                        "id": "sOiCDSeos7jjpLlUHZ8A_",
+                                                        "name": "Heading",
+                                                        "type": "heading",
+                                                        "styles": [],
+                                                        "className": "mb-3 text-lg font-bold",
+                                                        "content": {
+                                                            "innerText": "3. How to Request a Refund",
+                                                            "level": "h2"
+                                                        }
+                                                    },
+                                                    {
+                                                        "id": "hIofcT48S8_fIx8S7yQFz",
+                                                        "name": "Paragraph",
+                                                        "type": "paragraph",
+                                                        "styles": [],
+                                                        "className": "mb-3",
+                                                        "content": {
+                                                            "innerText": "To request a refund, please follow these steps:"
+                                                        }
+                                                    },
+                                                    {
+                                                        "id": "9TNM6PrKOrGjDj7_ZykTw",
+                                                        "name": "List",
+                                                        "type": "ul",
+                                                        "styles": [],
+                                                        "className": "ml-6 space-y-2",
+                                                        "content": [
+                                                            {
+                                                                "id": "E0hVejjeOkWou4rRNGh3Y",
+                                                                "name": "Div",
+                                                                "type": "div",
+                                                                "styles": [],
+                                                                "className": "flex items-start gap-2",
+                                                                "content": [
+                                                                    {
+                                                                        "id": "eq_-KnrnxPhPPwPgZpZuQ",
+                                                                        "name": "Span",
+                                                                        "type": "span",
+                                                                        "styles": [],
+                                                                        "className": "font-bold",
+                                                                        "content": {
+                                                                            "innerText": "1."
+                                                                        }
+                                                                    },
+                                                                    {
+                                                                        "id": "uqqSXQX89eQd75Hg4PBBj",
+                                                                        "name": "ListItem",
+                                                                        "type": "li",
+                                                                        "styles": [],
+                                                                        "className": null,
+                                                                        "content": [
+                                                                            {
+                                                                                "id": "GY4eq1watInuD0lX0dunw",
+                                                                                "name": "Span",
+                                                                                "type": "span",
+                                                                                "styles": [],
+                                                                                "className": "mx-2 font-bold",
+                                                                                "content": {
+                                                                                    "innerText": "Contact Support:"
+                                                                                }
+                                                                            },
+                                                                            {
+                                                                                "id": "Q1c4AmrkFenVZvpy-4Ows",
+                                                                                "name": "Span",
+                                                                                "type": "span",
+                                                                                "styles": [],
+                                                                                "className": null,
+                                                                                "content": {
+                                                                                    "innerText": null
+                                                                                }
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                ]
+                                                            },
+                                                            {
+                                                                "id": "m0Y758HQTQc9PncgNR2Ag",
+                                                                "name": "Div",
+                                                                "type": "div",
+                                                                "styles": [],
+                                                                "className": "flex items-start gap-2",
+                                                                "content": [
+                                                                    {
+                                                                        "id": "hZs2l0ykKbwdaN0ineups",
+                                                                        "name": "Span",
+                                                                        "type": "span",
+                                                                        "styles": [],
+                                                                        "className": "font-bold",
+                                                                        "content": {
+                                                                            "innerText": "2."
+                                                                        }
+                                                                    },
+                                                                    {
+                                                                        "id": "N8mFhHEFeGyZLE3n42vGo",
+                                                                        "name": "ListItem",
+                                                                        "type": "li",
+                                                                        "styles": [],
+                                                                        "className": null,
+                                                                        "content": [
+                                                                            {
+                                                                                "id": "_nBeTEX86MZaqwXvAyafw",
+                                                                                "name": "Span",
+                                                                                "type": "span",
+                                                                                "styles": [],
+                                                                                "className": "mx-2 font-bold",
+                                                                                "content": {
+                                                                                    "innerText": "Review Process:"
+                                                                                }
+                                                                            },
+                                                                            {
+                                                                                "id": "iqY0xS5N-gNY50BJgEO_N",
+                                                                                "name": "Span",
+                                                                                "type": "span",
+                                                                                "styles": [],
+                                                                                "className": null,
+                                                                                "content": {
+                                                                                    "innerText": "Our support team will review your request and may contact you for additional information. We aim to process all refund requests within 5-7 business days."
+                                                                                }
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                ]
+                                                            },
+                                                            {
+                                                                "id": "8pwJX06b2ITnCcF7PFYYD",
+                                                                "name": "Div",
+                                                                "type": "div",
+                                                                "styles": [],
+                                                                "className": "flex items-start gap-2",
+                                                                "content": [
+                                                                    {
+                                                                        "id": "wl-pSP6awNEzl5VH4ucBb",
+                                                                        "name": "Span",
+                                                                        "type": "span",
+                                                                        "styles": [],
+                                                                        "className": "font-bold",
+                                                                        "content": {
+                                                                            "innerText": "3."
+                                                                        }
+                                                                    },
+                                                                    {
+                                                                        "id": "n2kigbpd12yddyTlLoTcL",
+                                                                        "name": "ListItem",
+                                                                        "type": "li",
+                                                                        "styles": [],
+                                                                        "className": null,
+                                                                        "content": [
+                                                                            {
+                                                                                "id": "S0J-cY5jwL4NcJS38fUhf",
+                                                                                "name": "Span",
+                                                                                "type": "span",
+                                                                                "styles": [],
+                                                                                "className": "mx-2 font-bold",
+                                                                                "content": {
+                                                                                    "innerText": "Refund Approval:"
+                                                                                }
+                                                                            },
+                                                                            {
+                                                                                "id": "zarh1TwcqgBFoIUFNgOkG",
+                                                                                "name": "Span",
+                                                                                "type": "span",
+                                                                                "styles": [],
+                                                                                "className": null,
+                                                                                "content": {
+                                                                                    "innerText": "If your refund request meets the conditions outlined in this policy, we will process the refund to your original method of payment. Please allow 5-10 business days for the refund to appear in your account."
+                                                                                }
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                ]
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "id": "fYPHiL3wTNy07jBS505vg",
+                                                "name": "Div",
+                                                "type": "div",
+                                                "styles": [],
+                                                "className": null,
+                                                "content": [
+                                                    {
+                                                        "id": "oygi9nLP9Q3SPOcpVo4C_",
+                                                        "name": "Heading",
+                                                        "type": "heading",
+                                                        "styles": [],
+                                                        "className": "mb-3 text-lg font-bold",
+                                                        "content": {
+                                                            "innerText": "4. Changes to Refund Policy",
+                                                            "level": "h2"
+                                                        }
+                                                    },
+                                                    {
+                                                        "id": "Q4inYkX0OuAGr9uLrnSDD",
+                                                        "name": "Paragraph",
+                                                        "type": "paragraph",
+                                                        "styles": [],
+                                                        "className": null,
+                                                        "content": {
+                                                            "innerText": "Mentor reserves the right to modify this Refund Policy at any time. We will notify you of any changes by posting the new policy on this page. Your continued use of the platform after any changes constitutes your acceptance of the new policy."
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+]

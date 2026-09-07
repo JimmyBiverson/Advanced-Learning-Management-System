@@ -1,0 +1,411 @@
+# Mentor LMS - Learning Management System
+
+Mentor LMS is a comprehensive Learning Management System built with Laravel 13 and React 19, designed to provide a seamless online education experience for students, instructors, and administrators.
+
+## Overview
+
+Mentor LMS offers a robust platform for creating, managing, and selling online courses with features like curriculum building, payment processing, student enrollment management, live classes, job postings, and advanced analytics. The system supports multiple user roles, course formats, payment gateways, and includes modular architecture for easy maintenance and updates.
+
+## Updated Version 5.3.0 - 16 July 2026
+
+- **New**: Added Facebook Meta Pixel integration with server-side Conversions API.
+- **New**: Added Facebook Meta Pixel integration with browser-side tracking for ad optimization.
+- **New**: Added Google Analytics (GA4) integration with gtag.js browser tracking.
+- **New**: Added Google Analytics (GA4) integration with Measurement Protocol for server-side conversion tracking.
+- **Fix**: Fix AIAssistant migration issue during course section update.
+- **Improve**: Added UUID for blog and job-circular when user view.
+
+## Updated Version 5.2.0 - 14 June 2026
+
+- **New**: Added AI Assistant restriction options for instructors.
+- **New**: Added font-family customization options in the admin dashboard settings.
+- **Improve**: Enhanced plugin validation during installation to ensure system safety and integrity.
+- **Improve**: Refined the user interface (UI) across all student, instructor, and admin dashboard pages.
+- **Improve**: Polished website UI elements, including colors, shadows, action buttons, carousel themes, and toggle states on both frontend and dashboard pages.
+
+## Updated Version 5.1.0 - 20 May 2026
+
+- **Fix**: Timezone issue of course or exam coupon expiration.
+- **Fix**: Text color issues from different pages of dark mode.
+- **New**: Admin **Plugins** page to upload, enable, and manage optional modules.
+- **New**: Per-plugin **Run Migration and Seeder** actions with confirmation.
+- **New**: Added Flutterwave and Xendit payment gateways for course and exam checkout.
+- **New**: Sitemap.xml generation system for SEO admin maintenance page.
+- **Improve**: Replaced blur effects with gradients on frontend pages for better performance.
+- **Improve**: Mobile navbar menu handling with a right-side drawer for nav links and action items.
+
+## Updated Version 5.0.2 - 14 May 2026
+
+- **Fix**: Certificate template admin updates now persist.
+- **Fix**: Opening a purchased course from the student dashboard.
+- **Fix**: Home page course carousels average rating count issue.
+- **Fix**: Resume view issue of Instructor application from dashboard.
+- **Improve**: Maintenance **Clear cache** / **Reboot** use targeted.
+- **Improve**: Language properties update process for translation.
+
+## Updated Version 5.0.1 - 8 May 2026
+
+- **Fix**: Page title issue from the browser tab.
+- **Fix**: Course player watch history now correctly resets to the new lesson.
+- **Improve**: Quiz cannot be added to a section that has no lessons.
+- **Improve**: Change the `Check if this has discount` text by `Discounted Price`.
+
+## Updated Version 5.0.0 - 5 May 2026
+
+- **Fix**: Resolved latest version update issues.
+- **Fix**: Restored missing instructor detail page.
+- **Fix**: Instructors can create new courses again.
+- **Fix**: Instructors can purchase and enroll in other instructors’ courses.
+- **Fix**: Instructors course listing and edit access scoped correctly.
+- **Fix**: Design issues resolved from the course player page.
+- **Fix**: Home page load issue of Old frontend management system.
+- **Fix**: Course and Exam price calculation issue based on discount.
+- **Fix**: Home page “New courses” section error `Component "new-courses-carousel" not found`.
+- **New**: Introduced modular-based architecture for better long-term maintainability and codebase management.
+- **New**: Added `laravel/wayfinder` for type-safe route generation, replacing `tightenco/ziggy`.
+- **New**: Added notification system for Offline payment submission and approval.
+- **New**: Added the course and exam to publicly or privately accessible system.
+- **Improve**: SEO improvements for some missing public pages.
+- **Improve**: Increase instructor resume upload file size from 2MB to 3MB.
+- **Improve**: App performance improved by adopting the new modular-based architecture.
+- **Improve**: Reduced Application Size from ~90MB to around ~60MB.
+- **Improve**: Improved Performance for faster loading and better overall efficiency.
+- **Improve**: Easier Maintenance the structure for managing and updating code.
+- **Upgrade**: PHP `^8.2` → `^8.3`, Laravel `12` → `13`, React `18` → `19`, Inertia `v2` → `v3`, etc.
+
+## Updated Version 4.3.2 - 31 March 2026
+
+- **Fix**: `Contact Us` page not found issue.
+- **Fix**: Data search issues from different data tables.
+- **Fix**: Dark mode tailwind class issue from the page editor.
+- **Fix**: Courses API create issue from the admin dashboard.
+- **Fix**: Data not show issue of lesson, quiz, etc edit form.
+- **New**: Added `Contact Us` page into the new Frontend system.
+
+## Updated Version 4.3.1 - 29 March 2026
+
+- **Fix**: Blog create issue from admin dashboard.
+- **Fix**: Course and Exam enrollments_count show issue.
+- **Fix**: Spacing issue from Courses, Exams and Blogs.
+- **Fix**: Summary column type issue of section_quizzes table.
+- **Fix**: Category and Sub-category create issues of Course, Exam and Blog.
+
+## Updated Version 4.3.0 - 26 March 2026
+
+- **Fix**: Exam wishlist add or remove handling.
+- **Fix**: Course lesson resource download issue.
+- **Fix**: Exam quiz multiple answer check issue.
+- **Fix**: Global coupon apply issue for exams and courses.
+- **Fix**: Page section insert issue of PageBuilder sidebar.
+- **Fix**: Storage form submission issue during S3 storage type selection.
+- **Improve**: Exam management system.
+- **Improve**: App performance has been improved.
+- **Improve**: Reduced database queries by selecting only used columns on the frontend.
+- **Improve**: Removed unnecessary database queries and relation loads.
+- **Refactor**: Full project coding design pattern.
+
+## Updated Version 4.2.0 - 6 March 2026
+
+- **Fix**: Frontend pages layout rerendering issues based on navigation.
+- **Fix**: HTTPS/SSL connection issues with login buttons and session/cookie failures.
+- **Fix**: Corrupted bootstrap/app.php file preventing artisan commands from running.
+- **Fix**: Docker configuration issues with port conflicts and container communication.
+
+## Updated Version 4.1.0 - 6 March 2026
+
+- **Fix**: The revenue chart left margin issue of dashboard.
+- **Fix**: Assignment submission related date and time issue.
+- **Fix**: The summary column type issue from the section_lessons and course_assignments tables.
+- **New**: Added easy to translate the language properties by JSON.
+- **Improve**: App translation system and language properties.
+- **Improve**: App performance improved and became more faster.
+- **Improve**: Some elements of Drag and drop page builder to make them faster.
+
+## Updated Version 4.0.0 - 23 February 2026
+
+- **New**: Introduced comprehensive No-Code Drag & Drop Web Builder for creating custom landing pages or edit existing pages.
+- **New**: Implemented visual page editor with real-time preview and responsive design support
+- **New**: Added 40+ pre-built UI components organized in categories:
+   - Layout components (Container, Grid, Flex, Section)
+   - Typography components (Heading, Paragraph, Text, List)
+   - Media components (Image, Video, Icon)
+   - Form components (Input, Button, Textarea, Select, Checkbox, Radio)
+   - Navigation components (Navbar, Link, Menu)
+   - Interactive components (Accordion, Tabs, Modal, Dropdown)
+- **New**: Built-in Tailwind CSS class editor with autocomplete for 3,385+ utility classes
+- **New**: Implemented drag-and-drop interface for intuitive page building
+- **New**: Added layer management system for organizing page elements
+- **New**: Created component customization panel with:
+   - Style editor with Tailwind CSS integration
+   - Content editor for text and media
+   - Settings panel for component-specific options
+- **New**: Integrated media library for managing images and assets
+- **New**: Added responsive design controls for mobile, tablet, and desktop views
+- **New**: Implemented element duplication and deletion functionality
+- **New**: Built comprehensive validation system for page elements
+- **New**: Added project and page management system
+- **New**: Created dynamic component registry for extensible architecture
+- **Fix**: The `Summary` spelling issue from the course player.
+- **Fix**: Offline payment verify or reject issue.
+- **Fix**: Tailwind CSS gradient classes compilation in editor preview.
+- **Improve**: Enabled Paystack available currencies.
+
+## Updated Version 3.4.3 - 26 January 2026
+
+- **New**: Cloudflare R2 storage option.
+- **Fix**: Job circular salary display issue.
+- **Fix**: Live class zoom integration warning show issue.
+- **Fix**: Lesson resources delete issue during lesson delete.
+- **Improve**: Chunked upload file handling system.
+
+## Updated Version 3.4.2 - 21 January 2026
+
+- **Fix**: Job circular salary display issue.
+- **Fix**: Exam enrollment issue during payment.
+- **Fix**: Exam question answer scoring issue.
+- **Fix**: Exam best attempt score finding issue.
+- **Improve**: Ability to separate the price instead of plain number based on system currency.
+
+## Updated Version 3.4.1 - 2 January 2026
+
+- **Fix**: Responsive issue from the Home-4 and Home-5.
+- **Fix**: Richtext editor image render issue after inserting.
+- **Fix**: The online and offline payment history view issue from the dashboard.
+- **New**: Added new option in the image insert section of richtext editor.
+- **Improve**: Added an id into the main app-logo for add custom style.
+
+## Updated Version 3.4.0 - 15 December 2025
+
+- **Fix**: Razorpay payment gateway issues
+- **Fix**: Installation final step migration issue
+- **Fix**: Course coupon validity issue specific course
+- **Fix**: Foreign key issue from payment_histories table of installer final step
+- **New**: Added sslcommerz and razorpay payment gateway for instructor payout
+- **New**: Reconnect the storage with the public by symlink from the admin dashboard
+- **Improve**: App maintenance page with each feature UI, UX and functionality
+- **Improve**: Instructor payout methods handling functionality
+- **Improve**: Course and Exam payment methods handling functionality
+- **Improve**: Changed the placements of some feature codebase files
+- **Improve**: Reduce the codebase by clearing the unused and duplicate codes and files
+
+## Updated Version 3.3.0 - 08 December 2025
+
+- **Fix**: Free course enrollment issue
+- **Fix**: Expiry period show issue from the course card
+- **Fix**: Student email verification warning show issue
+- **Fix**: Course approval modal always show issue for admin
+- **Fix**: Resource download issue from Course lesson
+- **Fix**: The sizebar RTL issue of the exam course player page
+- **Fix**: Link input form button issue from richtext editor
+- **Fix**: Text wrap and design break issue of richtext editor from all components
+- **Fix**: Richtext editor content render issues from all components
+- **Fix**: Category select issue form exam create and update components
+- **Fix**: System currency symbol issue from exam card and dashboard cart components
+  <<<<<<< HEAD
+- # **Fix**: Top course section issue from home page of administrative landing page
+- **Fix**: 'Top course' section issue from home page of administrative landing page
+   > > > > > > > main
+- **Fix**: Intro page section edit modal issue from other pages intro page
+- **Fix**: Course or Exam enrollment duration duration period issue from the data table.
+- **Fix**: RTL issue from course and exam category pages of admin/instructor dashboard.
+- **Remove**: Previous Course or Exam enrollment duration period handing functionality
+- **Improve**: Added a list of course or exam enrollment duration period for create and update.
+- **Improve**: Course or Exam enrollment duration period handing functionality.
+  <<<<<<< HEAD
+  =======
+- **Improve**: Changed some routes access permission for the student role
+   > > > > > > > main
+
+## Updated Version 3.2.0 - 30 November 2025
+
+- **New**: Implemented comprehensive Offline Payment Gateway system
+- **New**: Added offline payment method option in payment gateway selection
+- **New**: Introduced Payment Report module in admin dashboard
+- **New**: Added "Payment Report" menu with Online Payments and Offline Payments sections
+- **New**: Created Offline Payments page with status tracking (Pending, Verified, Rejected)
+- **New**: Added pagination and sortable tables for better data management
+- **New**: Built offline payment verification system with detailed modal interface
+- **New**: Added attachment download functionality for transaction proofs
+- **New**: Added automatic course/exam enrollment upon payment verification
+- **Fix**: Fixed undefined relationship error in PaymentHistory model
+
+## Updated Version 3.1.0 - 29 November 2025
+
+- **Fix**: Fixed navbar items active/deactive issue
+- **Fix**: Fixed footer social media button click issue
+- **Fix**: fixed shared hosting missing CURL_SSLVERSION_TLSv1_2 constant issue
+- **Fix**: fixed enrollment modal issue from admin dashboard
+- **Fix**: resolved custom page active off or on issue and added 404 page
+- **Remove**: custom rich text editor and used it as a npm package
+- **Improve**: reduce the front-end chunk size and improve the performance
+
+## Updated Version 3.0.0 - 23 November 2025
+
+- **New**: Introduced comprehensive Exam Module as a standalone examination system separate from courses
+- **New**: Implemented complete exam with wishlist and checkout functionality
+- **New**: Added exam category management system for organizing exams
+- **New**: Integrated exam coupon system with code generator and discount management
+- **New**: Created 7 advanced question types for comprehensive assessment:
+   - Multiple Choice (MCQ) with single selection
+   - Multiple Select with checkbox options
+   - Matching questions with dropdown selectors
+   - Fill in the Blanks with inline input fields
+   - Ordering questions with drag-and-drop functionality
+   - Short Answer for open-ended responses
+   - Listening questions with audio player and controls
+- **New**: Implemented a tracking system based on the exam attempts
+- **New**: Added countdown timer with auto-submit when time expires
+- **New**: Created question navigator with status indicators and mark for review feature
+- **New**: Added fullscreen mode for distraction-free exam taking
+- **New**: Integrated before-leave warnings to prevent accidental navigation
+- **New**: Built comprehensive results page with score breakdown and analytics
+- **New**: Added attempt history tracking with best score highlighting
+- **New**: Implemented performance analytics by question type
+- **New**: Created auto-grading system for 6 question types like
+   - MCQ,
+   - Multiple Select,
+   - Matching,
+   - Fill Blank,
+   - Ordering,
+   - Listening
+- **New**: Added manual grading interface for short answer questions
+- **New**: Integrated pass/fail determination with visual indicators
+- **New**: Implemented exam review and rating system for students
+- **New**: Added exam enrollment management for both free and paid exams
+- **New**: Created exam statistics dashboard for admins and instructors
+- **New**: Added exam update functionality with all editable fields
+- **New**: Implemented exam analytics page with enrollment and revenue tracking
+- **New**: Added comprehensive validation and error handling throughout exam flow
+- **New**: Integrated exam purchase system by the existing payment gateways
+- **Fix**: Resolve the copyright text issue from the course player
+- **Fix**: Fix the mobile responsive issues from the course player page
+- **Fix**: Fix the mobile responsive issues from some others pages
+- **Improve**: Optimized exam taking performance for large question sets
+
+## Updated Version 2.3.0 - 02 November 2025
+
+- **New**: Integrated Google reCAPTCHA v3 for registration page security
+- **New**: Implemented comprehensive student course management system with organized tabs
+- **New**: Added module viewer with lesson completion tracking in student dashboard
+- **New**: Live class management interface with direct join functionality for students
+- **New**: Assignment management system with submission and result viewing capabilities
+- **New**: Quiz management interface with result viewing for submitted quizzes
+- **New**: Resources hub for organized lesson materials with easy download or access
+- **New**: Certificate and marksheet download options upon course completion
+- **New**: Real-time course progress tracking display for students
+- **New**: Certificate template builder in admin dashboard for custom template creation
+- **New**: Marksheet template builder in admin dashboard for custom marksheet design
+- **New**: Template management system with update functionality for existing templates
+- **New**: Default certificate selection option for administrators
+- **New**: Added automatic app domain capture option in the step-2 of installation wizard
+- **Fix**: Resolved enrollment display issue for instructors
+- **Improve**: Enhanced student course experience with centralized material access
+- **Improve**: Streamlined quiz status display with submission indicators and action buttons
+
+## Updated Version 2.2.0 - 20 October 2025
+
+- **New**: Implemented lesson resource upload system.
+- **New**: Admin UI to create/manage lesson resources.
+- **New**: Lesson resource download option for students.
+- **New**: Floating Action Button for mobile screen in navbar for managing appearance, cart, language, etc.
+- **Fix**: Footer payment gateway add/update/delete issues.
+- **Fix**: Logo display issue in course player page.
+- **Fix**: Dashboard and table pagination text visibility.
+- **Fix**: Default language not applied properly on frontend.
+- **Update**: App logo is always show for all devices screen for consistent branding.
+- **Update**: Moved language selector from public pages to student, instructor and admin dashboard.
+- **Improve**: Hardened components to avoid production errors.
+- **Improve**: Home page section array items customization system
+
+## Updated Version 2.1.0 - 15 October 2025
+
+- **New**: Integrated Google reCAPTCHA v3 for login page security
+- **New**: Added Google reCAPTCHA configuration option in admin dashboard
+- **New**: Implemented default theme and language setup option in admin dashboard
+- **Fix**: Resolved array items removal issue in intro section editor
+- **Update**: Enhanced home page customization system stability
+
+## Updated Version 2.0.0 - 09 October 2025
+
+- **New**: Added comprehensive multi-language support
+- **New**: Implemented language management dashboard for admin
+- **New**: Integrated language selector for all user roles
+- **New**: Added support for dynamic content translation
+- **New**: Added translation editor with organized group sections
+- **New**: Added RTL or LTR feature for language direction
+- **New**: Added comprehensive App Maintenance Panel for system recovery
+- **New**: Implemented application update system with version management
+- **New**: Added system reboot functionality with maintenance mode controls
+- **New**: Integrated complete backup management system
+- **New**: Added recovery tools for system diagnostics and repair
+- **Fix**: Resolved text direction issues in RTL languages
+- **Fix**: Fixed translation caching for better performance
+- **Fix**: Ensured maintenance panel remains accessible during system issues
+- **Fix**: Improved system stability with enhanced error recovery
+- **Fix**: Optimized backup creation and restoration processes
+
+## Updated Version 1.2.1 - 23 September 2025
+
+- **Fix**: Enhanced system reboot UI with better visual feedback
+- **Fix**: Resolved job creation issue from Job Circular section
+- **Fix**: Fixed popup form update issue from course lesson edit
+- **Fix**: Resolved Razorpay payment gateway issue and updated configuration
+- **New**: Added system reboot confirmation page with detailed operation preview
+- **New**: Implemented secure system cache clearing without affecting user sessions
+- **New**: Implemented maintenance mode bypass for system reboot operations
+- **New**: Added session management improvements for system operations
+- **New**: Added comprehensive system reboot functionality with admin verification
+- **New**: Added installer refresh functionality to resolve any issue during installation
+
+## Updated Version 1.2.0 - 22 September 2025
+
+- **Fix**: Enhanced system reboot UI with better visual feedback
+- **Fix**: Resolved job creation issue from Job Circular section
+- **Fix**: Fixed popup form update issue from course lesson edit
+- **Fix**: Resolved Razorpay payment gateway issue and updated configuration
+- **New**: Added system reboot confirmation page with detailed operation preview
+- **New**: Implemented secure system cache clearing without affecting user sessions
+- **New**: Implemented maintenance mode bypass for system reboot operations
+- **New**: Added session management improvements for system operations
+- **New**: Added comprehensive system reboot functionality with admin verification
+- **New**: Added installer refresh functionality to resolve any issue during installation
+
+## Updated Version 1.1.1 - 14 September 2025
+
+- **Fix**: Resolved course lesson update issues.
+- **Fix**: Fix all mobile responsive issues from dashboard pages.
+- **Fix**: Resolved instructor create issue from admin dashboard.
+- **Fix**: Course edit page – category not showing in some cases.
+- **Fix**: Email footer issue and email template styling improvements.
+- **New**: Added server refresh option to the maintenance page
+- **New**: Added blog section for all intro pages to show the blogs
+- **New**: Added Global Custom CSS option in Admin → Settings → System.
+- **Update**: Enhanced version management with robust update and rollback capabilities.
+- **Update**: Optimized JS chunking for better page load on direct browse/reload URLs.
+
+## Updated Version 1.1.0 - 10 September 2025
+
+- **Fix**: Resolved image display and upload issues
+- **Fix**: Fixed big image file upload problems
+- **Fix**: Added 404 error page for better user experience
+- **Fix**: Addressed various UX and small interface issues
+- **Fix**: Fixed Google login issue for seamless authentication
+- **Fix**: Resolved style issues form the email templates
+- **New**: Added Razorpay payment gateway for secure payments
+- **New**: Integrated SSLCommerz payment gateway for BDT payments
+- **New**: Introduced Blog module for sharing articles, tips, and updates.
+- **New**: Users can browse, read, and interact with blog posts.
+- **New**: Instructors and admins can create, edit, and manage blog content.
+- **New**: Added system currency select option for course selling
+- **Update**: Improved blog management and user interaction features
+
+## Updated Version 1.0.1 - 3 September 2025
+
+- **Fix**: Fixed mobile responsiveness issues on the course player page
+- **Fix**: Resolved rating progress bar overflow in `student-feedback`
+- **Improve**: Polished course player layout and spacing for small screens
+- **Refactor**: Extracted `LessonIcons` with discriminated props (drip vs non-drip)
+- **Update**: Resolved Google authentication (OAuth) configuration process
+- **Update**: Increased `section_lessons.embed_source` column size to `LONGTEXT`
+
+## Initial Version 1.0.0 - 1 September 2025

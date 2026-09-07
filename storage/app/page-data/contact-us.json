@@ -1,0 +1,537 @@
+[
+    {
+        "id": "2jDaBY3Q3uD3a2g0cncNF",
+        "name": "Body",
+        "type": "__body",
+        "styles": [],
+        "className": null,
+        "content": [
+            {
+                "id": "-69EFUfRhFQH0gYTwkNZ-",
+                "name": "Div",
+                "type": "div",
+                "styles": [],
+                "className": "relative bg-[rgba(255,222,99,0.06)] pt-[212px] pb-[100px]",
+                "content": [
+                    {
+                        "id": "5_SkQNkoYlG0KScF-WlDR",
+                        "name": "Container",
+                        "type": "container",
+                        "styles": [],
+                        "className": "max-w-[1280px] mx-auto w-full px-6",
+                        "content": [
+                            {
+                                "id": "l5mPLfOqn1iCpj-MlJFXZ",
+                                "name": "Div",
+                                "type": "div",
+                                "styles": [],
+                                "className": "relative z-10 flex flex-col items-center justify-center space-y-2",
+                                "content": [
+                                    {
+                                        "id": "jfkJUxXDAkKw-_RqiYeKW",
+                                        "name": "Heading",
+                                        "type": "heading",
+                                        "styles": [],
+                                        "className": "text-center text-4xl font-bold md:text-[44px]",
+                                        "content": {
+                                            "innerText": "Contact Us",
+                                            "level": "h2"
+                                        }
+                                    },
+                                    {
+                                        "id": "So78BGXnI-Vc1rWtrl-oc",
+                                        "name": "Div",
+                                        "type": "div",
+                                        "styles": [],
+                                        "className": "flex items-center gap-1 text-muted-foreground",
+                                        "content": [
+                                            {
+                                                "id": "o85cLYB8_oOdcV_Xa1kT9",
+                                                "name": "Link",
+                                                "type": "link",
+                                                "styles": [],
+                                                "className": "flex items-center justify-center",
+                                                "content": [
+                                                    {
+                                                        "id": "etFSn5O7S_R09e7zNEjoh",
+                                                        "name": "EditorIcon",
+                                                        "type": "icon",
+                                                        "styles": {
+                                                            "width": "24px",
+                                                            "height": "24px"
+                                                        },
+                                                        "className": "text-foreground h-[18px] w-[18px]",
+                                                        "content": {
+                                                            "icon": "home"
+                                                        }
+                                                    }
+                                                ],
+                                                "htmlAttributes": {
+                                                    "href": "/",
+                                                    "type": "inertia"
+                                                }
+                                            },
+                                            {
+                                                "id": "lgZYuwuQac0J-WIr1NXiE",
+                                                "name": "EditorIcon",
+                                                "type": "icon",
+                                                "styles": {
+                                                    "width": "24px",
+                                                    "height": "24px"
+                                                },
+                                                "className": "text-foreground h-[14px] w-[14px]",
+                                                "content": {
+                                                    "icon": "chevrons-right"
+                                                }
+                                            },
+                                            {
+                                                "id": "ELCHFE4i7bMPkvyxZFbw0",
+                                                "name": "Paragraph",
+                                                "type": "paragraph",
+                                                "styles": [],
+                                                "className": "text-sm",
+                                                "content": {
+                                                    "innerText": "contact-us"
+                                                }
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "kR9d3ow-SsdCW7nvH3eHH",
+                        "name": "Div",
+                        "type": "div",
+                        "styles": [],
+                        "className": "pointer-events-none absolute top-1/2 right-0 h-[450px] w-[450px] -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(0,167,111,0.45)_0%,transparent_70%)] opacity-40 content-['']",
+                        "content": []
+                    }
+                ]
+            },
+            {
+                "id": "_pP-buY3x-sisYG67EZAM",
+                "name": "Section",
+                "type": "section",
+                "styles": [],
+                "className": "py-20",
+                "content": [
+                    {
+                        "id": "stY3y2ZfZMn5uNFRz5sxt",
+                        "name": "Container",
+                        "type": "container",
+                        "styles": [],
+                        "className": "max-w-[1280px] mx-auto w-full px-6",
+                        "content": [
+                            {
+                                "id": "HxuEHzWgxNPR6bBsnh2qp",
+                                "name": "Div",
+                                "type": "div",
+                                "styles": [],
+                                "className": "mx-auto max-w-3xl rounded-2xl bg-gray-50 p-8 md:p-12 dark:bg-gray-900",
+                                "content": [
+                                    {
+                                        "id": "nY7RnWXbdhYV9h5PvyMLs",
+                                        "name": "Heading",
+                                        "type": "heading",
+                                        "styles": [],
+                                        "className": "mb-8 text-center text-3xl font-bold",
+                                        "content": {
+                                            "innerText": "Contact Us",
+                                            "level": "h2"
+                                        }
+                                    },
+                                    {
+                                        "id": "OJf28ZSwTXGN4j5fftIei",
+                                        "name": "Div",
+                                        "type": "div",
+                                        "styles": [],
+                                        "className": "space-y-6",
+                                        "content": [
+                                            {
+                                                "id": "4tFx_nYVkyqi_7Xx3q9-I",
+                                                "name": "Paragraph",
+                                                "type": "paragraph",
+                                                "styles": [],
+                                                "className": "text-center",
+                                                "content": {
+                                                    "innerText": "We're here to help! Whether you have questions about our courses, need technical support, or want to provide feedback, we'd love to hear from you. Here are the best ways to get in touch with our team."
+                                                }
+                                            },
+                                            {
+                                                "id": "dQ6_amBlgEAjuIXJ8l4wk",
+                                                "name": "Div",
+                                                "type": "div",
+                                                "styles": [],
+                                                "className": null,
+                                                "content": [
+                                                    {
+                                                        "id": "RiQBWgwTdmtAwZCIoOFxL",
+                                                        "name": "Heading",
+                                                        "type": "heading",
+                                                        "styles": [],
+                                                        "className": "mb-3 text-lg font-bold",
+                                                        "content": {
+                                                            "innerText": "General Inquiries",
+                                                            "level": "h2"
+                                                        }
+                                                    },
+                                                    {
+                                                        "id": "VJZjCc4OcPuClPNzzY_Da",
+                                                        "name": "Paragraph",
+                                                        "type": "paragraph",
+                                                        "styles": [],
+                                                        "className": "mb-3",
+                                                        "content": {
+                                                            "innerText": "For general questions about Mentor, our courses, or our platform, please email us at:"
+                                                        }
+                                                    },
+                                                    {
+                                                        "id": "7FYP_pvkRC4DDs0PUVg-r",
+                                                        "name": "Div",
+                                                        "type": "div",
+                                                        "styles": [],
+                                                        "className": "flex items-center gap-2 text-sm",
+                                                        "content": [
+                                                            {
+                                                                "id": "K6Sko6mwOQFYnq431cbRt",
+                                                                "name": "Span",
+                                                                "type": "span",
+                                                                "styles": [],
+                                                                "className": "font-bold",
+                                                                "content": {
+                                                                    "innerText": "Email:"
+                                                                }
+                                                            },
+                                                            {
+                                                                "id": "ekznR8_sO05NATtmOQhn5",
+                                                                "name": "Span",
+                                                                "type": "span",
+                                                                "styles": [],
+                                                                "className": null,
+                                                                "content": {
+                                                                    "innerText": "info@example.com"
+                                                                }
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "id": "AgF_tArTGnJVzbzxOpnV8",
+                                                "name": "Div",
+                                                "type": "div",
+                                                "styles": [],
+                                                "className": null,
+                                                "content": [
+                                                    {
+                                                        "id": "R5_bq8QMdIHSfZXzd8TZU",
+                                                        "name": "Heading",
+                                                        "type": "heading",
+                                                        "styles": [],
+                                                        "className": "mb-3 text-lg font-bold",
+                                                        "content": {
+                                                            "innerText": "Technical Support",
+                                                            "level": "h2"
+                                                        }
+                                                    },
+                                                    {
+                                                        "id": "OQE4au4Wfvx5vl5Ijg6RW",
+                                                        "name": "Paragraph",
+                                                        "type": "paragraph",
+                                                        "styles": [],
+                                                        "className": "mb-3",
+                                                        "content": {
+                                                            "innerText": "If you're experiencing technical issues or need help with your account, our support team is ready to assist you:"
+                                                        }
+                                                    },
+                                                    {
+                                                        "id": "lYMcpY3YxSQmoVQDcKIOl",
+                                                        "name": "Div",
+                                                        "type": "div",
+                                                        "styles": [],
+                                                        "className": "flex items-center gap-2 text-sm",
+                                                        "content": [
+                                                            {
+                                                                "id": "lX9BsMf2TjT0B0KNGFzOi",
+                                                                "name": "Span",
+                                                                "type": "span",
+                                                                "styles": [],
+                                                                "className": "font-bold",
+                                                                "content": {
+                                                                    "innerText": "Email:"
+                                                                }
+                                                            },
+                                                            {
+                                                                "id": "xtXvL41fCeyuq_OkOnDfx",
+                                                                "name": "Span",
+                                                                "type": "span",
+                                                                "styles": [],
+                                                                "className": null,
+                                                                "content": {
+                                                                    "innerText": "support@uilib.com"
+                                                                }
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "id": "ITBjAsSbLH_Lrjy_KiAyC",
+                                                        "name": "Div",
+                                                        "type": "div",
+                                                        "styles": [],
+                                                        "className": "flex items-center gap-2 text-sm",
+                                                        "content": [
+                                                            {
+                                                                "id": "oN0tAROnDMcasmR4xKsOW",
+                                                                "name": "Span",
+                                                                "type": "span",
+                                                                "styles": [],
+                                                                "className": "font-bold",
+                                                                "content": {
+                                                                    "innerText": "Response Time:"
+                                                                }
+                                                            },
+                                                            {
+                                                                "id": "iypOTwsgzdUNIsk5L2U0v",
+                                                                "name": "Span",
+                                                                "type": "span",
+                                                                "styles": [],
+                                                                "className": null,
+                                                                "content": {
+                                                                    "innerText": "We typically respond to support requests within 24 hours."
+                                                                }
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "id": "zTJreq9bAvkOoYF5pZClI",
+                                                "name": "Div",
+                                                "type": "div",
+                                                "styles": [],
+                                                "className": null,
+                                                "content": [
+                                                    {
+                                                        "id": "FA6U0Fd7A0SYFRDreUqWO",
+                                                        "name": "Heading",
+                                                        "type": "heading",
+                                                        "styles": [],
+                                                        "className": "mb-3 text-lg font-bold",
+                                                        "content": {
+                                                            "innerText": "Partnership & Business Inquiries",
+                                                            "level": "h2"
+                                                        }
+                                                    },
+                                                    {
+                                                        "id": "gcgcTEqqMxZ4GURqiAEan",
+                                                        "name": "Paragraph",
+                                                        "type": "paragraph",
+                                                        "styles": [],
+                                                        "className": "mb-3",
+                                                        "content": {
+                                                            "innerText": "Interested in partnering with Mentor or have business-related questions? Contact our business development team."
+                                                        }
+                                                    },
+                                                    {
+                                                        "id": "C32LXxAhtQ6LqG9SFyPmb",
+                                                        "name": "Div",
+                                                        "type": "div",
+                                                        "styles": [],
+                                                        "className": "flex items-center gap-2 text-sm",
+                                                        "content": [
+                                                            {
+                                                                "id": "GVxdYBBrD7hgIAUWmjLME",
+                                                                "name": "Span",
+                                                                "type": "span",
+                                                                "styles": [],
+                                                                "className": "font-bold",
+                                                                "content": {
+                                                                    "innerText": "Email:"
+                                                                }
+                                                            },
+                                                            {
+                                                                "id": "x31qeT-joo847Z_WVm5xP",
+                                                                "name": "Span",
+                                                                "type": "span",
+                                                                "styles": [],
+                                                                "className": null,
+                                                                "content": {
+                                                                    "innerText": "partnerships@example.com"
+                                                                }
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "id": "oE-gaZ2oA3wQVstqChzL1",
+                                                "name": "Div",
+                                                "type": "div",
+                                                "styles": [],
+                                                "className": null,
+                                                "content": [
+                                                    {
+                                                        "id": "-5usl55pBwV6KmuATTReC",
+                                                        "name": "Heading",
+                                                        "type": "heading",
+                                                        "styles": [],
+                                                        "className": "mb-3 text-lg font-bold",
+                                                        "content": {
+                                                            "innerText": "Career Opportunities",
+                                                            "level": "h2"
+                                                        }
+                                                    },
+                                                    {
+                                                        "id": "GoJpWz8PcjxZktmQCQkHm",
+                                                        "name": "Paragraph",
+                                                        "type": "paragraph",
+                                                        "styles": [],
+                                                        "className": "mb-3",
+                                                        "content": {
+                                                            "innerText": "Looking to join our team? Visit our Careers page or send your resume to:"
+                                                        }
+                                                    },
+                                                    {
+                                                        "id": "xBG_as4K4OlYRNN-LnELj",
+                                                        "name": "Div",
+                                                        "type": "div",
+                                                        "styles": [],
+                                                        "className": "flex items-center gap-2 text-sm",
+                                                        "content": [
+                                                            {
+                                                                "id": "CAl-mA2FOpYg_0Y7RjdyG",
+                                                                "name": "Span",
+                                                                "type": "span",
+                                                                "styles": [],
+                                                                "className": "font-bold",
+                                                                "content": {
+                                                                    "innerText": "Email:"
+                                                                }
+                                                            },
+                                                            {
+                                                                "id": "Bq93-CUVmXxFlBP74xBQB",
+                                                                "name": "Span",
+                                                                "type": "span",
+                                                                "styles": [],
+                                                                "className": null,
+                                                                "content": {
+                                                                    "innerText": "careers@example.com"
+                                                                }
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "id": "tTUTEYgARpk0cLWF7zyZK",
+                                                "name": "Div",
+                                                "type": "div",
+                                                "styles": [],
+                                                "className": null,
+                                                "content": [
+                                                    {
+                                                        "id": "LpOjJi0T0mXTxWAVadw31",
+                                                        "name": "Heading",
+                                                        "type": "heading",
+                                                        "styles": [],
+                                                        "className": "mb-3 text-lg font-bold",
+                                                        "content": {
+                                                            "innerText": "Feedback & Suggestions",
+                                                            "level": "h2"
+                                                        }
+                                                    },
+                                                    {
+                                                        "id": "fxfbPTtKFVEeor_ZkdXES",
+                                                        "name": "Paragraph",
+                                                        "type": "paragraph",
+                                                        "styles": [],
+                                                        "className": "mb-3",
+                                                        "content": {
+                                                            "innerText": "We value your feedback and are always looking for ways to improve. Share your thoughts and suggestions with us:"
+                                                        }
+                                                    },
+                                                    {
+                                                        "id": "HQNI7exnp7SIjBRVC59hX",
+                                                        "name": "Div",
+                                                        "type": "div",
+                                                        "styles": [],
+                                                        "className": "flex items-center gap-2 text-sm",
+                                                        "content": [
+                                                            {
+                                                                "id": "NFrIQzUq6CriZQkmEikLu",
+                                                                "name": "Span",
+                                                                "type": "span",
+                                                                "styles": [],
+                                                                "className": "font-bold",
+                                                                "content": {
+                                                                    "innerText": "Email:"
+                                                                }
+                                                            },
+                                                            {
+                                                                "id": "3Pa2zLcgkpaqBPnA11AKu",
+                                                                "name": "Span",
+                                                                "type": "span",
+                                                                "styles": [],
+                                                                "className": null,
+                                                                "content": {
+                                                                    "innerText": "feedback@example.com"
+                                                                }
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "id": "vyKxHi8VDuenF7D9465fT",
+                                                "name": "Div",
+                                                "type": "div",
+                                                "styles": [],
+                                                "className": null,
+                                                "content": [
+                                                    {
+                                                        "id": "mlOtMvHPmb5QdmBLYY0v3",
+                                                        "name": "Heading",
+                                                        "type": "heading",
+                                                        "styles": [],
+                                                        "className": "mb-3 text-lg font-bold",
+                                                        "content": {
+                                                            "innerText": "Office Address",
+                                                            "level": "h2"
+                                                        }
+                                                    },
+                                                    {
+                                                        "id": "KKgtg5iOPNa2Gg4mzuVqi",
+                                                        "name": "Heading",
+                                                        "type": "heading",
+                                                        "styles": [],
+                                                        "className": "mb-3 text-base font-bold",
+                                                        "content": {
+                                                            "innerText": "Mentor Headquarters",
+                                                            "level": "h2"
+                                                        }
+                                                    },
+                                                    {
+                                                        "id": "OaKmQfzyM3DGsp1Pk7Osl",
+                                                        "name": "Paragraph",
+                                                        "type": "paragraph",
+                                                        "styles": [],
+                                                        "className": null,
+                                                        "content": {
+                                                            "innerText": "123 Education Street Learning City, LC 12345 United States"
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+]
