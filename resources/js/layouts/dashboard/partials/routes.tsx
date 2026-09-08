@@ -206,6 +206,12 @@ const getDashboardRoutes = (page: SharedData): DashboardRoute[] => {
                         'administrative',
                      ],
                   },
+                  {
+                     name: 'Student Reports & Governance',
+                     slug: 'exam-reports-governance',
+                     path: examEnrollments.index.url(),
+                     access: ['admin', 'collaborative', 'administrative'],
+                  },
                ],
             },
             {

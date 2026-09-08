@@ -1,7 +1,9 @@
-import { router, usePage } from '@inertiajs/react';
+import { Link, router, usePage } from '@inertiajs/react';
 import {
+   Globe,
    GraduationCap,
    Heart,
+   LayoutDashboard,
    LogOut,
    Mail,
    SettingsIcon,
@@ -20,6 +22,7 @@ import {
 } from '@/components/ui/sheet';
 import { useInitials } from '@/hooks/use-initials';
 import { logout } from '@/routes';
+import student from '@/routes/student';
 
 export function ProfileDrawer() {
    const { auth, translate, direction } = usePage<SharedData>().props;
@@ -123,6 +126,31 @@ export function ProfileDrawer() {
                      {user.role}
                   </Badge>
                </div>
+            </div>
+
+            <Separator />
+
+            {/* Navigation links */}
+            <div className="space-y-1 px-3 py-3">
+               <Link
+                  href="/"
+                  onClick={() => setOpen(false)}
+                  className="flex w-full items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-foreground transition-colors hover:bg-accent hover:text-accent-foreground"
+               >
+                  <Globe className="h-4 w-4 text-primary" />
+                  <span>View Website</span>
+               </Link>
+
+               <button
+                  className="flex w-full cursor-pointer items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-foreground transition-colors hover:bg-accent hover:text-accent-foreground"
+                  onClick={() => {
+                     setOpen(false);
+                     router.get(user.role === 'student' ? student.index() : '/dashboard');
+                  }}
+               >
+                  <LayoutDashboard className="h-4 w-4 text-primary" />
+                  <span>{button.dashboard ?? 'Dashboard'}</span>
+               </button>
             </div>
 
             <Separator />

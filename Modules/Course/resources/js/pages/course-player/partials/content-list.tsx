@@ -43,20 +43,23 @@ const ContentList = ({
    // Get live classes from course data
    const liveClasses = course.live_classes || [];
 
-   // Get the last section
-   const lastSection = props.course.sections[props.course.sections.length - 1];
+   // Get course sections safely
+   const sections = props.course?.sections || [];
+   const lastSection = sections.length > 0 ? sections[sections.length - 1] : null;
 
    // Get the last content based on current_watching_type
    let lastContent;
 
-   if (watchHistory.current_watching_type === 'lesson') {
-      lastContent = lastSection.section_lessons.find(
-         (lesson) => lesson.id === watchHistory.current_watching_id,
-      );
-   } else {
-      lastContent = lastSection.section_quizzes.find(
-         (quiz) => quiz.id === watchHistory.current_watching_id,
-      );
+   if (lastSection && watchHistory) {
+      if (watchHistory.current_watching_type === 'lesson') {
+         lastContent = (lastSection.section_lessons || []).find(
+            (lesson) => lesson.id === watchHistory.current_watching_id,
+         );
+      } else {
+         lastContent = (lastSection.section_quizzes || []).find(
+            (quiz) => quiz.id === watchHistory.current_watching_id,
+         );
+      }
    }
 
    const finishCourseHandler = () => {

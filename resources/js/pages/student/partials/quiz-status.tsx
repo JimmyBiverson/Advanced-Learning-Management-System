@@ -130,7 +130,7 @@ const QuizStatus = ({ quiz, completed }: Props) => {
                                       watch_history: watchHistory.id,
                                       lesson_id: quiz.id,
                                    })
-                                 : '#'
+                                 : `/play-course/quiz/1/${quiz.id}`
                            }
                         >
                            {'Take Quiz'}

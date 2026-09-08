@@ -39,6 +39,8 @@ const Basic = () => {
       instructor_id: course.instructor_id,
       course_category_id: course.course_category_id,
       course_category_child_id: course.course_category_child_id,
+      drip_content: course.drip_content ? 'enable' : 'disable',
+      certificate_enabled: course.certificate_enabled ? 'enable' : 'disable',
    });
 
    const transformedCategories = useMemo(() => {
@@ -229,9 +231,8 @@ const Basic = () => {
                            <Label>{input.enable_drip_content}</Label>
                            <RadioGroup
                               name="drip_content"
-                              defaultValue={
-                                 course.drip_content ? 'enable' : 'disable'
-                              }
+                              value={data.drip_content}
+                              onValueChange={(val) => setData('drip_content', val)}
                               className="flex items-center space-x-4 pt-2"
                            >
                               <div className="flex items-center space-x-2">
@@ -262,9 +263,8 @@ const Basic = () => {
                            <Label>Certificate Availability</Label>
                            <RadioGroup
                               name="certificate_enabled"
-                              defaultValue={
-                                 course.certificate_enabled ? 'enable' : 'disable'
-                              }
+                              value={data.certificate_enabled}
+                              onValueChange={(val) => setData('certificate_enabled', val)}
                               className="flex items-center space-x-4 pt-2"
                            >
                               <div className="flex items-center space-x-2">

@@ -29,7 +29,17 @@ const QuizViewer = ({ quiz }: QuizViewerProps) => {
    const [finished, setFinished] = useState(false);
    const [currentTab, setCurrentTab] = useState('summary');
    const { data, setData } = useForm({ answers: [] as QuizAnswer[] });
-   const submissions = quiz.quiz_submissions;
+
+   if (!quiz) {
+      return (
+         <Card className="flex min-h-[60vh] w-full items-center justify-center p-6 text-center">
+            <p className="text-muted-foreground">{frontend?.no_lesson_found || 'Quiz content not found or unavailable.'}</p>
+         </Card>
+      );
+   }
+
+   const submissions = quiz.quiz_submissions || [];
+   const questions = quiz.quiz_questions || [];
 
    const handleCheckboxChange = (
       questionId: string,
@@ -100,21 +110,21 @@ const QuizViewer = ({ quiz }: QuizViewerProps) => {
 
       if (previousQuestion < 0) {
          setCurrentTab('summary');
-      } else {
-         setCurrentTab(quiz.quiz_questions[previousQuestion].id.toString());
+      } else if (questions[previousQuestion]) {
+         setCurrentTab(questions[previousQuestion].id.toString());
       }
 
       setFinished(false);
    };
 
    const quizNext = (index: number) => {
-      const totalQuestions = quiz.quiz_questions.length;
+      const totalQuestions = questions.length;
       const currentQuestion = index + 1;
 
-      if (currentQuestion === totalQuestions) {
+      if (currentQuestion >= totalQuestions) {
          setFinished(true);
-      } else {
-         setCurrentTab(quiz.quiz_questions[currentQuestion].id.toString());
+      } else if (questions[currentQuestion]) {
+         setCurrentTab(questions[currentQuestion].id.toString());
       }
    };
 
@@ -127,14 +137,18 @@ const QuizViewer = ({ quiz }: QuizViewerProps) => {
    const startQuiz = () => {
       setData('answers', []);
       setFinished(false);
-      setCurrentTab(quiz.quiz_questions[0].id.toString());
+      if (questions.length > 0) {
+         setCurrentTab(questions[0].id.toString());
+      }
    };
+
+   const latestSubmission = submissions.length > 0 ? submissions[0] : null;
 
    return (
       <Card className="group relative h-full min-h-[80vh] w-full overflow-hidden rounded-lg">
          <LessonControl className="opacity-0 transition-all duration-300 group-hover:opacity-100" />
 
-         <p className="p-6 text-center text-lg font-bold">{quiz.title}</p>
+         <p className="p-6 text-center text-lg font-bold">{quiz.title || 'Quiz'}</p>
 
          <Separator />
 
@@ -142,7 +156,7 @@ const QuizViewer = ({ quiz }: QuizViewerProps) => {
             {...quizSubmissionStore.form()}
             transform={(formData) => ({
                ...formData,
-               submission_id: submissions.length > 0 ? submissions[0].id : null,
+               submission_id: latestSubmission ? latestSubmission.id : null,
                section_quiz_id: quiz.id,
                user_id: auth.user.id,
                answers: data.answers,
@@ -162,104 +176,115 @@ const QuizViewer = ({ quiz }: QuizViewerProps) => {
                   <TabsContent value="summary">
                      <div className="flex flex-col justify-between gap-6 md:flex-row">
                         <div className="space-y-2">
-                           <p>{frontend.summery}</p>
+                           <p>{frontend?.summery || 'Summary'}</p>
 
                            <div className="flex gap-2 text-sm">
                               <p className="text-gray-500">
-                                 {frontend.duration}
+                                 {frontend?.duration || 'Duration'}
                               </p>
                               <p>
                                  :
-                                 {` ${quiz.hours} ${frontend.hours} ${quiz.minutes} ${frontend.minutes} ${quiz.seconds} ${frontend.seconds}`}
+                                 {` ${quiz.hours || 0} ${frontend?.hours || 'hours'} ${quiz.minutes || 0} ${frontend?.minutes || 'mins'} ${quiz.seconds || 0} ${frontend?.seconds || 'secs'}`}
                               </p>
                            </div>
                            <div className="flex gap-2 text-sm">
                               <p className="text-gray-500">
-                                 {frontend.total_questions}
+                                 {frontend?.total_questions || 'Total Questions'}
                               </p>
-                              <p>: {quiz.quiz_questions.length}</p>
+                              <p>: {questions.length}</p>
                            </div>
                            <div className="flex gap-2 text-sm">
                               <p className="text-gray-500">
-                                 {frontend.total_marks}
+                                 {frontend?.total_marks || 'Total Marks'}
                               </p>
-                              <p>: {quiz.total_mark}</p>
+                              <p>: {quiz.total_mark || 0}</p>
                            </div>
                            <div className="flex gap-2 text-sm">
                               <p className="text-gray-500">
-                                 {frontend.pass_marks}
+                                 {frontend?.pass_marks || 'Pass Marks'}
                               </p>
-                              <p>: {quiz.pass_mark}</p>
+                              <p>: {quiz.pass_mark || 0}</p>
                            </div>
                            <div className="flex gap-2 text-sm">
-                              <p className="text-gray-500">{frontend.retake}</p>
-                              <p>: {quiz.retake}</p>
+                              <p className="text-gray-500">{frontend?.retake || 'Retakes'}</p>
+                              <p>: {quiz.retake || 0}</p>
                            </div>
                         </div>
                         <div className="space-y-2">
-                           <p>{frontend.result}</p>
+                           <p>{frontend?.result || 'Result'}</p>
 
                            <div className="flex gap-2 text-sm">
                               <p className="text-gray-500">
-                                 {frontend.retake_attempts}
+                                 {frontend?.retake_attempts || 'Attempts'}
                               </p>
-                              <p>: {submissions[0]?.attempts || 0}</p>
+                              <p>: {latestSubmission?.attempts || 0}</p>
                            </div>
                            <div className="flex gap-2 text-sm">
                               <p className="text-gray-500">
-                                 {frontend.correct_answers}
+                                 {frontend?.correct_answers || 'Correct'}
                               </p>
-                              <p>: {submissions[0]?.correct_answers || 0}</p>
+                              <p>: {latestSubmission?.correct_answers || 0}</p>
                            </div>
                            <div className="flex gap-2 text-sm">
                               <p className="text-gray-500">
-                                 {frontend.incorrect_answers}
+                                 {frontend?.incorrect_answers || 'Incorrect'}
                               </p>
-                              <p>: {submissions[0]?.incorrect_answers || 0}</p>
+                              <p>: {latestSubmission?.incorrect_answers || 0}</p>
                            </div>
                            <div className="flex gap-2 text-sm">
                               <p className="text-gray-500">
-                                 {frontend.total_marks}
+                                 {frontend?.total_marks || 'Marks'}
                               </p>
-                              <p>: {submissions[0]?.total_marks || 0}</p>
+                              <p>: {latestSubmission?.total_marks || 0}</p>
                            </div>
                            <div className="flex gap-2 text-sm">
                               <p className="text-gray-500">Status</p>
                               <p>
                                  :{' '}
-                                 {submissions[0]?.is_passed
-                                    ? frontend.passed
-                                    : frontend.not_passed}
+                                 {latestSubmission
+                                    ? latestSubmission.is_passed
+                                       ? frontend?.passed || 'Passed'
+                                       : frontend?.not_passed || 'Not Passed'
+                                    : 'Not Submitted'}
                               </p>
                            </div>
                         </div>
                      </div>
 
                      <div className="mt-6 flex justify-center p-6">
-                        {submissions[0]?.attempts >= quiz.retake ? (
+                        {questions.length === 0 ? (
+                           <Button type="button" size="lg" disabled className="bg-gray-400">
+                              No Questions Available
+                           </Button>
+                        ) : latestSubmission && latestSubmission.attempts >= quiz.retake ? (
                            <Button type="button" size="lg">
-                              {frontend.quiz_submitted}
+                              {frontend?.quiz_submitted || 'Quiz Submitted'}
                            </Button>
                         ) : (
                            <Button size="lg" type="button" onClick={startQuiz}>
-                              {submissions[0]
-                                 ? frontend.retake_quiz
-                                 : frontend.start_quiz}
+                              {latestSubmission
+                                 ? frontend?.retake_quiz || 'Retake Quiz'
+                                 : frontend?.start_quiz || 'Start Quiz'}
                            </Button>
                         )}
                      </div>
                   </TabsContent>
 
-                  {quiz.quiz_questions.map((question, index) => {
-                     // Parse the options and answers if they're strings
-                     const options = question?.options
-                        ? typeof question.options === 'string'
-                           ? JSON.parse(question.options)
-                           : question.options
-                        : [];
+                  {questions.map((question, index) => {
+                     let options: string[] = [];
+                     try {
+                        options = question?.options
+                           ? typeof question.options === 'string'
+                              ? JSON.parse(question.options)
+                              : question.options
+                           : [];
+                     } catch (e) {
+                        options = [];
+                     }
 
                      return (
                         <TabsContent
+                           key={question.id}
                            value={question.id.toString()}
                            className="space-y-6"
                         >
@@ -279,7 +304,7 @@ const QuizViewer = ({ quiz }: QuizViewerProps) => {
                                     handleRadioChange(
                                        question.id.toString(),
                                        value,
-                                    )
+                                     )
                                  }
                               >
                                  <div className="flex items-center space-x-2">
@@ -292,7 +317,7 @@ const QuizViewer = ({ quiz }: QuizViewerProps) => {
                                        htmlFor="True"
                                        className="mb-0 capitalize"
                                     >
-                                       {frontend.true}
+                                       {frontend?.true || 'True'}
                                     </Label>
                                  </div>
                                  <div className="flex items-center space-x-2">
@@ -305,7 +330,7 @@ const QuizViewer = ({ quiz }: QuizViewerProps) => {
                                        htmlFor="False"
                                        className="mb-0 capitalize"
                                     >
-                                       {frontend.false}
+                                       {frontend?.false || 'False'}
                                     </Label>
                                  </div>
                               </RadioGroup>

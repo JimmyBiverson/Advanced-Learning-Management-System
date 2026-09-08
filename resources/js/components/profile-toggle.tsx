@@ -1,5 +1,6 @@
 import { router, usePage } from '@inertiajs/react';
 import {
+   Globe,
    GraduationCap,
    Heart,
    LayoutDashboard,
@@ -13,6 +14,7 @@ import {
    DropdownMenu,
    DropdownMenuContent,
    DropdownMenuItem,
+   DropdownMenuSeparator,
    DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { dashboard } from '@/routes';
@@ -68,16 +70,30 @@ const ProfileToggle = () => {
             )}
          </DropdownMenuTrigger>
 
-         <DropdownMenuContent align="end" className="w-[160px]">
-            {(user.role === 'admin' || user.role === 'instructor') && (
-               <DropdownMenuItem
-                  className="cursor-pointer px-3"
-                  onClick={() => router.get(dashboard())}
-               >
-                  <LayoutDashboard className="mr-1 h-4 w-4" />
-                  <span>{button.dashboard}</span>
-               </DropdownMenuItem>
-            )}
+         <DropdownMenuContent align="end" className="w-[180px]">
+            <DropdownMenuItem
+               className="cursor-pointer px-3"
+               onClick={() =>
+                  router.get(
+                     user.role === 'student'
+                        ? student.index()
+                        : '/dashboard',
+                  )
+               }
+            >
+               <LayoutDashboard className="mr-2 h-4 w-4 text-primary" />
+               <span className="font-medium">{button.dashboard || 'Dashboard'}</span>
+            </DropdownMenuItem>
+
+            <DropdownMenuItem
+               className="cursor-pointer px-3"
+               onClick={() => router.get('/')}
+            >
+               <Globe className="mr-2 h-4 w-4 text-primary" />
+               <span className="font-medium">View Website</span>
+            </DropdownMenuItem>
+
+            <DropdownMenuSeparator />
 
             {(user.role === 'student' || user.role === 'instructor') &&
                studentMenuItems.map(({ id, name, Icon, slug }) => (
@@ -86,16 +102,18 @@ const ProfileToggle = () => {
                      className="cursor-pointer px-3"
                      onClick={() => router.get(student.index({ tab: slug }))}
                   >
-                     <Icon className="mr-1 h-4 w-4" />
+                     <Icon className="mr-2 h-4 w-4" />
                      <span>{name}</span>
                   </DropdownMenuItem>
                ))}
+
+            <DropdownMenuSeparator />
 
             <DropdownMenuItem
                className="cursor-pointer px-3"
                onClick={() => router.post(logout())}
             >
-               <LogOut className="mr-1 h-4 w-4" />
+               <LogOut className="mr-2 h-4 w-4" />
                <span>{button.logout}</span>
             </DropdownMenuItem>
          </DropdownMenuContent>

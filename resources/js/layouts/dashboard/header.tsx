@@ -1,4 +1,4 @@
-import { usePage } from '@inertiajs/react';
+import { Link, usePage } from '@inertiajs/react';
 import Appearance from '@/components/appearance';
 import Language from '@/components/language';
 import { SidebarTrigger } from '@/components/ui/sidebar';
@@ -6,6 +6,7 @@ import { useAuth } from '@/hooks/use-auth';
 import { NotificationsDrawer } from '@/layouts/dashboard/partials/notifications-drawer';
 import { ProfileDrawer } from '@/layouts/dashboard/partials/profile-drawer';
 import { SettingsDrawer } from '@/layouts/dashboard/partials/settings-drawer';
+import { Globe } from 'lucide-react';
 
 const DashboardHeader = () => {
    const { isAdmin } = useAuth();
@@ -24,7 +25,15 @@ const DashboardHeader = () => {
             </div>
 
             {/* Right: action buttons */}
-            <div className="flex flex-shrink-0 items-center gap-1.5">
+            <div className="flex flex-shrink-0 items-center gap-1.5 sm:gap-2">
+               <Link
+                  href="/"
+                  className="inline-flex items-center gap-1.5 rounded-lg border border-input bg-background/80 px-3 py-1.5 text-xs font-medium transition-colors hover:bg-accent hover:text-accent-foreground"
+                  title="View Public Website"
+               >
+                  <Globe className="h-4 w-4 text-primary" />
+                  <span className="hidden sm:inline">View Website</span>
+               </Link>
                {system.fields.language_selector && <Language />}
                {!isAdmin && <Appearance buttonClass="h-10 w-10" />}
                <NotificationsDrawer />
