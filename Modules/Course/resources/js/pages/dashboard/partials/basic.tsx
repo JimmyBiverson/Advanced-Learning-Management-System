@@ -40,7 +40,7 @@ const Basic = () => {
       course_category_id: course.course_category_id,
       course_category_child_id: course.course_category_child_id,
       drip_content: course.drip_content ? 'enable' : 'disable',
-      certificate_enabled: course.certificate_enabled ? 'enable' : 'disable',
+      certificate_enabled: course.certificate_enabled !== false ? 'enable' : 'disable',
    });
 
    const transformedCategories = useMemo(() => {

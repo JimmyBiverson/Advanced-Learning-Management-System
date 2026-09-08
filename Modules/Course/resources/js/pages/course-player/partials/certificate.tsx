@@ -11,8 +11,20 @@ import { toast } from 'sonner';
 
 const Certificate = () => {
    const { props } = usePage<CoursePlayerProps>();
-   const { translate } = props;
+   const { translate, course } = props;
    const { frontend } = translate;
+
+   if (course?.certificate_enabled === false) {
+      return (
+         <div className="mx-auto max-w-[800px] space-y-4 pt-16 pb-16 text-center">
+            <Award className="mx-auto h-16 w-16 text-muted-foreground/40" />
+            <h2 className="text-2xl font-bold text-gray-800">Certificate Disabled</h2>
+            <p className="text-base text-muted-foreground max-w-md mx-auto">
+               The instructor has disabled certificate issuance for this course. Completion certificates are not available.
+            </p>
+         </div>
+      );
+   }
 
    const courseName = props.course.title;
    const studentName = props.auth.user.name;

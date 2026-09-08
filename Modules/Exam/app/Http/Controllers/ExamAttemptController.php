@@ -62,6 +62,14 @@ class ExamAttemptController extends Controller
     public function start(ExamAttemptRequest $request, Exam $exam)
     {
         $user = Auth::user();
+        $enrollment = \Modules\Exam\Models\ExamEnrollment::where('user_id', $user->id)
+            ->where('exam_id', $exam->id)
+            ->first();
+
+        if ($enrollment && ($enrollment->access_granted === false || $enrollment->payment_status === 'blocked')) {
+            return back()->with('error', 'Your access to this examination has been revoked or blocked by administration.');
+        }
+
         $attempt = $this->examAttempt->startAttempt($user, $exam);
 
         if (! $attempt) {
@@ -78,6 +86,17 @@ class ExamAttemptController extends Controller
      */
     public function take(ExamAttempt $attempt)
     {
+        $user = Auth::user();
+        $enrollment = \Modules\Exam\Models\ExamEnrollment::where('user_id', $user->id)
+            ->where('exam_id', $attempt->exam_id)
+            ->first();
+
+        if ($enrollment && ($enrollment->access_granted === false || $enrollment->payment_status === 'blocked')) {
+            return redirect()
+                ->route('student.exam.show', ['id' => $attempt->exam_id, 'tab' => 'attempts'])
+                ->with('error', 'Your access to this examination has been revoked or blocked by administration.');
+        }
+
         $attempt->load(['exam.questions.question_options']);
 
         return Inertia::render('student/exam/attempt', [

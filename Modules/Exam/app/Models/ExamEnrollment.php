@@ -27,11 +27,21 @@ class ExamEnrollment extends BaseModel
         'enrollment_type',
         'entry_date',
         'expiry_date',
+        'payment_status',
+        'amount_paid',
+        'access_granted',
+        'results_locked',
+        'offline_marks',
+        'offline_remarks',
     ];
 
     protected $casts = [
         'entry_date' => 'datetime',
         'expiry_date' => 'datetime',
+        'access_granted' => 'boolean',
+        'results_locked' => 'boolean',
+        'amount_paid' => 'decimal:2',
+        'offline_marks' => 'decimal:2',
     ];
 
     public function user(): BelongsTo

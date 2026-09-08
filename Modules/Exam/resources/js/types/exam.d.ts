@@ -138,6 +138,12 @@ interface ExamEnrollment extends TableCommon {
    entry_date: string;
    expiry_date?: string;
    is_active: boolean;
+   payment_status?: string;
+   amount_paid?: number;
+   access_granted?: boolean;
+   results_locked?: boolean;
+   offline_marks?: number;
+   offline_remarks?: string;
    user: User;
    exam: Exam;
 }

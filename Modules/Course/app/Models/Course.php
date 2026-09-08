@@ -35,6 +35,10 @@ class Course extends BaseModel implements HasMedia
         'certificate_enabled' => 'boolean',
     ];
 
+    protected $attributes = [
+        'certificate_enabled' => true,
+    ];
+
     protected $fillable = [
         'title',
         'slug',

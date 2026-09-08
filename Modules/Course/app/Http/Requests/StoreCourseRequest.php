@@ -17,7 +17,7 @@ class StoreCourseRequest extends FormRequest
             'discount' => filter_var(request('discount'), FILTER_VALIDATE_BOOLEAN),
             'discount_price' => request('discount_price') ? (float) request('discount_price') : null,
             'drip_content' => filter_var(request('drip_content'), FILTER_VALIDATE_BOOLEAN),
-            'certificate_enabled' => filter_var(request('certificate_enabled'), FILTER_VALIDATE_BOOLEAN),
+            'certificate_enabled' => request()->has('certificate_enabled') ? filter_var(request('certificate_enabled'), FILTER_VALIDATE_BOOLEAN) : true,
             'instructor_id' => (int) request('instructor_id'),
             'course_category_id' => (int) request('course_category_id'),
             'course_category_child_id' => request('course_category_child_id') ? (int) request('course_category_child_id') : null,

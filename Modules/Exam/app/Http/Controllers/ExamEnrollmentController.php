@@ -70,4 +70,25 @@ class ExamEnrollmentController extends Controller
 
         return back()->with('success', 'Enrollment is successfully deleted');
     }
+
+    /**
+     * Update governance, payment status, access permissions, and offline marks.
+     */
+    public function updateGovernance(Request $request, string $id)
+    {
+        $enrollment = \Modules\Exam\Models\ExamEnrollment::findOrFail($id);
+
+        $data = $request->validate([
+            'payment_status' => 'nullable|string',
+            'amount_paid' => 'nullable|numeric',
+            'access_granted' => 'nullable|boolean',
+            'results_locked' => 'nullable|boolean',
+            'offline_marks' => 'nullable|numeric',
+            'offline_remarks' => 'nullable|string',
+        ]);
+
+        $enrollment->update(array_filter($data, fn ($val) => $val !== null));
+
+        return back()->with('success', 'Student exam governance & report updated successfully.');
+    }
 }

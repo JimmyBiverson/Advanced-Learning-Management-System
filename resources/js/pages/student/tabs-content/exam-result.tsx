@@ -1,5 +1,5 @@
 import { Link, usePage } from '@inertiajs/react';
-import { ArrowLeft, Check, Clock, TrendingUp, X } from 'lucide-react';
+import { ArrowLeft, Check, Clock, Lock, TrendingUp, X } from 'lucide-react';
 import { useMemo } from 'react';
 import { Renderer } from '@/components/rich-editor';
 import { Badge } from '@/components/ui/badge';
@@ -15,7 +15,20 @@ import student from '@/routes/student';
 import studentExam from '@/routes/student/exam';
 
 const ExamResult = () => {
-   const { attempt } = usePage<StudentExamProps>().props;
+   const { attempt, enrollment } = usePage<StudentExamProps & { enrollment?: ExamEnrollment }>().props;
+
+   if (enrollment?.results_locked) {
+      return (
+         <Card className="p-8 text-center border-amber-300 bg-amber-50/50">
+            <Lock className="mx-auto h-12 w-12 text-amber-600 mb-3" />
+            <h3 className="text-xl font-bold text-gray-800">Exam Results Locked</h3>
+            <p className="text-sm text-muted-foreground mt-2 max-w-md mx-auto">
+               Your exam results are currently locked by administration pending fee payment or review. Please contact administration to unlock your results.
+            </p>
+         </Card>
+      );
+   }
+
    const answers = useMemo(
       () => attempt?.attempt_answers ?? [],
       [attempt?.attempt_answers],

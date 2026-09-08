@@ -7,7 +7,7 @@ import {
    getSortedRowModel,
    useReactTable,
 } from '@tanstack/react-table';
-import { Award, Clock } from 'lucide-react';
+import { Award, Clock, Lock } from 'lucide-react';
 import * as React from 'react';
 import TableHeader from '@/components/table/table-header';
 import { Badge } from '@/components/ui/badge';
@@ -16,7 +16,7 @@ import { Table, TableBody, TableCell, TableRow } from '@/components/ui/table';
 import ExamAttemptColumn from '@/pages/student/partials/exam-attempt-columns';
 
 const ExamAttempts = () => {
-   const { exam, attempts, bestAttempt } = usePage<StudentExamProps>().props;
+   const { exam, attempts, bestAttempt, enrollment } = usePage<StudentExamProps & { enrollment?: ExamEnrollment }>().props;
    const [sorting, setSorting] = React.useState<SortingState>([]);
 
    const table = useReactTable({
@@ -45,6 +45,16 @@ const ExamAttempts = () => {
 
    return (
       <div className="space-y-4">
+         {enrollment?.results_locked && (
+            <div className="flex items-center gap-3 rounded-lg border border-amber-300 bg-amber-50 p-4 text-amber-900">
+               <Lock className="h-5 w-5 flex-shrink-0 text-amber-600" />
+               <div className="text-sm">
+                  <p className="font-semibold">Results Locked</p>
+                  <p className="text-amber-700">Detailed result scores for your exam attempts are currently locked by administration pending fee payment clearance.</p>
+               </div>
+            </div>
+         )}
+
          {/* Exam Attempts Summary */}
          <div className="grid gap-4 md:grid-cols-4">
             <Card className="p-4">

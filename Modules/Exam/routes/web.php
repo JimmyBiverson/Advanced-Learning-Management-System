@@ -46,6 +46,7 @@ Route::middleware(['auth', 'role:admin'])->prefix('dashboard')->group(function (
 
     // course enrolment
     Route::delete('exams/exam/enrollments/{id}', [ExamEnrollmentController::class, 'destroy'])->name('exam-enrollments.destroy');
+    Route::patch('exams/exam/enrollments/{id}/governance', [ExamEnrollmentController::class, 'updateGovernance'])->name('exam-enrollments.governance');
 });
 
 /*

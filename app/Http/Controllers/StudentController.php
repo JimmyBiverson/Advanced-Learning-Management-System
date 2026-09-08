@@ -66,6 +66,9 @@ class StudentController extends Controller
     public function show_exam(Request $request, int $id, string $tab)
     {
         $user = Auth::user();
+        $enrollment = \Modules\Exam\Models\ExamEnrollment::where('user_id', $user->id)
+            ->where('exam_id', $id)
+            ->first();
         $exam = $this->examEnrollment->getEnrolledExam($id, $user);
         $attempts = $this->examAttempt->getExamAttempts(['exam_id' => $id, 'user_id' => $user->id]);
         $bestAttempt = $this->examAttempt->getBestExamAttempt($id, $user->id);
@@ -87,6 +90,7 @@ class StudentController extends Controller
             ...$props,
             'tab' => $tab,
             'exam' => $exam,
+            'enrollment' => $enrollment,
             'attempts' => $attempts,
             'bestAttempt' => $bestAttempt,
         ]);
