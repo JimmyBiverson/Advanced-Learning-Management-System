@@ -113,7 +113,7 @@
    --popover: oklch(1 0 0);
    --popover-foreground: oklch(0.145 0 0);
 
-   --primary: oklch(0.265 0.0216 248.65);
+   --primary: oklch(0.45 0.15 160);
    --primary-foreground: oklch(0.985 0 0);
    /* Auto-generated primary scale: 900-600 darker, 400-50 lighter */
    --primary-900: color-mix(in oklch, var(--primary) 90%, black);
