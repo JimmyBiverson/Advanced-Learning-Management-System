@@ -55,6 +55,7 @@ const Index = (props: CourseCreateProps) => {
       description: '',
       pricing_type: 'paid',
       discount: false,
+      certificate_enabled: true,
       expiry_type: 'lifetime',
       course_category_id: '',
       course_category_child_id: '',
@@ -494,6 +495,20 @@ const Index = (props: CourseCreateProps) => {
                                     </div>
                                  </RadioGroup>
                                  <InputError message={errors.drip_content} />
+                              </div>
+
+                              <div className="flex items-center space-x-2">
+                                 <Checkbox
+                                    id="certificate_enabled"
+                                    name="certificate_enabled"
+                                    checked={data.certificate_enabled}
+                                    onCheckedChange={(checked) =>
+                                       setData('certificate_enabled', checked === true)
+                                    }
+                                 />
+                                 <Label htmlFor="certificate_enabled" className="mb-0">
+                                    Include a course certificate
+                                 </Label>
                               </div>
                            </div>
                         </div>

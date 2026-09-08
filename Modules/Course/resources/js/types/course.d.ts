@@ -41,6 +41,7 @@ interface Course extends TableCommon {
    discount?: number;
    discount_price?: number;
    drip_content: number;
+   certificate_enabled?: boolean;
    meta_title?: string;
    meta_keywords?: string;
    meta_description?: string;

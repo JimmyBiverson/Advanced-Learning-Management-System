@@ -27,6 +27,7 @@ const Pricing = () => {
       tab: tab,
       pricing_type: course.pricing_type || '',
       discount: Boolean(course.discount) || false,
+      certificate_enabled: course.certificate_enabled !== false,
       expiry_type: course.expiry_type || '',
       expiry_duration: course.expiry_duration || '',
    });
@@ -200,6 +201,20 @@ const Pricing = () => {
                            </AccordionContent>
                         </AccordionItem>
                      </Accordion>
+
+                     <div className="flex items-center space-x-2">
+                        <Checkbox
+                           id="certificate_enabled"
+                           name="certificate_enabled"
+                           checked={data.certificate_enabled}
+                           onCheckedChange={(checked) =>
+                              setData('certificate_enabled', checked === true)
+                           }
+                        />
+                        <Label htmlFor="certificate_enabled" className="mb-0">
+                           Include a course certificate
+                        </Label>
+                     </div>
 
                      <LoadingButton
                         loading={processing}

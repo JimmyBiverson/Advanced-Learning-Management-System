@@ -65,15 +65,16 @@ const QuizStatus = ({ quiz, completed }: Props) => {
    const { watchHistory, translate } = props;
    const { frontend } = translate;
 
-   const isCompleted = completed.some(
-      (item) => item.type === 'quiz' && item.id == quiz.id,
-   );
+   const isCompleted =
+      completed?.some(
+         (item) => item.type === 'quiz' && item.id == quiz.id,
+      ) ?? false;
    const isCurrentLesson =
-      watchHistory.current_watching_type === 'quiz' &&
-      watchHistory.current_watching_id == quiz.id;
+      watchHistory?.current_watching_type === 'quiz' &&
+      watchHistory?.current_watching_id == quiz.id;
    const isNext =
-      watchHistory.next_watching_type === 'quiz' &&
-      quiz.id == watchHistory.next_watching_id;
+      watchHistory?.next_watching_type === 'quiz' &&
+      quiz.id == watchHistory?.next_watching_id;
 
    const latestSubmission =
       quiz.quiz_submissions && quiz.quiz_submissions.length > 0
@@ -85,7 +86,7 @@ const QuizStatus = ({ quiz, completed }: Props) => {
 
    return (
       <>
-         {isCompleted || isCurrentLesson || isNext ? (
+         {isCompleted || isCurrentLesson || isNext || !watchHistory ? (
             <div className="flex items-center justify-between gap-3 rounded-lg border bg-card p-3">
                <div
                   className={cn(
@@ -122,11 +123,15 @@ const QuizStatus = ({ quiz, completed }: Props) => {
                   ) : (
                      <Button size="sm" asChild>
                         <Link
-                           href={course.play.start({
-                              type: 'quiz',
-                              watch_history: watchHistory.id,
-                              lesson_id: quiz.id,
-                           })}
+                           href={
+                              watchHistory?.id
+                                 ? course.play.start({
+                                      type: 'quiz',
+                                      watch_history: watchHistory.id,
+                                      lesson_id: quiz.id,
+                                   })
+                                 : '#'
+                           }
                         >
                            {'Take Quiz'}
                         </Link>

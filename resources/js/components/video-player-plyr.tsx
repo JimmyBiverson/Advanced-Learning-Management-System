@@ -11,9 +11,10 @@ interface Props {
       }>;
    };
    translate?: any;
+   onEnded?: () => void;
 }
 
-const VideoPlayer = ({ source, translate }: Props) => {
+const VideoPlayer = ({ source, translate, onEnded }: Props) => {
    // Common Plyr options for all video types
    const plyrOptions = {
       controls: [
@@ -100,7 +101,7 @@ const VideoPlayer = ({ source, translate }: Props) => {
       );
    }
 
-   return <Plyr options={plyrOptions} source={processedSource} />;
+   return <Plyr options={plyrOptions} source={processedSource} onEnded={onEnded} />;
 };
 
 export default VideoPlayer;

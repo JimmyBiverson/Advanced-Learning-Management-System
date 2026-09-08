@@ -39,6 +39,10 @@ const Course = (props: StudentCourseProps) => {
          label: 'Resources',
       },
       {
+         value: 'notes',
+         label: 'Notes',
+      },
+      {
          value: 'certificate',
          label: 'Certificate',
       },
@@ -55,6 +59,8 @@ const Course = (props: StudentCourseProps) => {
          case 'quizzes':
             return <CourseQuizzes />;
          case 'resources':
+            return <CourseResources />;
+         case 'notes':
             return <CourseResources />;
          case 'certificate':
             return <CourseCertificate />;
@@ -81,6 +87,10 @@ const Course = (props: StudentCourseProps) => {
                <div className="overflow-x-auto overflow-y-hidden">
                   <TabsList className="bg-transparent px-0 py-6">
                      {tabs.map(({ label, value }) => {
+                        if (value === 'certificate' && course.certificate_enabled === false) {
+                           return null;
+                        }
+
                         return (
                            <TabsTrigger
                               key={value}

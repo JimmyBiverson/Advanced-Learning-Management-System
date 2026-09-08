@@ -212,6 +212,7 @@ class StudentService extends MediaService
             'assignments' => $tab === 'assignments' ? $this->getCourseAssignments($course_id, $user) : null,
             'quizzes' => $tab === 'quizzes' ? $this->getCourseSectionQuizzes($course_id, $user) : null,
             'resources' => $tab === 'resources' ? $this->getCourseLessonResources($course_id) : null,
+            'notes' => $tab === 'notes' ? $this->getCourseLessonResources($course_id) : null,
             'certificateTemplate' => $tab === 'certificate' ? $this->certificate->getActiveCertificateTemplate('course') : null,
             'marksheetTemplate' => $tab === 'certificate' ? $this->certificate->getActiveMarksheetTemplate('course') : null,
             'studentMarks' => $tab === 'certificate' ? $this->calculateStudentMarks($course_id, $user->id) : null,

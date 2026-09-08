@@ -2,6 +2,7 @@
 
 namespace Modules\Course\Services;
 
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Modules\Course\Models\Course;
 use Modules\Course\Models\CourseSection;
@@ -54,6 +55,30 @@ class CoursePlayerService
         } else {
             return null;
         }
+    }
+
+    public function getOrCreateWatchHistory(Course $course, User $user): WatchHistory
+    {
+        $watchHistory = WatchHistory::ofCourse($course->id)->ofUser($user->id)->first();
+        if ($watchHistory) {
+            return $watchHistory;
+        }
+
+        $firstSection = $course->sections()->first();
+        $firstLesson = $firstSection?->section_lessons()->orderBy('lesson_number')->first();
+        $firstQuiz = $firstSection?->section_quizzes()->first();
+
+        $watchingId = $firstLesson?->id ?? $firstQuiz?->id ?? 0;
+        $watchingType = $firstLesson ? 'lesson' : ($firstQuiz ? 'quiz' : 'lesson');
+
+        return WatchHistory::create([
+            'course_id' => $course->id,
+            'user_id' => $user->id,
+            'current_watching_id' => $watchingId,
+            'current_watching_type' => $watchingType,
+            'current_section_id' => $firstSection?->id,
+            'completed_watching' => [],
+        ]);
     }
 
     public function watchHistory(Course $course, string $watching_id, string $watching_type, string $user_id): WatchHistory

@@ -32,15 +32,24 @@ const Quiz = ({ quiz, completed }: Props) => {
    const { course, watchHistory } = props;
 
    const dripContent = Boolean(course.drip_content);
-   const isCompleted = completed.some(
-      (item) => item.type === 'quiz' && item.id == quiz.id,
-   );
+   const isCompleted =
+      completed?.some(
+         (item) => item.type === 'quiz' && item.id == quiz.id,
+      ) ?? false;
    const isCurrentLesson =
-      watchHistory.current_watching_type === 'quiz' &&
-      watchHistory.current_watching_id == quiz.id;
+      watchHistory?.current_watching_type === 'quiz' &&
+      watchHistory?.current_watching_id == quiz.id;
    const isNext =
-      watchHistory.next_watching_type === 'quiz' &&
-      quiz.id == watchHistory.next_watching_id;
+      watchHistory?.next_watching_type === 'quiz' &&
+      quiz.id == watchHistory?.next_watching_id;
+
+   const playUrl = watchHistory?.id
+      ? courseRoutes.play.start({
+           type: 'quiz',
+           watch_history: watchHistory.id,
+           lesson_id: quiz.id,
+        })
+      : '#';
 
    return !dripContent ? (
       <div className="flex items-center justify-between gap-3 rounded-sm border p-2 py-2 md:gap-3">
@@ -53,11 +62,7 @@ const Quiz = ({ quiz, completed }: Props) => {
                     ? 'text-green-500'
                     : 'text-primary',
             )}
-            href={courseRoutes.play.start({
-               type: 'quiz',
-               watch_history: watchHistory.id,
-               lesson_id: quiz.id,
-            })}
+            href={playUrl}
          >
             {isCompleted ? (
                <CircleCheck className="h-4 w-4" />

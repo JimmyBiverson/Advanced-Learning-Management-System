@@ -257,6 +257,39 @@ const Basic = () => {
                            </RadioGroup>
                            <InputError message={errors.drip_content} />
                         </div>
+
+                        <div>
+                           <Label>Certificate Availability</Label>
+                           <RadioGroup
+                              name="certificate_enabled"
+                              defaultValue={
+                                 course.certificate_enabled ? 'enable' : 'disable'
+                              }
+                              className="flex items-center space-x-4 pt-2"
+                           >
+                              <div className="flex items-center space-x-2">
+                                 <RadioGroupItem
+                                    id="cert_enable"
+                                    value="enable"
+                                    className="cursor-pointer"
+                                 />
+                                 <Label htmlFor="cert_enable" className="mb-0">
+                                    Enabled
+                                 </Label>
+                              </div>
+                              <div className="flex items-center space-x-2">
+                                 <RadioGroupItem
+                                    id="cert_disable"
+                                    value="disable"
+                                    className="cursor-pointer"
+                                 />
+                                 <Label htmlFor="cert_disable" className="mb-0">
+                                    Disabled
+                                 </Label>
+                              </div>
+                           </RadioGroup>
+                           <InputError message={errors.certificate_enabled} />
+                        </div>
                      </div>
 
                      <LoadingButton

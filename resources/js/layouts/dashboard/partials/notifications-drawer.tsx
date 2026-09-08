@@ -1,7 +1,7 @@
 import { Link, router, usePage } from '@inertiajs/react';
 import { format, formatDistanceToNow } from 'date-fns';
 import { Bell, CheckCheck, ExternalLink } from 'lucide-react';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import {
@@ -19,6 +19,42 @@ export function NotificationsDrawer() {
    const { button, frontend, dashboard } = translate;
    const [open, setOpen] = useState(false);
    const unreadCount = notifications.length;
+   const previousUnreadCount = useRef(unreadCount);
+
+   useEffect(() => {
+      const poll = window.setInterval(() => {
+         router.reload({ only: ['notifications'], preserveScroll: true });
+      }, 30000);
+
+      return () => window.clearInterval(poll);
+   }, []);
+
+   useEffect(() => {
+      if (unreadCount > previousUnreadCount.current) {
+         try {
+            const AudioContext =
+               window.AudioContext ||
+               (window as typeof window & { webkitAudioContext?: typeof window.AudioContext })
+                  .webkitAudioContext;
+            if (AudioContext) {
+               const context = new AudioContext();
+               const oscillator = context.createOscillator();
+               const gain = context.createGain();
+               oscillator.frequency.value = 880;
+               gain.gain.setValueAtTime(0.08, context.currentTime);
+               gain.gain.exponentialRampToValueAtTime(0.001, context.currentTime + 0.18);
+               oscillator.connect(gain);
+               gain.connect(context.destination);
+               oscillator.start();
+               oscillator.stop(context.currentTime + 0.18);
+            }
+         } catch {
+            // Browsers may block audio until the user interacts with the page.
+         }
+      }
+
+      previousUnreadCount.current = unreadCount;
+   }, [unreadCount]);
 
    return (
       <Sheet open={open} onOpenChange={setOpen}>

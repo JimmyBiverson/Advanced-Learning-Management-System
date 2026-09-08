@@ -73,6 +73,10 @@ class SectionQuizService extends CourseSectionService
         }
 
         $totalQuestions = count($data['answers']);
+        if ($totalQuestions === 0) {
+            return false;
+        }
+
         $correctAnswers = 0;
 
         foreach ($data['answers'] as $answer) {

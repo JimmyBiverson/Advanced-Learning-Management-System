@@ -1,8 +1,9 @@
 import { Renderer } from '@/components/rich-editor';
 import { Card } from '@/components/ui/card';
 import VideoPlayer from '@/components/video-player';
+import courseRoutes from '@/routes/course';
 import { cn } from '@/lib/utils';
-import { usePage } from '@inertiajs/react';
+import { router, usePage } from '@inertiajs/react';
 
 import DocumentViewer from './document-viewer';
 import EmbedViewer from './embed-viewer';
@@ -14,7 +15,7 @@ interface LessonViewerProps {
 
 const LessonViewer = ({ lesson }: LessonViewerProps) => {
    const { props } = usePage<CoursePlayerProps>();
-   const { translate } = props;
+   const { translate, watchHistory } = props;
    const { frontend } = translate;
 
    return lesson ? (
@@ -31,6 +32,17 @@ const LessonViewer = ({ lesson }: LessonViewerProps) => {
                         type: 'video/mp4' as const,
                      },
                   ],
+               }}
+               onEnded={() => {
+                  if (watchHistory.next_watching_id) {
+                     router.visit(
+                        courseRoutes.play.start({
+                           type: watchHistory.next_watching_type as string,
+                           watch_history: watchHistory.id,
+                           lesson_id: watchHistory.next_watching_id,
+                        }),
+                     );
+                  }
                }}
             />
          )}

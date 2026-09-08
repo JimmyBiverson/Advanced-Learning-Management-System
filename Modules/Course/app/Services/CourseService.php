@@ -37,6 +37,16 @@ class CourseService extends MediaService
             ]);
         }
 
+        if (Auth::user()?->role !== 'admin') {
+            User::admins()->each(function (User $admin) use ($course): void {
+                $admin->notify(new AdminAttentionNotification(
+                    'New Course Submitted',
+                    $course->title.' was created and submitted by an instructor.',
+                    route('courses.edit', $course->id),
+                ));
+            });
+        }
+
         return $course;
     }
 

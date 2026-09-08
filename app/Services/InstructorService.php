@@ -160,10 +160,11 @@ class InstructorService extends MediaService
         $user->update(['instructor_id' => $instructor->id]);
 
         if (Auth::user()->role !== 'admin') {
-            $admin = User::where('role', 'admin')->first();
-            $admin->notify(new InstructorApprovalNotification([
+            $notification = new InstructorApprovalNotification([
                 'status' => 'pending',
-            ]));
+            ]);
+
+            User::admins()->each->notify($notification);
         } else {
             $instructor->update(['status' => 'approved']);
         }

@@ -31,6 +31,10 @@ class Course extends BaseModel implements HasMedia
 {
     use HasFactory, InteractsWithMedia;
 
+    protected $casts = [
+        'certificate_enabled' => 'boolean',
+    ];
+
     protected $fillable = [
         'title',
         'slug',
@@ -47,6 +51,7 @@ class Course extends BaseModel implements HasMedia
         'discount',
         'discount_price',
         'drip_content',
+        'certificate_enabled',
 
         'thumbnail',
         'banner',

@@ -17,9 +17,10 @@ interface Props {
       }>;
    };
    translate?: any;
+   onEnded?: () => void;
 }
 
-const VideoPlayer = ({ source, translate }: Props) => {
+const VideoPlayer = ({ source, translate, onEnded }: Props) => {
    // `mounted` is false during SSR — return the fallback immediately so
    // React never tries to resolve the lazy import in Node.js.
    const [mounted, setMounted] = useState(false);
@@ -40,7 +41,7 @@ const VideoPlayer = ({ source, translate }: Props) => {
 
    return (
       <Suspense fallback={fallback}>
-         <PlyrVideoPlayer source={source} translate={translate} />
+         <PlyrVideoPlayer source={source} translate={translate} onEnded={onEnded} />
       </Suspense>
    );
 };

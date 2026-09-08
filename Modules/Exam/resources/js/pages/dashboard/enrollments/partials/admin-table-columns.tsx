@@ -4,7 +4,75 @@ import { Button } from '@/components/ui/button';
 import { destroy as destroyExamEnrollment } from '@/routes/exam-enrollments';
 import { destroy as destroyCourseEnrollment } from '@/routes/exam-enrollments';
 import type { ColumnDef } from '@tanstack/react-table';
-import { Trash2 } from 'lucide-react';
+import { Lock, ShieldCheck, Trash2, Unlock } from 'lucide-react';
+import { router } from '@inertiajs/react';
+
+const GovernanceActions = ({ enrollment }: { enrollment: ExamEnrollment }) => {
+   const updateGovernance = (changes: Partial<ExamEnrollment>) => {
+      router.patch(
+         `/dashboard/exams/exam/enrollments/${enrollment.id}/governance`,
+         {
+            access_granted: changes.access_granted ?? enrollment.access_granted,
+            payment_status: changes.payment_status ?? enrollment.payment_status,
+            amount_paid: changes.amount_paid ?? enrollment.amount_paid,
+            results_locked: changes.results_locked ?? enrollment.results_locked,
+         },
+         { preserveScroll: true },
+      );
+   };
+
+   const getPaymentBadge = (status: string) => {
+      switch (status) {
+         case 'paid':
+            return <Badge className="bg-emerald-500/10 text-emerald-600 hover:bg-emerald-500/20">Paid</Badge>;
+         case 'partial':
+            return <Badge className="bg-amber-500/10 text-amber-600 hover:bg-amber-500/20">Partial</Badge>;
+         case 'blocked':
+            return <Badge className="bg-rose-500/10 text-rose-600 hover:bg-rose-500/20">Blocked</Badge>;
+         default:
+            return <Badge className="bg-gray-500/10 text-gray-600 hover:bg-gray-500/20">Pending</Badge>;
+      }
+   };
+
+   return (
+      <div className="flex items-center gap-2">
+         {getPaymentBadge(enrollment.payment_status || 'pending')}
+
+         <select
+            value={enrollment.payment_status || 'pending'}
+            onChange={(e) => updateGovernance({ payment_status: e.target.value })}
+            className="h-8 rounded-md border border-input bg-background px-2 text-xs"
+         >
+            <option value="pending">Pending Fee</option>
+            <option value="partial">Partial Fee</option>
+            <option value="paid">Paid Full</option>
+            <option value="blocked">Blocked</option>
+         </select>
+
+         <Button
+            type="button"
+            size="sm"
+            variant={enrollment.access_granted ? 'default' : 'outline'}
+            title={enrollment.access_granted ? 'Access Granted (Click to Revoke)' : 'Access Revoked (Click to Grant)'}
+            onClick={() => updateGovernance({ access_granted: !enrollment.access_granted })}
+            className={enrollment.access_granted ? 'bg-emerald-600 hover:bg-emerald-700' : 'text-rose-600'}
+         >
+            {enrollment.access_granted ? <ShieldCheck className="h-4 w-4" /> : <Unlock className="h-4 w-4" />}
+         </Button>
+
+         <Button
+            type="button"
+            size="sm"
+            variant="outline"
+            title={enrollment.results_locked ? 'Results Locked (Click to Unlock)' : 'Results Unlocked (Click to Lock)'}
+            onClick={() => updateGovernance({ results_locked: !enrollment.results_locked })}
+            className={enrollment.results_locked ? 'text-amber-600 border-amber-300' : 'text-muted-foreground'}
+         >
+            {enrollment.results_locked ? <Lock className="h-4 w-4 text-amber-600" /> : <Unlock className="h-4 w-4" />}
+         </Button>
+      </div>
+   );
+};
 
 const AdminTableColumn = (
    enrollmentType: 'course' | 'exam',
