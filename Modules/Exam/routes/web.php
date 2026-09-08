@@ -45,6 +45,7 @@ Route::middleware(['auth', 'role:admin'])->prefix('dashboard')->group(function (
     Route::post('exams/exam/coupons/verify', [ExamCouponController::class, 'verify'])->name('exam-coupons.verify');
 
     // course enrolment
+    Route::get('exams/exam/reports', [ExamEnrollmentController::class, 'reports'])->name('exam-enrollments.reports');
     Route::delete('exams/exam/enrollments/{id}', [ExamEnrollmentController::class, 'destroy'])->name('exam-enrollments.destroy');
     Route::patch('exams/exam/enrollments/{id}/governance', [ExamEnrollmentController::class, 'updateGovernance'])->name('exam-enrollments.governance');
 });

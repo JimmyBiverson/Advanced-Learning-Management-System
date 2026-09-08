@@ -91,4 +91,61 @@ class ExamEnrollmentController extends Controller
 
         return back()->with('success', 'Student exam governance & report updated successfully.');
     }
+
+    /**
+     * Display comprehensive Admin Exam Reports & Governance Dashboard.
+     */
+    public function reports(Request $request)
+    {
+        $search = $request->input('search');
+        $examId = $request->input('exam_id');
+        $paymentStatus = $request->input('payment_status');
+        $resultsLocked = $request->input('results_locked');
+
+        $query = \Modules\Exam\Models\ExamEnrollment::with(['exam', 'user']);
+
+        if ($search) {
+            $query->whereHas('user', function ($q) use ($search) {
+                $q->where('name', 'like', "%{$search}%")
+                  ->orWhere('email', 'like', "%{$search}%");
+            });
+        }
+
+        if ($examId) {
+            $query->where('exam_id', $examId);
+        }
+
+        if ($paymentStatus) {
+            $query->where('payment_status', $paymentStatus);
+        }
+
+        if ($resultsLocked !== null && $resultsLocked !== '') {
+            $query->where('results_locked', (bool) $resultsLocked);
+        }
+
+        $enrollments = $query->latest()->paginate(15)->withQueryString();
+
+        $stats = [
+            'total_enrollments' => \Modules\Exam\Models\ExamEnrollment::count(),
+            'paid_full' => \Modules\Exam\Models\ExamEnrollment::where('payment_status', 'paid')->count(),
+            'pending_payment' => \Modules\Exam\Models\ExamEnrollment::where('payment_status', 'pending')->count(),
+            'access_revoked' => \Modules\Exam\Models\ExamEnrollment::where('access_granted', false)->count(),
+            'results_locked' => \Modules\Exam\Models\ExamEnrollment::where('results_locked', true)->count(),
+            'offline_graded' => \Modules\Exam\Models\ExamEnrollment::whereNotNull('offline_marks')->where('offline_marks', '>', 0)->count(),
+        ];
+
+        $exams = $this->exam->getAllExams(['select' => 'id,title,exam_mode,total_marks']);
+
+        return Inertia::render('Exam/dashboard/reports/index', [
+            'enrollments' => $enrollments,
+            'stats' => $stats,
+            'exams' => $exams,
+            'filters' => [
+                'search' => $search,
+                'exam_id' => $examId,
+                'payment_status' => $paymentStatus,
+                'results_locked' => $resultsLocked,
+            ],
+        ]);
+    }
 }

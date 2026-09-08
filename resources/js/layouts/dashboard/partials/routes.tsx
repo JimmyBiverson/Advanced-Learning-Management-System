@@ -209,7 +209,7 @@ const getDashboardRoutes = (page: SharedData): DashboardRoute[] => {
                   {
                      name: 'Student Reports & Governance',
                      slug: 'exam-reports-governance',
-                     path: examEnrollments.index.url(),
+                     path: '/dashboard/exams/exam/reports',
                      access: ['admin', 'collaborative', 'administrative'],
                   },
                ],

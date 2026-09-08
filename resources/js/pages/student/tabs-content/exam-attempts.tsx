@@ -55,6 +55,45 @@ const ExamAttempts = () => {
             </div>
          )}
 
+         {/* Physical / Offline Exam Results Card */}
+         {enrollment?.offline_marks !== null && enrollment?.offline_marks !== undefined && (
+            <Card className="border-2 border-primary/30 bg-primary/5 p-6">
+               <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                  <div>
+                     <div className="flex items-center gap-2">
+                        <Badge variant="outline" className="border-primary text-primary font-semibold">
+                           Physical / Written Examination
+                        </Badge>
+                        {enrollment.results_locked ? (
+                           <Badge variant="destructive" className="flex items-center gap-1">
+                              <Lock className="h-3 w-3" /> Results Locked
+                           </Badge>
+                        ) : (
+                           <Badge className="bg-emerald-600">Grade Evaluated</Badge>
+                        )}
+                     </div>
+                     <h3 className="mt-2 text-lg font-bold">Official Physical Paper Result</h3>
+                     <p className="text-xs text-muted-foreground">
+                        {enrollment.offline_remarks || 'Recorded and verified by exam governance board.'}
+                     </p>
+                  </div>
+
+                  {!enrollment.results_locked ? (
+                     <div className="text-right">
+                        <div className="text-3xl font-extrabold text-primary">
+                           {enrollment.offline_marks} <span className="text-lg font-normal text-muted-foreground">/ {exam?.total_marks || 100}</span>
+                        </div>
+                        <p className="text-xs font-semibold uppercase text-emerald-600">Physical Exam Score</p>
+                     </div>
+                  ) : (
+                     <div className="text-right text-xs font-medium text-amber-700">
+                        Score hidden until results locked status is cleared.
+                     </div>
+                  )}
+               </div>
+            </Card>
+         )}
+
          {/* Exam Attempts Summary */}
          <div className="grid gap-4 md:grid-cols-4">
             <Card className="p-4">

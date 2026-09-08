@@ -54,6 +54,7 @@ class Exam extends BaseModel implements HasMedia
         'max_attempts',
         'total_questions',
         'status',
+        'exam_mode',
         'level',
         'thumbnail',
         'banner',
