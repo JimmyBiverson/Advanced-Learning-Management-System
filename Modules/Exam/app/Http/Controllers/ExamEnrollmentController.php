@@ -102,7 +102,14 @@ class ExamEnrollmentController extends Controller
         $paymentStatus = $request->input('payment_status');
         $resultsLocked = $request->input('results_locked');
 
+        $user = Auth::user();
         $query = \Modules\Exam\Models\ExamEnrollment::with(['exam', 'user']);
+
+        if (! isAdmin() && $user->instructor) {
+            $query->whereHas('exam', function ($q) use ($user) {
+                $q->where('instructor_id', $user->instructor->id);
+            });
+        }
 
         if ($search) {
             $query->whereHas('user', function ($q) use ($search) {
@@ -125,13 +132,20 @@ class ExamEnrollmentController extends Controller
 
         $enrollments = $query->latest()->paginate(15)->withQueryString();
 
+        $baseStatsQuery = \Modules\Exam\Models\ExamEnrollment::query();
+        if (! isAdmin() && $user->instructor) {
+            $baseStatsQuery->whereHas('exam', function ($q) use ($user) {
+                $q->where('instructor_id', $user->instructor->id);
+            });
+        }
+
         $stats = [
-            'total_enrollments' => \Modules\Exam\Models\ExamEnrollment::count(),
-            'paid_full' => \Modules\Exam\Models\ExamEnrollment::where('payment_status', 'paid')->count(),
-            'pending_payment' => \Modules\Exam\Models\ExamEnrollment::where('payment_status', 'pending')->count(),
-            'access_revoked' => \Modules\Exam\Models\ExamEnrollment::where('access_granted', false)->count(),
-            'results_locked' => \Modules\Exam\Models\ExamEnrollment::where('results_locked', true)->count(),
-            'offline_graded' => \Modules\Exam\Models\ExamEnrollment::whereNotNull('offline_marks')->where('offline_marks', '>', 0)->count(),
+            'total_enrollments' => (clone $baseStatsQuery)->count(),
+            'paid_full' => (clone $baseStatsQuery)->where('payment_status', 'paid')->count(),
+            'pending_payment' => (clone $baseStatsQuery)->where('payment_status', 'pending')->count(),
+            'access_revoked' => (clone $baseStatsQuery)->where('access_granted', false)->count(),
+            'results_locked' => (clone $baseStatsQuery)->where('results_locked', true)->count(),
+            'offline_graded' => (clone $baseStatsQuery)->whereNotNull('offline_marks')->where('offline_marks', '>', 0)->count(),
         ];
 
         $exams = $this->exam->getAllExams(['select' => 'id,title,exam_mode,total_marks']);

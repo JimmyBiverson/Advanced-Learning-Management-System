@@ -44,18 +44,20 @@ Route::middleware(['auth', 'role:admin'])->prefix('dashboard')->group(function (
     Route::resource('exams/exam/coupons', ExamCouponController::class)->only(['index', 'store', 'update', 'destroy'])->names('exam-coupons');
     Route::post('exams/exam/coupons/verify', [ExamCouponController::class, 'verify'])->name('exam-coupons.verify');
 
-    // course enrolment
-    Route::get('exams/exam/reports', [ExamEnrollmentController::class, 'reports'])->name('exam-enrollments.reports');
+    // course enrolment deletion
     Route::delete('exams/exam/enrollments/{id}', [ExamEnrollmentController::class, 'destroy'])->name('exam-enrollments.destroy');
-    Route::patch('exams/exam/enrollments/{id}/governance', [ExamEnrollmentController::class, 'updateGovernance'])->name('exam-enrollments.governance');
 });
 
 /*
 |--------------------------------------------------------------------------
-| Instructor Routes
+| Instructor & Admin Shared Routes
 |--------------------------------------------------------------------------
 */
 Route::middleware(['auth', 'role:instructor,admin'])->prefix('dashboard')->group(function () {
+    // Student Reports & Governance (Instructor & Admin)
+    Route::get('exams/exam/reports', [ExamEnrollmentController::class, 'reports'])->name('exam-enrollments.reports');
+    Route::patch('exams/exam/enrollments/{id}/governance', [ExamEnrollmentController::class, 'updateGovernance'])->name('exam-enrollments.governance');
+
     // Exams (Admin can manage all)
     Route::resource('exams', ExamController::class)->except(['show', 'update', 'destroy']);
     Route::post('exams/{exam}', [ExamController::class, 'update'])->name('exams.update');

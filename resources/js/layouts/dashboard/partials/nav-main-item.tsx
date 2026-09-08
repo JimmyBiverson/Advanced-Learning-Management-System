@@ -29,11 +29,15 @@ const NavMainItem = (props: NavMainItemProps) => {
    const compact = state === 'collapsed';
 
    const activeAccordion = (slug: string) => {
-      return routeSecondSegment(page.url) === slug;
+      const urlPath = page.url.split('?')[0];
+      const segments = urlPath.split('/').filter(Boolean);
+      return routeSecondSegment(page.url) === slug || segments.includes(slug);
    };
 
    const activeRoute = (slug: string) => {
-      return routeLastSegment(page.url) === slug;
+      const urlPath = page.url.split('?')[0];
+      const last = routeLastSegment(page.url);
+      return last === slug || urlPath.includes(`/${slug}`) || urlPath.endsWith(slug);
    };
 
    const activeChildRoute = (parentSlug: string, childSlug: string) => {

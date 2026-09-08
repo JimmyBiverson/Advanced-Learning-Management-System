@@ -29,7 +29,9 @@ export function NavMain() {
 
    if (page.url !== prevUrl) {
       setPrevUrl(page.url);
-      setOpenAccordions(accordionFromUrl);
+      if (accordionFromUrl) {
+         setOpenAccordions(accordionFromUrl);
+      }
    }
 
    const routes = getDashboardRoutes(page.props);
