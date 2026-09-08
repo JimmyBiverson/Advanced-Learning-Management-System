@@ -55,39 +55,41 @@ const ExamAttempts = () => {
             </div>
          )}
 
-         {/* Physical / Offline Exam Results Card */}
-         {enrollment?.offline_marks !== null && enrollment?.offline_marks !== undefined && (
-            <Card className="border-2 border-primary/30 bg-primary/5 p-6">
+         {/* Physical / Offline Sit-In Exam Results Card */}
+         {(exam?.exam_mode === 'physical' || exam?.exam_mode === 'hybrid' || (enrollment?.offline_marks !== null && enrollment?.offline_marks !== undefined)) && (
+            <Card className="border-2 border-primary/30 bg-primary/5 p-4 sm:p-6 shadow-sm">
                <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-                  <div>
-                     <div className="flex items-center gap-2">
-                        <Badge variant="outline" className="border-primary text-primary font-semibold">
-                           Physical / Written Examination
+                  <div className="space-y-1">
+                     <div className="flex flex-wrap items-center gap-2">
+                        <Badge variant="outline" className="border-primary text-primary font-semibold text-xs">
+                           📝 Physical Sit-In Examination
                         </Badge>
-                        {enrollment.results_locked ? (
-                           <Badge variant="destructive" className="flex items-center gap-1">
+                        {enrollment?.results_locked ? (
+                           <Badge variant="destructive" className="flex items-center gap-1 text-xs">
                               <Lock className="h-3 w-3" /> Results Locked
                            </Badge>
                         ) : (
-                           <Badge className="bg-emerald-600">Grade Evaluated</Badge>
+                           <Badge className="bg-emerald-600 text-xs">Evaluated by Examiner</Badge>
                         )}
                      </div>
-                     <h3 className="mt-2 text-lg font-bold">Official Physical Paper Result</h3>
+                     <h3 className="text-base sm:text-lg font-bold">Official Physical Paper Statement of Results</h3>
                      <p className="text-xs text-muted-foreground">
-                        {enrollment.offline_remarks || 'Recorded and verified by exam governance board.'}
+                        {enrollment?.offline_remarks || 'Grades verified and recorded by official exam board.'}
                      </p>
                   </div>
 
-                  {!enrollment.results_locked ? (
-                     <div className="text-right">
-                        <div className="text-3xl font-extrabold text-primary">
-                           {enrollment.offline_marks} <span className="text-lg font-normal text-muted-foreground">/ {exam?.total_marks || 100}</span>
+                  {!enrollment?.results_locked ? (
+                     <div className="flex items-center justify-between sm:flex-col sm:items-end border-t sm:border-t-0 pt-3 sm:pt-0">
+                        <span className="text-xs font-semibold text-muted-foreground sm:hidden">Paper Score:</span>
+                        <div className="text-2xl sm:text-3xl font-extrabold text-primary">
+                           {enrollment?.offline_marks !== null && enrollment?.offline_marks !== undefined ? enrollment.offline_marks : 'N/A'} 
+                           <span className="text-sm font-normal text-muted-foreground"> / {exam?.total_marks || 100}</span>
                         </div>
-                        <p className="text-xs font-semibold uppercase text-emerald-600">Physical Exam Score</p>
+                        <p className="hidden sm:block text-[11px] font-semibold uppercase text-emerald-600">Physical Exam Score</p>
                      </div>
                   ) : (
-                     <div className="text-right text-xs font-medium text-amber-700">
-                        Score hidden until results locked status is cleared.
+                     <div className="text-left sm:text-right text-xs font-medium text-amber-700">
+                        Score restricted until fee clearance.
                      </div>
                   )}
                </div>

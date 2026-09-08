@@ -127,90 +127,90 @@ const ExamReports = (props: ExamReportsProps) => {
             </div>
 
             {/* Key Metrics Cards Grid */}
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-6">
+            <div className="grid gap-3 grid-cols-2 sm:grid-cols-3 lg:grid-cols-6">
                <Card className="border-l-4 border-l-primary shadow-sm">
-                  <CardHeader className="flex flex-row items-center justify-between pb-2">
-                     <CardTitle className="text-xs font-medium uppercase text-muted-foreground">
+                  <CardHeader className="flex flex-row items-center justify-between pb-2 p-3 sm:p-4">
+                     <CardTitle className="text-[10px] sm:text-xs font-medium uppercase text-muted-foreground">
                         Total Enrolled
                      </CardTitle>
-                     <Users className="h-4 w-4 text-primary" />
+                     <Users className="h-4 w-4 text-primary shrink-0" />
                   </CardHeader>
-                  <CardContent>
-                     <div className="text-2xl font-bold">{stats.total_enrollments}</div>
-                     <p className="text-xs text-muted-foreground">Active exam students</p>
+                  <CardContent className="p-3 pt-0 sm:p-4 sm:pt-0">
+                     <div className="text-xl sm:text-2xl font-bold">{stats.total_enrollments}</div>
+                     <p className="text-[11px] text-muted-foreground">Active students</p>
                   </CardContent>
                </Card>
 
                <Card className="border-l-4 border-l-emerald-500 shadow-sm">
-                  <CardHeader className="flex flex-row items-center justify-between pb-2">
-                     <CardTitle className="text-xs font-medium uppercase text-muted-foreground">
+                  <CardHeader className="flex flex-row items-center justify-between pb-2 p-3 sm:p-4">
+                     <CardTitle className="text-[10px] sm:text-xs font-medium uppercase text-muted-foreground">
                         Paid Full
                      </CardTitle>
-                     <CheckCircle2 className="h-4 w-4 text-emerald-500" />
+                     <CheckCircle2 className="h-4 w-4 text-emerald-500 shrink-0" />
                   </CardHeader>
-                  <CardContent>
-                     <div className="text-2xl font-bold text-emerald-600">{stats.paid_full}</div>
-                     <p className="text-xs text-muted-foreground">Cleared fee accounts</p>
+                  <CardContent className="p-3 pt-0 sm:p-4 sm:pt-0">
+                     <div className="text-xl sm:text-2xl font-bold text-emerald-600">{stats.paid_full}</div>
+                     <p className="text-[11px] text-muted-foreground">Cleared fees</p>
                   </CardContent>
                </Card>
 
                <Card className="border-l-4 border-l-amber-500 shadow-sm">
-                  <CardHeader className="flex flex-row items-center justify-between pb-2">
-                     <CardTitle className="text-xs font-medium uppercase text-muted-foreground">
+                  <CardHeader className="flex flex-row items-center justify-between pb-2 p-3 sm:p-4">
+                     <CardTitle className="text-[10px] sm:text-xs font-medium uppercase text-muted-foreground">
                         Pending Fee
                      </CardTitle>
-                     <Clock className="h-4 w-4 text-amber-500" />
+                     <Clock className="h-4 w-4 text-amber-500 shrink-0" />
                   </CardHeader>
-                  <CardContent>
-                     <div className="text-2xl font-bold text-amber-600">{stats.pending_payment}</div>
-                     <p className="text-xs text-muted-foreground">Awaiting clearance</p>
+                  <CardContent className="p-3 pt-0 sm:p-4 sm:pt-0">
+                     <div className="text-xl sm:text-2xl font-bold text-amber-600">{stats.pending_payment}</div>
+                     <p className="text-[11px] text-muted-foreground">Awaiting clearance</p>
                   </CardContent>
                </Card>
 
                <Card className="border-l-4 border-l-rose-500 shadow-sm">
-                  <CardHeader className="flex flex-row items-center justify-between pb-2">
-                     <CardTitle className="text-xs font-medium uppercase text-muted-foreground">
+                  <CardHeader className="flex flex-row items-center justify-between pb-2 p-3 sm:p-4">
+                     <CardTitle className="text-[10px] sm:text-xs font-medium uppercase text-muted-foreground">
                         Access Revoked
                      </CardTitle>
-                     <ShieldAlert className="h-4 w-4 text-rose-500" />
+                     <ShieldAlert className="h-4 w-4 text-rose-500 shrink-0" />
                   </CardHeader>
-                  <CardContent>
-                     <div className="text-2xl font-bold text-rose-600">{stats.access_revoked}</div>
-                     <p className="text-xs text-muted-foreground">Blocked from exam</p>
+                  <CardContent className="p-3 pt-0 sm:p-4 sm:pt-0">
+                     <div className="text-xl sm:text-2xl font-bold text-rose-600">{stats.access_revoked}</div>
+                     <p className="text-[11px] text-muted-foreground">Blocked students</p>
                   </CardContent>
                </Card>
 
                <Card className="border-l-4 border-l-purple-500 shadow-sm">
-                  <CardHeader className="flex flex-row items-center justify-between pb-2">
-                     <CardTitle className="text-xs font-medium uppercase text-muted-foreground">
+                  <CardHeader className="flex flex-row items-center justify-between pb-2 p-3 sm:p-4">
+                     <CardTitle className="text-[10px] sm:text-xs font-medium uppercase text-muted-foreground">
                         Results Locked
                      </CardTitle>
-                     <Lock className="h-4 w-4 text-purple-500" />
+                     <Lock className="h-4 w-4 text-purple-500 shrink-0" />
                   </CardHeader>
-                  <CardContent>
-                     <div className="text-2xl font-bold text-purple-600">{stats.results_locked}</div>
-                     <p className="text-xs text-muted-foreground">Score viewing restricted</p>
+                  <CardContent className="p-3 pt-0 sm:p-4 sm:pt-0">
+                     <div className="text-xl sm:text-2xl font-bold text-purple-600">{stats.results_locked}</div>
+                     <p className="text-[11px] text-muted-foreground">Restricted scores</p>
                   </CardContent>
                </Card>
 
                <Card className="border-l-4 border-l-blue-500 shadow-sm">
-                  <CardHeader className="flex flex-row items-center justify-between pb-2">
-                     <CardTitle className="text-xs font-medium uppercase text-muted-foreground">
+                  <CardHeader className="flex flex-row items-center justify-between pb-2 p-3 sm:p-4">
+                     <CardTitle className="text-[10px] sm:text-xs font-medium uppercase text-muted-foreground">
                         Physical Exams
                      </CardTitle>
-                     <BookOpen className="h-4 w-4 text-blue-500" />
+                     <BookOpen className="h-4 w-4 text-blue-500 shrink-0" />
                   </CardHeader>
-                  <CardContent>
-                     <div className="text-2xl font-bold text-blue-600">{stats.offline_graded}</div>
-                     <p className="text-xs text-muted-foreground">Offline papers graded</p>
+                  <CardContent className="p-3 pt-0 sm:p-4 sm:pt-0">
+                     <div className="text-xl sm:text-2xl font-bold text-blue-600">{stats.offline_graded}</div>
+                     <p className="text-[11px] text-muted-foreground">Paper exams graded</p>
                   </CardContent>
                </Card>
             </div>
 
             {/* Filter Toolbar */}
             <Card className="shadow-sm">
-               <CardContent className="p-4">
-                  <div className="grid gap-3 md:grid-cols-5">
+               <CardContent className="p-3 sm:p-4">
+                  <div className="grid gap-3 grid-cols-1 sm:grid-cols-2 lg:grid-cols-5">
                      <div className="relative">
                         <Search className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
                         <Input

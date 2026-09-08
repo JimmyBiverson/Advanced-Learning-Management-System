@@ -61,9 +61,10 @@ class ExamRequest extends FormRequest
             'total_marks' => 'required|numeric|min:1',
             'max_attempts' => 'required|integer|min:1',
 
-            // Status & Level
+            // Status, Level & Mode
             'status' => 'nullable|string|in:draft,published,archived',
             'level' => 'nullable|string|in:beginner,intermediate,advanced',
+            'exam_mode' => 'nullable|string|in:online,physical,hybrid',
 
             // Media
             'thumbnail' => 'nullable|file|image|mimes:jpeg,jpg,png,webp|max:2048',

@@ -218,6 +218,24 @@ const Basic = () => {
                         </Select>
                         <InputError message={errors.status} />
                      </div>
+
+                     <div>
+                        <Label>Exam Type / Mode *</Label>
+                        <Select
+                           name="exam_mode"
+                           defaultValue={exam.exam_mode || 'online'}
+                        >
+                           <SelectTrigger>
+                              <SelectValue placeholder="Select exam mode" />
+                           </SelectTrigger>
+                           <SelectContent>
+                              <SelectItem value="online">🌐 Online Computer-Based Exam</SelectItem>
+                              <SelectItem value="physical">📝 Physical Sit-In Written Exam</SelectItem>
+                              <SelectItem value="hybrid">🔀 Hybrid Exam (Online + Paper)</SelectItem>
+                           </SelectContent>
+                        </Select>
+                        <InputError message={errors.exam_mode} />
+                     </div>
                   </div>
 
                   <LoadingButton

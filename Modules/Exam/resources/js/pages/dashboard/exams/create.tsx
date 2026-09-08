@@ -198,6 +198,24 @@ const CreateExam = (props: Props) => {
                               </Select>
                               <InputError message={errors.level} />
                            </div>
+
+                           <div>
+                              <Label>Exam Type / Mode *</Label>
+                              <Select name="exam_mode" defaultValue="online">
+                                 <SelectTrigger>
+                                    <SelectValue placeholder="Select exam mode" />
+                                 </SelectTrigger>
+                                 <SelectContent>
+                                    <SelectItem value="online">🌐 Online Computer-Based Exam</SelectItem>
+                                    <SelectItem value="physical">📝 Physical Sit-In Written Exam</SelectItem>
+                                    <SelectItem value="hybrid">🔀 Hybrid Exam (Online + Paper)</SelectItem>
+                                 </SelectContent>
+                              </Select>
+                              <p className="mt-1 text-[11px] text-muted-foreground">
+                                 Physical exams allow manual grading & offline paper mark entry.
+                              </p>
+                              <InputError message={errors.exam_mode} />
+                           </div>
                         </div>
 
                         <div className="grid gap-6 md:grid-cols-3">
