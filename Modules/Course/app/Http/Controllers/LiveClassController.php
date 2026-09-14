@@ -42,7 +42,7 @@ class LiveClassController extends Controller
             $this->refreshZoomStartUrl($live_class);
         }
 
-        return Inertia::render('course-player/live-class/zoom-live-class', [
+        return Inertia::render('Course/course-player/live-class/zoom-live-class', [
             'live_class' => $live_class,
             'watchHistory' => $watchHistory,
             'is_host' => $isHost,
