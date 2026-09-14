@@ -71,7 +71,6 @@ const ZoomLiveClass = ({
    const [loading, setLoading] = useState(true);
    const [error, setError] = useState<string | null>(null);
    const [sdkLoaded, setSdkLoaded] = useState(false);
-   const [meetingUrl, setMeetingUrl] = useState<string | null>(null);
    const [sdkModeActive, setSdkModeActive] = useState(false);
    const initializationRef = useRef(false);
 
@@ -107,6 +106,10 @@ const ZoomLiveClass = ({
    const targetUrl = is_host
       ? meetingInfo?.start_url
       : meetingInfo?.join_url;
+
+   const zoomAppUrl = meetingInfo?.id
+      ? `zoommtg://zoom.us/${is_host ? 'start' : 'join'}?confno=${meetingInfo.id}&pwd=${meetingInfo.password ?? ''}`
+      : null;
 
    // Load Zoom Client View SDK scripts
    const loadZoomSDK = async () => {
@@ -323,18 +326,6 @@ const ZoomLiveClass = ({
       }
    };
 
-   // Open Zoom meeting URL in a new tab (direct user gesture)
-   const openMeeting = () => {
-      if (!targetUrl) {
-         setError(frontend.meeting_information_not_found);
-
-         return;
-      }
-
-      window.open(targetUrl, '_blank', 'noopener,noreferrer');
-      setMeetingUrl(targetUrl);
-   };
-
    // Join via Zoom web SDK (in-page)
    const joinViaSDK = async () => {
       setSdkModeActive(true);
@@ -380,8 +371,8 @@ const ZoomLiveClass = ({
 
       // Only use the Web SDK when the admin explicitly enabled it and the credentials exist.
       if (!zoom_sdk_enabled || !zoom_sdk_client_id) {
-         // Non-SDK mode: no auto-open (browsers block window.open without a user gesture).
-         // Show a join button instead so the user gesture opens the tab reliably.
+         // Non-SDK mode: show a real anchor link so the browser opens the Zoom
+         // launch page in a new tab (auto-launches the desktop app when installed).
          setLoading(false);
 
          return;
@@ -400,56 +391,6 @@ const ZoomLiveClass = ({
       // Cleanup on unmount (only relevant if SDK was actually initialized)
       return cleanup;
    }, []); // eslint-disable-line react-hooks/exhaustive-deps -- Mount-only decisions
-
-   // Render meeting-opened state (non-SDK flow)
-   if (meetingUrl) {
-      return (
-         <div className="flex min-h-screen items-center justify-center bg-gray-100">
-            <div className="max-w-md rounded-lg bg-white p-8 text-center shadow-lg">
-               <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-green-100">
-                  <svg
-                     className="h-8 w-8 text-green-600"
-                     fill="none"
-                     viewBox="0 0 24 24"
-                     stroke="currentColor"
-                  >
-                     <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                     />
-                  </svg>
-               </div>
-               <h1 className="mb-2 text-xl font-bold text-gray-900">
-                  {is_host
-                     ? (frontend.live_class_started ?? 'Meeting started')
-                     : (frontend.joining_meeting ?? 'Joining meeting')}
-               </h1>
-               <p className="mb-6 text-sm text-gray-600">
-                  {frontend.meeting_opened_in_new_tab ??
-                     'The meeting has been opened in a new tab. If the meeting did not open, click the link below.'}
-               </p>
-               <a
-                  href={meetingUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mb-4 inline-block rounded bg-blue-600 px-6 py-2 text-sm font-medium text-white hover:bg-blue-700"
-               >
-                  {frontend.open_in_zoom_app ?? 'Open in Zoom'}
-               </a>
-               <div>
-                  <Link
-                     href={redirectUrl}
-                     className="mt-2 inline-block text-sm text-blue-600 hover:underline"
-                  >
-                     {frontend.return_to_course ?? 'Return to course'}
-                  </Link>
-               </div>
-            </div>
-         </div>
-      );
-   }
 
    // Render loading state
    if (loading) {
@@ -546,8 +487,10 @@ const ZoomLiveClass = ({
 
             {targetUrl ? (
                <>
-                  <button
-                     onClick={openMeeting}
+                  <a
+                     href={targetUrl}
+                     target="_blank"
+                     rel="noopener noreferrer"
                      className="mb-4 inline-flex w-full items-center justify-center rounded-lg bg-blue-600 px-6 py-3 text-base font-semibold text-white shadow-lg transition hover:bg-blue-700"
                   >
                      <svg
@@ -564,7 +507,16 @@ const ZoomLiveClass = ({
                         />
                      </svg>
                      {primaryAction}
-                  </button>
+                  </a>
+
+                  {zoomAppUrl && (
+                     <a
+                        href={zoomAppUrl}
+                        className="mb-4 inline-flex w-full items-center justify-center rounded-lg border border-blue-600 bg-white px-6 py-3 text-base font-semibold text-blue-600 transition hover:bg-blue-50"
+                     >
+                        {frontend.open_in_zoom_app ?? 'Open in Zoom App'}
+                     </a>
+                  )}
 
                   {zoom_sdk_enabled && zoom_sdk_client_id && (
                      <button
