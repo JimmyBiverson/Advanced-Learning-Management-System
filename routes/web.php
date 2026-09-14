@@ -4,11 +4,16 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InstructorController;
 use App\Http\Controllers\JobCircularController;
 use App\Http\Controllers\SitemapController;
+use App\Http\Controllers\SettingController;
 use App\Http\Controllers\SubscribeController;
 use Illuminate\Support\Facades\Route;
 
 // Web Routes - Apply global web middleware
 Route::middleware(['web'])->group(function () {
+    Route::get('zoom/oauth/callback', [SettingController::class, 'zoom_oauth_callback'])
+        ->middleware(['auth', 'role:admin'])
+        ->name('zoom.oauth.callback');
+
     // Public routes (web.php)
     Route::get('/', [HomeController::class, 'index'])->name('home')->middleware('customize');
     Route::get('sitemap.xml', SitemapController::class)->name('sitemap');

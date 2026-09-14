@@ -13,9 +13,9 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { destroy as destroyExamEnrollment } from '@/routes/exam-enrollments';
 import { destroy as destroyCourseEnrollment } from '@/routes/exam-enrollments';
+import { router } from '@inertiajs/react';
 import type { ColumnDef } from '@tanstack/react-table';
 import { FileText, Lock, ShieldCheck, Trash2, Unlock } from 'lucide-react';
-import { router } from '@inertiajs/react';
 import { useState } from 'react';
 
 const GovernanceModal = ({ enrollment }: { enrollment: ExamEnrollment }) => {

@@ -118,6 +118,30 @@ class ZoomLiveService
         return $response;
     }
 
+    /**
+     * Fetch current meeting details so start_url / join_url contain a fresh (unexpired) authorization token.
+     */
+    public function getZoomLive(string $meetingId)
+    {
+        $token = $this->createZoomToken();
+
+        $zoomEndpoint = 'https://api.zoom.us/v2/meetings/'.$meetingId;
+
+        $headers = [
+            'Authorization: Bearer '.$token,
+            'Accept: application/json',
+        ];
+
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $zoomEndpoint);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+        $response = curl_exec($ch);
+        curl_close($ch);
+
+        return $response;
+    }
+
     public function createZoomToken()
     {
         $clientId = $this->zoomConfig['zoom_client_id'];

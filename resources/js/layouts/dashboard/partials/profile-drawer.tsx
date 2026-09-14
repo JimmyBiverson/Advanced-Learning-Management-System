@@ -145,7 +145,11 @@ export function ProfileDrawer() {
                   className="flex w-full cursor-pointer items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-foreground transition-colors hover:bg-accent hover:text-accent-foreground"
                   onClick={() => {
                      setOpen(false);
-                     router.get(user.role === 'student' ? student.index() : '/dashboard');
+                     router.get(
+                        user.role === 'student'
+                           ? student.index({ tab: 'courses' })
+                           : '/dashboard',
+                     );
                   }}
                >
                   <LayoutDashboard className="h-4 w-4 text-primary" />

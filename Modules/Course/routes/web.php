@@ -109,7 +109,7 @@ Route::middleware(['auth', 'role:instructor,admin'])->prefix('dashboard')->group
     Route::post('quiz-questions/sort', [QuestionController::class, 'sort'])->name('quiz-questions.sort');
 
     // live classes
-    Route::resource('live-classes', LiveClassController::class)->only(['store', 'update', 'destroy']);
+    Route::resource('live-classes', LiveClassController::class)->only(['store', 'update', 'destroy'])->middleware('smtpConfig');
 
     // Course Enrollments
     Route::get('courses/course/enrollments', [CourseEnrollmentController::class, 'index'])->name('course-enrollments.index');

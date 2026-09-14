@@ -17,7 +17,6 @@ import {
    DropdownMenuSeparator,
    DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import { dashboard } from '@/routes';
 import { logout } from '@/routes';
 import student from '@/routes/student';
 
@@ -76,7 +75,7 @@ const ProfileToggle = () => {
                onClick={() =>
                   router.get(
                      user.role === 'student'
-                        ? student.index()
+                        ? student.index({ tab: 'courses' })
                         : '/dashboard',
                   )
                }

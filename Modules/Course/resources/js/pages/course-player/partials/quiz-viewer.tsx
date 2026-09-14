@@ -137,6 +137,7 @@ const QuizViewer = ({ quiz }: QuizViewerProps) => {
    const startQuiz = () => {
       setData('answers', []);
       setFinished(false);
+
       if (questions.length > 0) {
          setCurrentTab(questions[0].id.toString());
       }
@@ -272,6 +273,7 @@ const QuizViewer = ({ quiz }: QuizViewerProps) => {
 
                   {questions.map((question, index) => {
                      let options: string[] = [];
+
                      try {
                         options = question?.options
                            ? typeof question.options === 'string'

@@ -22,11 +22,7 @@ class InstructorApprovalNotification extends Notification
      */
     public function via(object $notifiable): array
     {
-        if ($notifiable->role !== 'admin') {
-            return ['mail', 'database'];
-        }
-
-        return ['database'];
+        return ['mail', 'database'];
     }
 
     /**
@@ -34,6 +30,14 @@ class InstructorApprovalNotification extends Notification
      */
     public function toMail(object $notifiable): MailMessage
     {
+        if ($notifiable->role === 'admin') {
+            return (new MailMessage)
+                ->subject('New instructor application')
+                ->greeting('Hello '.$notifiable->name.',')
+                ->line('A new instructor application is waiting for review.')
+                ->action('Review applications', route('instructors.applications'));
+        }
+
         return (new MailMessage)
             ->subject('Instructor Application Status Update')
             ->view('mail.instructor-approval', [

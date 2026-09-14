@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Modules\Course\Models\Course;
 use Modules\Course\Models\CourseEnrollment;
+use Modules\Course\Models\CourseLiveClass;
 use Modules\Course\Models\WatchHistory;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -29,7 +30,33 @@ class CourseEnrollmentMiddleware
             return $next($request);
         }
 
+        $liveClass = $request->route('id')
+            ? CourseLiveClass::with('course')->find($request->route('id'))
+            : null;
         $watchHistory = $request->route('watch_history');
+
+        if ($liveClass) {
+            $course = $liveClass->course;
+
+            if (! $course) {
+                return redirect()->route('category.courses', ['category' => 'all'])->with('error', 'Course not found');
+            }
+
+            if ($user->role === 'instructor' && $user->instructor_id === $course->instructor_id) {
+                return $next($request);
+            }
+
+            $enrollment = CourseEnrollment::where('user_id', $user->id)
+                ->where('course_id', $course->id)
+                ->first();
+
+            if ($enrollment) {
+                return $next($request);
+            }
+
+            return redirect()->route('course.details', ['slug' => $course->slug, 'id' => $course->id])->with('error', 'You are not enrolled in this course');
+        }
+
         $watchHistoryModel = is_object($watchHistory) 
             ? $watchHistory 
             : WatchHistory::find($watchHistory);

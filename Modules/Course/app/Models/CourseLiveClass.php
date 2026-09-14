@@ -38,7 +38,9 @@ class CourseLiveClass extends Model
     public function getAdditionalInfoArray()
     {
         if (is_string($this->additional_info)) {
-            return $this->additional_info ?: [];
+            $decoded = json_decode($this->additional_info, true);
+
+            return is_array($decoded) ? $decoded : [];
         } elseif (is_array($this->additional_info)) {
             return $this->additional_info;
         }

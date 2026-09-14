@@ -81,12 +81,6 @@ const LiveClassStatus = ({ courseId, liveClass, zoomConfig }: Props) => {
          clearInterval(interval);
       };
    }, [liveClass.class_date_and_time, liveClass.additional_info?.end_time]);
-   const isSdkConfig =
-      zoomConfig.zoom_web_sdk &&
-      zoomConfig.zoom_sdk_client_id &&
-      zoomConfig.zoom_sdk_client_secret
-         ? true
-         : false;
 
    // Get status color
    const getStatusColor = (status: string) => {
@@ -110,39 +104,20 @@ const LiveClassStatus = ({ courseId, liveClass, zoomConfig }: Props) => {
             {status}
          </span>
 
-         {/* Join button - show for live classes or when about to start */}
+         {/* Join button - show for live classes */}
          {status === 'live' ? (
-            isSdkConfig ? (
-               <Link href={start(liveClass.id)}>
-                  <Button
-                     size="sm"
-                     variant={status === 'live' ? 'default' : 'ghost'}
-                     className={cn(
-                        'h-8 w-full justify-start has-[svg]:!px-2',
-                        status !== 'live' &&
-                           'bg-muted hover:bg-muted-foreground/10',
-                     )}
-                  >
-                     <ExternalLink size={15} />
-                     <span>{button.join_class}</span>
-                  </Button>
-               </Link>
-            ) : (
-               <a href={liveClass.additional_info.join_url} target="_blank">
-                  <Button
-                     size="sm"
-                     variant={status === 'live' ? 'default' : 'ghost'}
-                     className={cn(
-                        'h-8 w-full justify-start has-[svg]:!px-2',
-                        status !== 'live' &&
-                           'bg-muted hover:bg-muted-foreground/10',
-                     )}
-                  >
-                     <ExternalLink size={15} />
-                     <span>{button.join_class}</span>
-                  </Button>
-               </a>
-            )
+            <Link href={start(liveClass.id)}>
+               <Button
+                  size="sm"
+                  variant="default"
+                  className={cn(
+                     'h-8 w-full justify-start has-[svg]:!px-2',
+                  )}
+               >
+                  <ExternalLink size={15} />
+                  <span>{button.join_class}</span>
+               </Button>
+            </Link>
          ) : (
             <Button
                disabled

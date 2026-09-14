@@ -1,8 +1,8 @@
 import { Renderer } from '@/components/rich-editor';
 import { Card } from '@/components/ui/card';
 import VideoPlayer from '@/components/video-player';
-import courseRoutes from '@/routes/course';
 import { cn } from '@/lib/utils';
+import courseRoutes from '@/routes/course';
 import { router, usePage } from '@inertiajs/react';
 
 import DocumentViewer from './document-viewer';

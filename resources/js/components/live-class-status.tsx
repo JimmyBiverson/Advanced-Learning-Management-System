@@ -79,12 +79,6 @@ const LiveClassStatus = ({ courseId, liveClass, zoomConfig }: Props) => {
          clearInterval(interval);
       };
    }, [liveClass.class_date_and_time, liveClass.additional_info?.end_time]);
-   const isSdkConfig =
-      zoomConfig.zoom_web_sdk &&
-      zoomConfig.zoom_sdk_client_id &&
-      zoomConfig.zoom_sdk_client_secret
-         ? true
-         : false;
 
    // Get status color
    const getStatusColor = (status: string) => {
@@ -108,31 +102,18 @@ const LiveClassStatus = ({ courseId, liveClass, zoomConfig }: Props) => {
             {status}
          </span>
 
-         {/* Join button - show for live classes or when about to start */}
+         {/* Join button - show for live classes */}
          {status === 'live' ? (
-            isSdkConfig ? (
-               <Link href={liveClassRoutes.start(liveClass.id)}>
-                  <Button
-                     size="sm"
-                     variant={status === 'live' ? 'default' : 'outline'}
-                     className="flex w-full items-center gap-2"
-                  >
-                     <ExternalLink className="h-4 w-4" />
-                     {frontend.join_class}
-                  </Button>
-               </Link>
-            ) : (
-               <a href={liveClass.additional_info.join_url} target="_blank">
-                  <Button
-                     size="sm"
-                     variant={status === 'live' ? 'default' : 'outline'}
-                     className="flex w-full items-center gap-2"
-                  >
-                     <ExternalLink className="h-4 w-4" />
-                     {frontend.join_class}
-                  </Button>
-               </a>
-            )
+            <Link href={liveClassRoutes.start(liveClass.id)}>
+               <Button
+                  size="sm"
+                  variant="default"
+                  className="flex w-full items-center gap-2"
+               >
+                  <ExternalLink className="h-4 w-4" />
+                  {frontend.join_class}
+               </Button>
+            </Link>
          ) : (
             <Button
                disabled

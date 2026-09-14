@@ -71,7 +71,7 @@ const Index = (props: CourseCreateProps) => {
          // Parent categories
          const categoryItem = {
             label: category.title,
-            value: category.title,
+            value: category.id.toString(),
             id: category.id,
             child_id: '',
          };
@@ -80,7 +80,8 @@ const Index = (props: CourseCreateProps) => {
          const childItems =
             category.category_children?.map((child) => ({
                label: `--${child.title}`,
-               value: child.title,
+               value: child.id.toString(),
+               formValue: child.course_category_id.toString(),
                id: child.course_category_id,
                child_id: child.id,
             })) || [];
@@ -139,7 +140,12 @@ const Index = (props: CourseCreateProps) => {
                {...store.form()}
                transform={(formData) => ({
                   ...formData,
-                  ...data,
+                  status: data.status,
+                  description: data.description,
+                  discount: data.discount,
+                  certificate_enabled: data.certificate_enabled,
+                  course_category_id: data.course_category_id,
+                  course_category_child_id: data.course_category_child_id,
                })}
                className="space-y-6"
                onSuccess={() => reset()}

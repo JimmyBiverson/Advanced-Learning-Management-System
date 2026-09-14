@@ -3,11 +3,14 @@
 namespace Modules\Course\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 use Modules\Course\Http\Requests\StoreLiveClassRequest;
 use Modules\Course\Http\Requests\UpdateLiveClassRequest;
+use Modules\Course\Models\CourseEnrollment;
 use Modules\Course\Models\CourseLiveClass;
+use Modules\Course\Notifications\LiveClassScheduledNotification;
 use Modules\Course\Services\CoursePlayerService;
 use Modules\Course\Services\ZoomLiveService;
 
@@ -21,17 +24,29 @@ class LiveClassController extends Controller
     public function index($id)
     {
         $user = Auth::user();
-        $live_class = CourseLiveClass::with('course')->find($id);
-        $watchHistory = $this->coursePlayerService->getWatchHistory(['course_id' => $live_class->course_id]);
+        $live_class = CourseLiveClass::with('course.instructor.user')->find($id);
 
         if (! $live_class) {
             abort(404, 'Live class not found');
         }
 
-        // Always use the embedded SDK approach
+        $watchHistory = $this->coursePlayerService->getWatchHistory(['course_id' => $live_class->course_id]);
+
+        $zoomSdkEnabled = (bool) ($this->zoomLiveService->zoomConfig['zoom_web_sdk'] ?? false)
+            && ! empty($this->zoomLiveService->zoomConfig['zoom_sdk_client_id'] ?? null)
+            && ! empty($this->zoomLiveService->zoomConfig['zoom_sdk_client_secret'] ?? null);
+
+        $isHost = $this->isHostFor($live_class, $user);
+
+        if ($isHost && $live_class->provider === 'zoom') {
+            $this->refreshZoomStartUrl($live_class);
+        }
+
         return Inertia::render('course-player/live-class/zoom-live-class', [
             'live_class' => $live_class,
             'watchHistory' => $watchHistory,
+            'is_host' => $isHost,
+            'zoom_sdk_enabled' => $zoomSdkEnabled,
             'zoom_sdk_client_id' => $this->zoomLiveService->zoomConfig['zoom_sdk_client_id'] ?? null,
         ]);
     }
@@ -54,7 +69,20 @@ class LiveClassController extends Controller
             $data['additional_info'] = $meeting_info_arr;
         }
 
-        CourseLiveClass::create($data);
+        $liveClass = CourseLiveClass::create($data);
+
+        $liveClass->load('course');
+        $recipients = User::query()
+            ->whereIn('id', CourseEnrollment::ofCourse($liveClass->course_id)->pluck('user_id'))
+            ->get();
+
+        if ($liveClass->course->instructor?->user) {
+            $recipients->push($liveClass->course->instructor->user);
+        }
+
+        $recipients = $recipients->merge(User::admins()->get());
+
+        $recipients->unique('id')->each->notify(new LiveClassScheduledNotification($liveClass));
 
         return back()->with('success', 'Live class added successfully');
     }
@@ -100,14 +128,13 @@ class LiveClassController extends Controller
     public function signature($meetingId)
     {
         try {
-            $liveClass = CourseLiveClass::find($meetingId);
+            $liveClass = CourseLiveClass::with('course.instructor.user')->find($meetingId);
 
             if (! $liveClass) {
                 return response()->json(['error' => 'Live class not found'], 404);
             }
 
-            // Check if user is host (instructor)
-            $isHost = $liveClass->course->instructor_id === Auth::id() ? 1 : 0;
+            $isHost = $this->isHostFor($liveClass, Auth::user()) ? 1 : 0;
 
             // Get meeting info using the helper method
             $meetingInfo = $liveClass->getAdditionalInfoArray();
@@ -129,6 +156,58 @@ class LiveClassController extends Controller
             ]);
         } catch (\Exception $e) {
             return response()->json(['error' => $e->getMessage()], 500);
+        }
+    }
+
+    /**
+     * Determine whether the given user is the host of the live class.
+     */
+    private function isHostFor(CourseLiveClass $liveClass, ?User $user): bool
+    {
+        if (! $user) {
+            return false;
+        }
+
+        $course = $liveClass->course;
+
+        if (! $course) {
+            return false;
+        }
+
+        if ($user->role === 'admin') {
+            return true;
+        }
+
+        if ($user->instructor_id && $course->instructor_id && (int) $user->instructor_id === (int) $course->instructor_id) {
+            return true;
+        }
+
+        return (int) $course->instructor?->user_id === (int) $user->id;
+    }
+
+    /**
+     * Refresh a stale Zoom start_url with a fresh (unexpired) authorization token.
+     */
+    private function refreshZoomStartUrl(CourseLiveClass $liveClass): void
+    {
+        $meetingInfo = $liveClass->getAdditionalInfoArray();
+
+        if (! $meetingInfo || ! isset($meetingInfo['id'])) {
+            return;
+        }
+
+        try {
+            $response = json_decode($this->zoomLiveService->getZoomLive((string) $meetingInfo['id']), true);
+
+            if (! is_array($response) || ! isset($response['start_url'])) {
+                return;
+            }
+
+            $meetingInfo['start_url'] = $response['start_url'];
+            $meetingInfo['join_url'] = $response['join_url'] ?? $meetingInfo['join_url'] ?? null;
+            $liveClass->additional_info = $meetingInfo;
+        } catch (\Exception $e) {
+            // Keep the stored URLs when the refresh fails (offline / auth error).
         }
     }
 }

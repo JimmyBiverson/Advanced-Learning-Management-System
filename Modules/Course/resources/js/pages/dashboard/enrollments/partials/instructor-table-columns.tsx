@@ -87,6 +87,25 @@ const InstructorTableColumn = (
          },
       },
       {
+         id: 'payment_status',
+         header: 'Payment',
+         cell: ({ row }) => {
+            const isPaid = row.original.enrollment_type === 'paid';
+
+            return (
+               <Badge
+                  className={
+                     isPaid
+                        ? 'bg-green-100 text-green-800 hover:bg-green-100'
+                        : 'bg-slate-100 text-slate-800 hover:bg-slate-100'
+                  }
+               >
+                  {isPaid ? 'Paid' : 'Free'}
+               </Badge>
+            );
+         },
+      },
+      {
          id: 'expiry_date',
          header: () => <div className="pr-4 text-end">{table.expiry_date}</div>,
          cell: ({ row }) => {

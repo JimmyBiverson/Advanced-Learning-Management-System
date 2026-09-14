@@ -29,6 +29,7 @@ export function NavMain() {
 
    if (page.url !== prevUrl) {
       setPrevUrl(page.url);
+
       if (accordionFromUrl) {
          setOpenAccordions(accordionFromUrl);
       }

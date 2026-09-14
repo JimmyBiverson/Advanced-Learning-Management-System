@@ -21,6 +21,8 @@ use App\Services\InstructorService;
 use App\Services\SettingsService;
 use App\Services\StudentService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
@@ -251,6 +253,52 @@ class SettingController extends Controller
             return back()->with('success', 'Zoom configuration settings updated successfully.');
         } catch (\Exception $e) {
             return back()->with('error', $e->getMessage());
+        }
+    }
+
+    public function zoom_oauth_callback(Request $request)
+    {
+        $code = $request->string('code')->toString();
+
+        if ($code === '') {
+            return redirect()->route('live-class.index')->with('error', 'Zoom authorization did not return a code.');
+        }
+
+        try {
+            $liveClass = $this->settingsService->getSetting(['type' => 'live_class']);
+            $fields = $liveClass['fields'] ?? [];
+            $clientId = $fields['zoom_client_id'] ?? config('services.zoom.client_id');
+            $clientSecret = $fields['zoom_client_secret'] ?? config('services.zoom.client_secret');
+
+            if (! $clientId || ! $clientSecret) {
+                return redirect()->route('live-class.index')->with('error', 'Configure Zoom OAuth client credentials before authorizing the account.');
+            }
+
+            $response = Http::asForm()
+                ->withBasicAuth($clientId, $clientSecret)
+                ->post('https://zoom.us/oauth/token', [
+                    'grant_type' => 'authorization_code',
+                    'code' => $code,
+                    'redirect_uri' => route('zoom.oauth.callback'),
+                ]);
+
+            if ($response->failed()) {
+                throw new \RuntimeException('Zoom token exchange failed: '.$response->body());
+            }
+
+            $tokens = $response->json();
+            $this->settingsService->zoomConfigUpdate([
+                ...$fields,
+                'zoom_oauth_access_token' => $tokens['access_token'] ?? null,
+                'zoom_oauth_refresh_token' => $tokens['refresh_token'] ?? null,
+                'zoom_oauth_expires_at' => now()->addSeconds((int) ($tokens['expires_in'] ?? 3600))->toIso8601String(),
+            ], (string) $liveClass['id']);
+
+            return redirect()->route('live-class.index')->with('success', 'Zoom account connected successfully.');
+        } catch (\Throwable $exception) {
+            Log::error('Zoom OAuth callback failed', ['message' => $exception->getMessage()]);
+
+            return redirect()->route('live-class.index')->with('error', 'Zoom authorization could not be completed. Check the callback URL and Zoom credentials.');
         }
     }
 

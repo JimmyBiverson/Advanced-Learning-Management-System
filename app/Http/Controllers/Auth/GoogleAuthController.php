@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Enums\UserType;
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Notifications\NewUserRegisteredNotification;
 use App\Services\AuthService;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
@@ -42,6 +43,10 @@ class GoogleAuthController extends Controller
                 Auth::login($registered, true);
             } else {
                 $registered = $this->authService->googleAuthRegister($user);
+
+                User::admins()->each(function (User $admin) use ($registered): void {
+                    $admin->notify(new NewUserRegisteredNotification($registered->name, $registered->email));
+                });
 
                 event(new Registered($registered));
 

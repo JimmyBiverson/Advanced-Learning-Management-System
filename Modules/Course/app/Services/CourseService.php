@@ -13,6 +13,7 @@ use Illuminate\Support\Str;
 use Modules\Course\Models\Course;
 use Modules\Course\Models\CourseEnrollment;
 use Modules\Course\Models\CourseSection;
+use Modules\Course\Notifications\AdminAttentionNotification;
 use Modules\Course\Notifications\CourseApprovalNotification;
 
 class CourseService extends MediaService

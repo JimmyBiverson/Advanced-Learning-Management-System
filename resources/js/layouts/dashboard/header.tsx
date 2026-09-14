@@ -1,4 +1,5 @@
 import { Link, usePage } from '@inertiajs/react';
+import { Globe } from 'lucide-react';
 import Appearance from '@/components/appearance';
 import Language from '@/components/language';
 import { SidebarTrigger } from '@/components/ui/sidebar';
@@ -6,7 +7,6 @@ import { useAuth } from '@/hooks/use-auth';
 import { NotificationsDrawer } from '@/layouts/dashboard/partials/notifications-drawer';
 import { ProfileDrawer } from '@/layouts/dashboard/partials/profile-drawer';
 import { SettingsDrawer } from '@/layouts/dashboard/partials/settings-drawer';
-import { Globe } from 'lucide-react';
 
 const DashboardHeader = () => {
    const { isAdmin } = useAuth();

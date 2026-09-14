@@ -8,6 +8,7 @@
 /storage/app/public/installed
 /storage/*.key
 /storage/pail
+/storage/app/public/*/
 /resources/js/actions
 /resources/js/routes
 /resources/js/wayfinder
@@ -27,3 +28,18 @@ yarn-error.log
 /.idea
 /.nova
 /.zed
+
+# Local deployment artifacts & credentials
+/advanced_mentor_lms/
+*.zip
+/build.tgz
+/cookies.txt
+/logins.txt
+/server.env
+/docker.env
+/out.json
+/count()
+/production-manifest-restore.json
+/manifest-restore/
+/package.md
+/version.txt

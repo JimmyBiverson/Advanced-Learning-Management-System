@@ -36,6 +36,7 @@ export function NotificationsDrawer() {
                window.AudioContext ||
                (window as typeof window & { webkitAudioContext?: typeof window.AudioContext })
                   .webkitAudioContext;
+
             if (AudioContext) {
                const context = new AudioContext();
                const oscillator = context.createOscillator();

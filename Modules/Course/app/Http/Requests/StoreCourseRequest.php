@@ -6,16 +6,20 @@ use App\Enums\ExpiryLimitType;
 use App\Enums\PricingType;
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class StoreCourseRequest extends FormRequest
 {
     protected function prepareForValidation()
     {
+        $pricingType = request('pricing_type');
+        $isPaid = $pricingType === PricingType::PAID->value;
+
         // Convert numeric fields
         $this->merge([
-            'price' => request('price') ? (float) request('price') : null,
-            'discount' => filter_var(request('discount'), FILTER_VALIDATE_BOOLEAN),
-            'discount_price' => request('discount_price') ? (float) request('discount_price') : null,
+            'price' => $isPaid && request('price') ? (float) request('price') : null,
+            'discount' => $isPaid && filter_var(request('discount'), FILTER_VALIDATE_BOOLEAN),
+            'discount_price' => $isPaid && request('discount_price') ? (float) request('discount_price') : null,
             'drip_content' => filter_var(request('drip_content'), FILTER_VALIDATE_BOOLEAN),
             'certificate_enabled' => request()->has('certificate_enabled') ? filter_var(request('certificate_enabled'), FILTER_VALIDATE_BOOLEAN) : true,
             'instructor_id' => (int) request('instructor_id'),
@@ -64,7 +68,11 @@ class StoreCourseRequest extends FormRequest
             'created_from' => 'nullable|string|in:web,api',
             'instructor_id' => 'required|exists:instructors,id',
             'course_category_id' => 'required|exists:course_categories,id',
-            'course_category_child_id' => 'nullable|exists:course_category_children,id',
+            'course_category_child_id' => [
+                'nullable',
+                Rule::exists('course_category_children', 'id')
+                    ->where(fn ($query) => $query->where('course_category_id', $this->input('course_category_id'))),
+            ],
         ];
     }
 }

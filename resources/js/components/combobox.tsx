@@ -19,6 +19,7 @@ import { cn } from '@/lib/utils';
 interface Data {
    id?: number | string;
    child_id?: number | string;
+   formValue?: number | string;
    label: string;
    value: string;
 }
@@ -97,7 +98,13 @@ const Combobox = ({
                <ChevronsUpDown className="opacity-50" />
             </Button>
          </PopoverTrigger>
-         {name && <input type="hidden" name={name} value={value} />}
+         {name && (
+            <input
+               type="hidden"
+               name={name}
+               value={data.find((item) => item.value === value)?.formValue ?? value}
+            />
+         )}
          <PopoverContent className="w-[var(--radix-popover-trigger-width)] p-0">
             <Command>
                <CommandInput

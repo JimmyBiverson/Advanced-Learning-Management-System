@@ -1,11 +1,13 @@
 import { useAuth } from '@/hooks/use-auth';
 import liveClass from '@/routes/live-class';
-import { usePage } from '@inertiajs/react';
+import { Link, usePage } from '@inertiajs/react';
 import { useEffect, useRef, useState } from 'react';
 
 interface Props {
    live_class: CourseLiveClass;
    watchHistory: WatchHistory;
+   is_host?: boolean;
+   zoom_sdk_enabled?: boolean;
    zoom_sdk_client_id?: string;
    zoom_sdk_client_secret?: string;
 }
@@ -58,6 +60,8 @@ declare global {
 const ZoomLiveClass = ({
    live_class,
    watchHistory,
+   is_host,
+   zoom_sdk_enabled,
    zoom_sdk_client_id,
 }: Props) => {
    const { props } = usePage();
@@ -67,11 +71,16 @@ const ZoomLiveClass = ({
    const [loading, setLoading] = useState(true);
    const [error, setError] = useState<string | null>(null);
    const [sdkLoaded, setSdkLoaded] = useState(false);
+   const [meetingUrl, setMeetingUrl] = useState<string | null>(null);
+   const [sdkModeActive, setSdkModeActive] = useState(false);
    const initializationRef = useRef(false);
 
-   const redirectUrl = isAdmin
-      ? `/dashboard/courses`
-      : `/play-course/${live_class.course.slug}/${watchHistory.id}/${watchHistory.current_watching_id}`;
+   const redirectUrl = (() => {
+      if (isAdmin || !watchHistory?.id) {
+         return `/dashboard/courses`;
+      }
+      return `/play-course/${live_class.course?.slug ?? ''}/${watchHistory.id}/${watchHistory.current_watching_id ?? 0}`;
+   })();
 
    // Get meeting info
    const meetingInfo = (() => {
@@ -94,6 +103,10 @@ const ZoomLiveClass = ({
          return null;
       }
    })();
+
+   const targetUrl = is_host
+      ? meetingInfo?.start_url
+      : meetingInfo?.join_url;
 
    // Load Zoom Client View SDK scripts
    const loadZoomSDK = async () => {
@@ -217,6 +230,7 @@ const ZoomLiveClass = ({
                         (error.message || error),
                   );
                   setLoading(false);
+                  setSdkModeActive(false);
                },
             });
          });
@@ -230,6 +244,7 @@ const ZoomLiveClass = ({
                : frontend.failed_to_initialize_meeting,
          );
          setLoading(false);
+         setSdkModeActive(false);
       }
    };
 
@@ -263,6 +278,7 @@ const ZoomLiveClass = ({
                   (error.message || error),
             );
             setLoading(false);
+            setSdkModeActive(false);
          },
       });
    };
@@ -307,8 +323,54 @@ const ZoomLiveClass = ({
       }
    };
 
-   // Main initialization useEffect (one-shot Zoom SDK setup on mount)
+   // Open Zoom meeting URL in a new tab (direct user gesture)
+   const openMeeting = () => {
+      if (!targetUrl) {
+         setError(frontend.meeting_information_not_found);
 
+         return;
+      }
+
+      window.open(targetUrl, '_blank', 'noopener,noreferrer');
+      setMeetingUrl(targetUrl);
+   };
+
+   // Join via Zoom web SDK (in-page)
+   const joinViaSDK = async () => {
+      setSdkModeActive(true);
+      setLoading(true);
+
+      try {
+         // Step 1: Load SDK scripts
+         await loadZoomSDK();
+
+         // Step 2: Fetch meeting config
+         const config = await fetchMeetingConfig();
+
+         if (!config) {
+            setSdkModeActive(false);
+
+            return;
+         }
+
+         // Step 3: Initialize and join meeting
+         await initializeZoomSDK(config);
+      } catch (error) {
+         setError(
+            error instanceof Error
+               ? error.message
+               : frontend.failed_to_initialize_meeting,
+         );
+         setLoading(false);
+         setSdkModeActive(false);
+      }
+   };
+
+   const primaryAction = is_host
+      ? (frontend.start_meeting ?? 'Start Meeting')
+      : (frontend.join_class ?? 'Join Class');
+
+   // Main initialization useEffect (one-shot, decides which path to use)
    useEffect(() => {
       if (initializationRef.current) {
          return;
@@ -316,51 +378,78 @@ const ZoomLiveClass = ({
 
       initializationRef.current = true;
 
-      const initializeMeeting = async () => {
-         // Check if SDK credentials are available
-         if (!zoom_sdk_client_id) {
-            setError(frontend.zoom_sdk_not_configured);
-            setLoading(false);
+      // Only use the Web SDK when the admin explicitly enabled it and the credentials exist.
+      if (!zoom_sdk_enabled || !zoom_sdk_client_id) {
+         // Non-SDK mode: no auto-open (browsers block window.open without a user gesture).
+         // Show a join button instead so the user gesture opens the tab reliably.
+         setLoading(false);
 
-            return;
-         }
+         return;
+      }
 
-         // Check if meeting info exists
-         if (!meetingInfo) {
-            setError(frontend.meeting_information_not_found);
-            setLoading(false);
+      // SDK mode: check meeting info exists before prompting to join.
+      if (!meetingInfo) {
+         setError(frontend.meeting_information_not_found);
+         setLoading(false);
 
-            return;
-         }
+         return;
+      }
 
-         try {
-            // Step 1: Load SDK scripts
-            await loadZoomSDK();
+      setLoading(false);
 
-            // Step 2: Fetch meeting config
-            const config = await fetchMeetingConfig();
-
-            if (!config) {
-               return;
-            }
-
-            // Step 3: Initialize and join meeting
-            await initializeZoomSDK(config);
-         } catch (error) {
-            setError(
-               error instanceof Error
-                  ? error.message
-                  : frontend.failed_to_initialize_meeting,
-            );
-            setLoading(false);
-         }
-      };
-
-      initializeMeeting();
-
-      // Cleanup on unmount
+      // Cleanup on unmount (only relevant if SDK was actually initialized)
       return cleanup;
-   }, []); // eslint-disable-line react-hooks/exhaustive-deps -- Mount-only Zoom SDK init
+   }, []); // eslint-disable-line react-hooks/exhaustive-deps -- Mount-only decisions
+
+   // Render meeting-opened state (non-SDK flow)
+   if (meetingUrl) {
+      return (
+         <div className="flex min-h-screen items-center justify-center bg-gray-100">
+            <div className="max-w-md rounded-lg bg-white p-8 text-center shadow-lg">
+               <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-green-100">
+                  <svg
+                     className="h-8 w-8 text-green-600"
+                     fill="none"
+                     viewBox="0 0 24 24"
+                     stroke="currentColor"
+                  >
+                     <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M5 13l4 4L19 7"
+                     />
+                  </svg>
+               </div>
+               <h1 className="mb-2 text-xl font-bold text-gray-900">
+                  {is_host
+                     ? (frontend.live_class_started ?? 'Meeting started')
+                     : (frontend.joining_meeting ?? 'Joining meeting')}
+               </h1>
+               <p className="mb-6 text-sm text-gray-600">
+                  {frontend.meeting_opened_in_new_tab ??
+                     'The meeting has been opened in a new tab. If the meeting did not open, click the link below.'}
+               </p>
+               <a
+                  href={meetingUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mb-4 inline-block rounded bg-blue-600 px-6 py-2 text-sm font-medium text-white hover:bg-blue-700"
+               >
+                  {frontend.open_in_zoom_app ?? 'Open in Zoom'}
+               </a>
+               <div>
+                  <Link
+                     href={redirectUrl}
+                     className="mt-2 inline-block text-sm text-blue-600 hover:underline"
+                  >
+                     {frontend.return_to_course ?? 'Return to course'}
+                  </Link>
+               </div>
+            </div>
+         </div>
+      );
+   }
 
    // Render loading state
    if (loading) {
@@ -392,13 +481,13 @@ const ZoomLiveClass = ({
                <p className="mb-4 text-muted-foreground">{error}</p>
 
                {/* Fallback: Show direct Zoom link if available */}
-               {meetingInfo?.join_url && (
+               {targetUrl && (
                   <div className="mt-4">
                      <p className="mb-2 text-sm text-gray-500">
                         {frontend.you_can_join_directly}
                      </p>
                      <a
-                        href={meetingInfo.join_url}
+                        href={targetUrl}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-block rounded bg-blue-600 px-4 py-2 text-white hover:bg-blue-700"
@@ -419,7 +508,90 @@ const ZoomLiveClass = ({
       );
    }
 
-   return null;
+   // Render ready-to-join state (user gesture required to open Zoom)
+   return (
+      <div className="flex min-h-screen items-center justify-center bg-gray-900">
+         <div className="mx-auto w-full max-w-md rounded-xl bg-white p-8 text-center shadow-2xl">
+            <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-blue-100">
+               <svg
+                  className="h-8 w-8 text-blue-600"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+               >
+                  <path
+                     strokeLinecap="round"
+                     strokeLinejoin="round"
+                     strokeWidth={2}
+                     d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"
+                  />
+               </svg>
+            </div>
+
+            <h1 className="mb-2 text-2xl font-bold text-gray-900">
+               {live_class.class_topic}
+            </h1>
+            <p className="mb-2 text-sm text-gray-500">
+               {live_class.class_date_and_time
+                  ? new Date(live_class.class_date_and_time).toLocaleString()
+                  : ''}
+            </p>
+            <p className="mb-6 text-sm text-gray-600">
+               {is_host
+                  ? (frontend.host_meeting_descriptor ??
+                    'You are the host. Start the meeting to let your students join.')
+                  : (frontend.attendee_meeting_descriptor ??
+                    'Join the live class through Zoom. The host will let you in.' )}
+            </p>
+
+            {targetUrl ? (
+               <>
+                  <button
+                     onClick={openMeeting}
+                     className="mb-4 inline-flex w-full items-center justify-center rounded-lg bg-blue-600 px-6 py-3 text-base font-semibold text-white shadow-lg transition hover:bg-blue-700"
+                  >
+                     <svg
+                        className="mr-2 h-5 w-5"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                     >
+                        <path
+                           strokeLinecap="round"
+                           strokeLinejoin="round"
+                           strokeWidth={2}
+                           d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"
+                        />
+                     </svg>
+                     {primaryAction}
+                  </button>
+
+                  {zoom_sdk_enabled && zoom_sdk_client_id && (
+                     <button
+                        onClick={joinViaSDK}
+                        className="mb-4 inline-flex w-full items-center justify-center rounded-lg border border-gray-300 bg-white px-6 py-3 text-base font-semibold text-gray-700 transition hover:bg-gray-50"
+                     >
+                        {frontend.join_in_browser ?? 'Join in browser'}
+                     </button>
+                  )}
+               </>
+            ) : (
+               <p className="mb-4 rounded bg-red-50 px-4 py-3 text-sm text-red-600">
+                  {frontend.meeting_information_not_found}
+               </p>
+            )}
+
+            <div>
+               <Link
+                  href={redirectUrl}
+                  className="mt-2 inline-block text-sm text-blue-600 hover:underline"
+               >
+                  {frontend.return_to_course ?? 'Return to course'}
+               </Link>
+            </div>
+         </div>
+      </div>
+   );
 };
 
 export default ZoomLiveClass;
