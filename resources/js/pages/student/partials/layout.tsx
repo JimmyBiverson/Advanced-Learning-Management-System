@@ -128,7 +128,7 @@ const Layout = ({ children, tab }: { children: ReactNode; tab: string }) => {
 
                               <SheetContent
                                  side="left"
-                                 className="w-[230px] border-border p-0"
+                                 className="w-[230px] overflow-hidden border-border p-0"
                               >
                                  <ScrollArea className="h-full w-full">
                                     <TabLists tabs={tabs} />
