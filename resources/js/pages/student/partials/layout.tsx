@@ -33,7 +33,7 @@ const Layout = ({ children, tab }: { children: ReactNode; tab: string }) => {
       () => [
          {
             id: 'courses',
-            name: button.courses,
+            name: button.dashboard,
             slug: 'courses',
             Icon: GraduationCap,
          },

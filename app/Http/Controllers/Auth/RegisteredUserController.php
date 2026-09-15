@@ -57,17 +57,31 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        User::admins()->each(function (User $admin) use ($user): void {
-            $admin->notify(new NewUserRegisteredNotification($user->name, $user->email));
-        });
+        try {
+            User::admins()->each(function (User $admin) use ($user): void {
+                $admin->notify(new NewUserRegisteredNotification($user->name, $user->email));
+            });
+        } catch (\Throwable $e) {
+            report($e);
+        }
 
-        event(new Registered($user));
+        try {
+            event(new Registered($user));
+        } catch (\Throwable $e) {
+            report($e);
+        }
 
-        $this->authService->trackCompleteRegistration($user, $request);
+        try {
+            $this->authService->trackCompleteRegistration($user, $request);
+        } catch (\Throwable $e) {
+            report($e);
+        }
 
         Auth::login($user);
 
         // return to_route('dashboard');
-        return redirect()->route('student.index', ['tab' => 'courses']);
+        return redirect()
+            ->route('student.index', ['tab' => 'courses'])
+            ->with('success', 'Your account has been created successfully.');
     }
 }
