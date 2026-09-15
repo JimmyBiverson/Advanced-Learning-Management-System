@@ -44,6 +44,11 @@ class InstructorApprovalNotification extends Notification
                 'user' => $notifiable,
                 'status' => $this->data['status'],
                 'feedback' => $this->data['feedback'],
+            ])
+            ->text('mail.instructor-approval-text', [
+                'user' => $notifiable,
+                'status' => $this->data['status'],
+                'feedback' => $this->data['feedback'],
             ]);
     }
 

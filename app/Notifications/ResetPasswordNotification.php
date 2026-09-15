@@ -46,6 +46,11 @@ class ResetPasswordNotification extends Notification
                 'url' => $url,
                 'user' => $notifiable,
                 'count' => config('auth.passwords.'.config('auth.defaults.passwords').'.expire'),
+            ])
+            ->text('mail.reset-password-text', [
+                'url' => $url,
+                'user' => $notifiable,
+                'count' => config('auth.passwords.'.config('auth.defaults.passwords').'.expire'),
             ]);
     }
 

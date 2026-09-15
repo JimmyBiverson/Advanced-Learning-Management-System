@@ -36,6 +36,10 @@ class NewsletterNotification extends Notification
             ->view('mail.newsletter', [
                 'subject' => $this->newsletter->subject,
                 'description' => $this->newsletter->description,
+            ])
+            ->text('mail.newsletter-text', [
+                'subject' => $this->newsletter->subject,
+                'description' => $this->newsletter->description,
             ]);
     }
 
