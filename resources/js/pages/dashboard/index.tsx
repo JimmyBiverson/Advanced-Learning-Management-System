@@ -25,6 +25,9 @@ import { Card } from '@/components/ui/card';
 import { Table, TableBody, TableCell, TableRow } from '@/components/ui/table';
 import DashboardLayout from '@/layouts/dashboard/layout';
 import { cn } from '@/lib/utils';
+import courseEnrollments from '@/routes/course-enrollments';
+import courses from '@/routes/courses';
+import instructors from '@/routes/instructors';
 import { index as payoutsIndex } from '@/routes/payouts';
 import { request as payoutsRequestIndex } from '@/routes/payouts';
 import RevenueChart from './partials/revenue-chart';
@@ -93,27 +96,32 @@ const Dashboard = (props: DashboardProps) => {
                title={frontend.courses}
                value={statistics.courses}
                icon={<BookOpen className="h-6 w-6 text-blue-500" />}
+               href={courses.index.url()}
             />
             <StatCard
                title={frontend.lessons}
                value={statistics.lessons}
                icon={<Video className="h-6 w-6 text-green-500" />}
+               href={courses.index.url()}
             />
             <StatCard
                title={frontend.enrollment}
                value={statistics.enrollments}
                icon={<UserCheck className="h-6 w-6 text-amber-500" />}
+               href={courseEnrollments.index.url()}
             />
             <StatCard
                title={frontend.students}
                value={statistics.students}
                icon={<Users className="h-6 w-6 text-purple-500" />}
+               href={courseEnrollments.index.url()}
             />
             {isAdmin && (
                <StatCard
                   title={'Instructors'}
                   value={statistics.instructors}
                   icon={<UserPlus className="h-6 w-6 text-rose-500" />}
+                  href={instructors.index.url()}
                />
             )}
          </div>
@@ -233,10 +241,11 @@ type StatCardProps = {
    title: string;
    value: number;
    icon: ReactNode;
+   href?: string;
 };
 
-const StatCard = ({ title, value, icon }: StatCardProps) => {
-   return (
+const StatCard = ({ title, value, icon, href }: StatCardProps) => {
+   const card = (
       <Card className="p-4 sm:p-6">
          <div className="flex items-center justify-between">
             <div>
@@ -248,6 +257,19 @@ const StatCard = ({ title, value, icon }: StatCardProps) => {
             <div className="rounded-full bg-gray-100 p-3">{icon}</div>
          </div>
       </Card>
+   );
+
+   if (!href) {
+      return card;
+   }
+
+   return (
+      <Link
+         href={href}
+         className="group transition-transform duration-200 hover:-translate-y-0.5 focus-visible:outline-none"
+      >
+         {card}
+      </Link>
    );
 };
 
